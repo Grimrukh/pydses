@@ -21,10 +21,8 @@ def unpacked_to_verbose(unpacked_filename, output_file):
     (Substitute your own Python 2 interpreter and emevd_rebuilder. I do it the
     hard way because I use Python 3.)
     """
-#    PYTHON_27 = 'C:\\python2\\python.exe' # Your Python 2 exe.
-    PYTHON_27 = 'G:\\Code\\Anaconda3\\envs\\py27\\python.exe'
-#    REBUILDER = 'C:\\HotPocketRemix\\emevd_rebuilder.py' # HPR's script.
-    REBUILDER = 'G:\\Code\\DarkSoulsMods\\Events\\Scripts27\\emevd_rebuilder.py'
+    PYTHON_27 = 'C:\\python2\\python.exe' # Your Python 2 exe.
+    REBUILDER = 'C:\\HotPocketRemix\\emevd_rebuilder.py' # HPR's script.
     command = '{} {} -p {} -v -o {}'\
               .format(PYTHON_27, REBUILDER, unpacked_filename, output_file)
     subprocess.run(command)
