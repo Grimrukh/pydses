@@ -17,7 +17,7 @@ def e11810001():
     
     # Asylum Demon death event.
     
-    print('11810001, 0') # Event header.
+    p.event(11810001, 0) # Event header.
     p.if_entity_health_less_than_or_equal(0, AsylumDemon, 0.0)
     p.play_sound_effect(AsylumDemon, 5, BossDeathSoundEffect)
     p.if_entity_dead(0, AsylumDemon)
