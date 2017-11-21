@@ -59,6 +59,17 @@ def DEBUG_PENDANT():
 def _format_event(event_format, *args):
     print( ' {}[{}] ({}){}'.format(*event_format, list(args)) )
 
+def event(event_id, unknown_int):
+    # TODO: Check validity of arguments here.
+    # TODO: Figure out, once and for all, just what the hell the unknown_int does
+    # From HotPocketRemix:
+    """ An unknown value, either 0, 1 or 2. This may control how events are executed? 0 is most common (859 occurances),
+     1 is next most common (321 occurances) and 2 is rarest (37 occurances).
+    (My current conjecture is that these control how / if events are restarted once they are completed. Some events might
+    restart on map load, when the player sits at a bonfire, never, etc. I have no evidence for this.)
+    """
+    print('{}, {}'.format(event_id, unknown_int))
+
 """ 2000: SYSTEM """
 
 # 0
