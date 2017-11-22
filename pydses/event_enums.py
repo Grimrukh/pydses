@@ -70,9 +70,9 @@ class button_type(Enum):
     ok_cancel = 1
 
 class category(Enum):
-    object = 0
-    area = 1
-    character = 2
+    objects = 0
+    areas = 1
+    characters = 2
 
 class character_type(Enum):
     """
