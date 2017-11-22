@@ -42,20 +42,28 @@ class info_menu_type(Enum):
     simple = 1
 
 
-class event_hit_type(Enum):
+class object_damage_hit_type(Enum):
     """
-    Extended original abbreviated name ("EV_HIT") and made more specific.
-    This is only an assumption of the full-length word.
+    Note: Enum name obtained from comment left in Demon's Souls event_define.lua which reads:
+    【OnObjectDamageHit ヒット対象識別用定数】
+
+    Rough Google Translation:
+    【OnObjectDamageHit hit object identification constant】
+
+    The names of the enum members come from the comments on the variables in DeS event_define.lua
     """
-    chr = 1
-    hit = 2
-    all = 3
+    characters = 1
+    maps = 2
+    characters_and_maps = 3
 
 
-class net_attribute(Enum):
+class trigger_attribute(Enum):
     """
-    Note: Enum name changed from the default name of "ATTR", to make it more contextually specific,
-          since it is a misc. value that is hardly used, if at all.
+    Note: Enum name obtained from comment left in Demon's Souls event_define.lua which reads:
+    【発動属性】 --発動をプレイヤの状態によって制限できる
+
+    Translation:
+    【Trigger Attribute】 - Limit activation depending on player's condition.
     """
     session = 1
     no_session = 2
@@ -70,8 +78,11 @@ class net_attribute(Enum):
 
 class talk_attribute(Enum):
     """
-    Extended original abbreviated name ("TALK_ATTR"). This is only an assumption
-    of the full-length word.
+    Note: Enum name obtained from comment left in Demon's Souls event_define.lua which reads:
+    【イベント会話の設定フラグ】 --会話の設定フラグ関連
+
+    Rough Google Translation:
+    【Event Flag Setting Flag】 - Conversation Setting Flag Relation
     """
     repeat = 1
     pad = 2
