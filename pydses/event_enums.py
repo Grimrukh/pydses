@@ -45,13 +45,8 @@ OR6 = condition.or6
 OR7 = condition.or7
 
 
-""" ENUMS USED IN EMEVD BUT NOT PRESENT IN EMELD ENUM LIST """
-
-
-class
-
-
 """ EVENT ENUM DEFINITIONS """
+
 
 class ai_status_type(Enum):
     normal = 0
@@ -59,26 +54,32 @@ class ai_status_type(Enum):
     alert = 2
     battle = 3
 
+
 class bitop(Enum):
     add = 0
     delete = 1
     invert = 2
 
+
 # ENUM_BOOL omitted for lack of necessity and conflict with python keywords
+
 
 class button_number(Enum):
     one_button = 1
     two_button = 2
     no_button = 6
 
+
 class button_type(Enum):
     yes_no = 0
     ok_cancel = 1
+
 
 class category(Enum):
     objects = 0
     areas = 1
     characters = 2
+
 
 class character_type(Enum):
     """
@@ -91,11 +92,13 @@ class character_type(Enum):
     gray_ghost = 8
     intruder = 10
 
+
 class character_update_rate(Enum):
     never = -1
     always = 0
     every_two_frames = 2
     every_five_frames = 5
+
 
 class class_type(Enum):
     warrior = 0
