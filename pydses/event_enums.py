@@ -169,7 +169,6 @@ class equipment_type(Enum):
     armor = 1
     accessory = 2
     item = 3
-    mask = 4 # from event_define.lua
 
 
 class logic_op_type(Enum):
