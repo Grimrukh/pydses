@@ -45,6 +45,12 @@ OR6 = condition.or6
 OR7 = condition.or7
 
 
+""" ENUMS USED IN EMEVD BUT NOT PRESENT IN EMELD ENUM LIST """
+
+
+class
+
+
 """ EVENT ENUM DEFINITIONS """
 
 class ai_status_type(Enum):
