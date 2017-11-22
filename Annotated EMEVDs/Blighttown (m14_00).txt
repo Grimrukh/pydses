@@ -1,10 +1,10 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Three bonfires: the Fair Lady, up on the wall, down in the swamp.
+        # Three bonfires: the Fair Lady, up on the wall, down in the swamp.
       0 Register Bonfire (Event Flag ID: 11400992, Entity ID: 1401960, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 10)
       1 Register Bonfire (Event Flag ID: 11400984, Entity ID: 1401961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       2 Register Bonfire (Event Flag ID: 11400976, Entity ID: 1401962, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Extreme ladders.
+        # Extreme ladders.
       3 ? Register Ladder (Entity ID: 1401140, Unknown Event Flag ID: 11400010, Unknown Event Flag ID: 11400011)
       4 ? Register Ladder (Entity ID: 1401141, Unknown Event Flag ID: 11400012, Unknown Event Flag ID: 11400013)
       5 ? Register Ladder (Entity ID: 1401142, Unknown Event Flag ID: 11400014, Unknown Event Flag ID: 11400015)
@@ -36,7 +36,7 @@ Parameters: {} ()
      31 ? Register Ladder (Entity ID: 1401168, Unknown Event Flag ID: 11400066, Unknown Event Flag ID: 11400067)
      32 ? Register Ladder (Entity ID: 1401169, Unknown Event Flag ID: 11400068, Unknown Event Flag ID: 11400069)
      33 ? Register Ladder (Entity ID: 1401170, Unknown Event Flag ID: 11400070, Unknown Event Flag ID: 11400071)
-		# Fog walls blocking the Depths, Valley of Drakes, and Demon Ruins.
+        # Fog walls blocking the Depths, Valley of Drakes, and Demon Ruins.
      34 SKIP 6 lines IF muliplayer status is Client
      35 DISABLE Object with Entity ID: 1401994
      36 Delete Map SFX (Entity ID: 1401995, Deletes only root: FALSE)
@@ -44,8 +44,8 @@ Parameters: {} ()
      38 Delete Map SFX (Entity ID: 1401997, Deletes only root: FALSE)
      39 DISABLE Object with Entity ID: 1401998
      40 Delete Map SFX (Entity ID: 1401999, Deletes only root: FALSE)
-	 
-		# Kirk's corpse behind the Fair Lady if all three invasions are won.
+
+        # Kirk's corpse behind the Fair Lady if all three invasions are won.
      41 CONDITION: IF Event Flag ID: 11000810 is ON --> Register AND(01)
      42 CONDITION: IF Event Flag ID: 11410810 is ON --> Register AND(01)
      43 CONDITION: IF Event Flag ID: 11410811 is ON --> Register AND(01)
@@ -53,34 +53,34 @@ Parameters: {} ()
      45 DISABLE Object with Entity ID: 1401601
      46 SKIP 1 lines
      47 ENABLE Treasure of Entity ID: 1401601
-	 
-		# Fog checkpoint up in the cave part.
+
+        # Fog checkpoint up in the cave part.
      48 Initialize Event (Event ID: 11400090, Slot Number: 1, Arguments: {1401702, 1401703, 1402602, 1402603})
-		# Gravelording.
+        # Gravelording.
      49 Initialize Event (Event ID: 11405090, Slot Number: 0, Arguments: {0})
      50 Initialize Event (Event ID: 11405091, Slot Number: 0, Arguments: {0})
      51 Initialize Event (Event ID: 11405092, Slot Number: 0, Arguments: {0})
-		# Wall hugger ("Prince Izalith") death and disable.
+        # Wall hugger ("Prince Izalith") death and disable.
      52 Initialize Event (Event ID: 11400900, Slot Number: 0, Arguments: {0})
-		# Fair Lady's death.
+        # Fair Lady's death.
      53 Initialize Event (Event ID: 11400800, Slot Number: 0, Arguments: {0})
-		# Gives the Fair Lady a special effect when her health changes at all.
-		# Probably used to make Eingyi hostile or something? The effect itself
-		# claims to be an animation offset (5401).
+        # Gives the Fair Lady a special effect when her health changes at all.
+        # Probably used to make Eingyi hostile or something? The effect itself
+        # claims to be an animation offset (5401).
      54 Initialize Event (Event ID: 11405000, Slot Number: 0, Arguments: {0})
-		# Bell of Awakening.
+        # Bell of Awakening.
      55 Initialize Event (Event ID: 11400200, Slot Number: 0, Arguments: {0})
-		# Illusory wall to Fair Lady.
+        # Illusory wall to Fair Lady.
      56 Initialize Event (Event ID: 11400210, Slot Number: 0, Arguments: {0})
-		# Gives special effect 4140 when you're near Quelana.
+        # Gives special effect 4140 when you're near Quelana.
      57 Initialize Event (Event ID: 11400220, Slot Number: 0, Arguments: {0})
-		# Message that door to the Depths is locked if not opened (or opens it
-		# again).
+        # Message that door to the Depths is locked if not opened (or opens it
+        # again).
      58 Initialize Event (Event ID: 11400230, Slot Number: 0, Arguments: {0})
-		# Fair Lady's bonfire extinguished.
+        # Fair Lady's bonfire extinguished.
      59 Initialize Event (Event ID: 140, Slot Number: 0, Arguments: {0})
-		
-		# Quelaag. Very basic.
+
+        # Quelaag. Very basic.
      60 DISABLE Map Sound (Entity ID: 1403800)
      61 SKIP 6 lines IF Event Flag ID: 00000009 is OFF
      62 Initialize Event (Event ID: 11405392, Slot Number: 0, Arguments: {0})
@@ -96,28 +96,28 @@ Parameters: {} ()
      72 Initialize Event (Event ID: 11400001, Slot Number: 0, Arguments: {0})
      73 Initialize Event (Event ID: 11405394, Slot Number: 0, Arguments: {0})
      74 Initialize Event (Event ID: 11405395, Slot Number: 0, Arguments: {0})
-	 
-		# "Floor is squeaky." Makes rafters shake.
+
+        # "Floor is squeaky." Makes rafters shake.
      75 Initialize Event (Event ID: 11405100, Slot Number: 0, Arguments: {1401000, 1402000, 1402001, 1402002})
-		# "Floor is squeaky long." Long shaky rafters.
+        # "Floor is squeaky long." Long shaky rafters.
      76 Initialize Event (Event ID: 11405110, Slot Number: 0, Arguments: {1401002, 1402020, 1402021, 1402022, 1402023, 1402024})
-		# Spawn parasites from egg carriers.
+        # Spawn parasites from egg carriers.
      77 Initialize Event (Event ID: 11405350, Slot Number: 0, Arguments: {6160, 1400411, 1400412, 1400413, 1400414, 1400415, 1})
      78 Initialize Event (Event ID: 11405350, Slot Number: 3, Arguments: {1400402, 1400426, 1400427, 1400428, 1400429, 1400430, 0})
      79 Initialize Event (Event ID: 11405350, Slot Number: 4, Arguments: {1400403, 1400431, 1400432, 1400433, 1400434, 1400435, 0})
-		# Mosquito spawners.
+        # Mosquito spawners.
      80 Initialize Event (Event ID: 11400100, Slot Number: 0, Arguments: {11405340, 1402200, 1403000})
      81 Initialize Event (Event ID: 11400100, Slot Number: 1, Arguments: {11405341, 1402201, 1403001})
      82 Initialize Event (Event ID: 11400100, Slot Number: 2, Arguments: {11405342, 1402202, 1403002})
-		# One infested ghoul who seems to be in an urn.
+        # One infested ghoul who seems to be in an urn.
      83 Initialize Event (Event ID: 11405200, Slot Number: 0, Arguments: {1400450, 1401300})
-		# Boulder-throwing barbarians' boulders, which take no damage.
+        # Boulder-throwing barbarians' boulders, which take no damage.
      84 Initialize Event (Event ID: 11405250, Slot Number: 0, Arguments: {1400100})
      85 Initialize Event (Event ID: 11405250, Slot Number: 1, Arguments: {1400101})
      86 Initialize Event (Event ID: 11405250, Slot Number: 2, Arguments: {1400102})
      87 Initialize Event (Event ID: 11405250, Slot Number: 3, Arguments: {1400103})
      88 Initialize Event (Event ID: 11405250, Slot Number: 4, Arguments: {1400104})
-		# Non-respawning enemies (all Blowdart snipers).
+        # Non-respawning enemies (all Blowdart snipers).
      89 Initialize Event (Event ID: 11400850, Slot Number: 0, Arguments: {1400200, 25300200})
      90 Initialize Event (Event ID: 11400850, Slot Number: 1, Arguments: {1400201, 25300200})
      91 Initialize Event (Event ID: 11400850, Slot Number: 2, Arguments: {1400202, 25300200})
@@ -127,27 +127,27 @@ Parameters: {} ()
      95 Initialize Event (Event ID: 11400850, Slot Number: 6, Arguments: {1400206, 25300200})
      96 Initialize Event (Event ID: 11400850, Slot Number: 7, Arguments: {1400207, 25300200})
      97 Initialize Event (Event ID: 11400850, Slot Number: 8, Arguments: {1400208, 25300200})
-		# Three treasure chests.
+        # Three treasure chests.
      98 Initialize Event (Event ID: 11400600, Slot Number: 0, Arguments: {1401650, 11400600})
      99 Initialize Event (Event ID: 11400600, Slot Number: 1, Arguments: {1401651, 11400601})
     100 Initialize Event (Event ID: 11400600, Slot Number: 2, Arguments: {1401652, 11400602})
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Maneater Mildred (invader and summon).
+        # Maneater Mildred (invader and summon).
       0 Humanity Registration for Entity ID: 6531 ("First Event Flag ID to retain humanity ID": 8940)
       1 Humanity Registration for Entity ID: 6530 ("First Event Flag ID to retain humanity ID": 8940)
       2 Initialize Event (Event ID: 11405030, Slot Number: 0, Arguments: {0})
       3 Initialize Event (Event ID: 11405032, Slot Number: 0, Arguments: {0})
       4 Initialize Event (Event ID: 11405035, Slot Number: 0, Arguments: {0})
       5 Initialize Event (Event ID: 11400901, Slot Number: 0, Arguments: {0})
-		# Hollow Laurentius.
+        # Hollow Laurentius.
       6 SKIP 1 lines IF Event Flag ID: 00001257 is ON
       7 DISABLE Entity ID: 6132
       8 Switch character (Entity ID: 6132) to team Hostile Ally and exit forced standby animation
       9 Initialize Event (Event ID: 11400520, Slot Number: 0, Arguments: {6132, 1250, 1259, 1254})
      10 Initialize Event (Event ID: 11400530, Slot Number: 0, Arguments: {6132, 1250, 1259, 1257})
-		# Eingyi, I believe.
+        # Eingyi, I believe.
      11 SKIP 1 lines IF Event Flag ID: 00001270 to 00001279 are not all OFF
      12 SET Event Flag ID 1270 to ON
      13 Initialize Event (Event ID: 11400520, Slot Number: 1, Arguments: {1400700, 1270, 1279, 1272})
@@ -161,7 +161,7 @@ Parameters: {} ()
      21 Initialize Event (Event ID: 11400502, Slot Number: 0, Arguments: {6160, 1283})
      22 Initialize Event (Event ID: 11400503, Slot Number: 0, Arguments: {6160, 1287})
      23 Initialize Event (Event ID: 11400533, Slot Number: 0, Arguments: {0})
-		# Quelana.
+        # Quelana.
      24 Humanity Registration for Entity ID: 6170 ("First Event Flag ID to retain humanity ID": 8398)
      25 SKIP 2 lines IF Event Flag ID: 00001296 is ON
      26 SKIP 1 lines IF Event Flag ID: 00001290 is ON
@@ -173,7 +173,7 @@ Parameters: {} ()
      32 Initialize Event (Event ID: 11400537, Slot Number: 0, Arguments: {6170, 1290, 1309, 1292})
      33 Initialize Event (Event ID: 11400538, Slot Number: 0, Arguments: {6170, 1290, 1309, 1293})
      34 Initialize Event (Event ID: 11400539, Slot Number: 0, Arguments: {6170, 1290, 1309, 1296})
-		# Siegmeyer.
+        # Siegmeyer.
      35 Humanity Registration for Entity ID: 6282 ("First Event Flag ID to retain humanity ID": 8446)
      36 SKIP 3 lines IF Event Flag ID: 00001512 is ON
      37 SKIP 2 lines IF Event Flag ID: 00001502 is ON
@@ -185,7 +185,7 @@ Parameters: {} ()
      43 Initialize Event (Event ID: 11400552, Slot Number: 0, Arguments: {6282, 1490, 1514, 1502})
      44 Initialize Event (Event ID: 11400553, Slot Number: 0, Arguments: {0})
      45 Initialize Event (Event ID: 11400554, Slot Number: 0, Arguments: {6282})
-		# Shiva and ninja.
+        # Shiva and ninja.
      46 Humanity Registration for Entity ID: 6311 ("First Event Flag ID to retain humanity ID": 8470)
      47 Humanity Registration for Entity ID: 6421 ("First Event Flag ID to retain humanity ID": 8900)
      48 SKIP 1 lines IF muliplayer status is Client

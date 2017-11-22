@@ -1,25 +1,25 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Create spawner, which handles all darts spawned by traps.
+        # Create spawner, which handles all darts spawned by traps.
       0 ??? "Create Bullet Owner" (Entity ID: 1500200)
-		# Not sure.
+        # Not sure.
       1 Set Network Update Frequency of Entity ID: 1500100 to (Frequency: Always, Fixed Rate: TRUE)
-		# Bonfire outside.
+        # Bonfire outside.
       2 Register Bonfire (Event Flag ID: 11500984, Entity ID: 1501961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Four ladders.
+        # Four ladders.
       3 ? Register Ladder (Entity ID: 1501140, Unknown Event Flag ID: 11500010, Unknown Event Flag ID: 11500011)
       4 ? Register Ladder (Entity ID: 1501141, Unknown Event Flag ID: 11500012, Unknown Event Flag ID: 11500013)
       5 ? Register Ladder (Entity ID: 1501142, Unknown Event Flag ID: 11500014, Unknown Event Flag ID: 11500015)
       6 ? Register Ladder (Entity ID: 1501143, Unknown Event Flag ID: 11500016, Unknown Event Flag ID: 11500017)
-		# Set two flags on for clients.
+        # Set two flags on for clients.
       7 SKIP 2 lines IF muliplayer status is Host
       8 SET Event Flag ID 11505240 to ON
       9 SET Event Flag ID 11505360 to OFF
-		# Client fog wall at entrance.
+        # Client fog wall at entrance.
      10 SKIP 2 lines IF muliplayer status is Client
      11 DISABLE Object with Entity ID: 1501994
      12 Delete Map SFX (Entity ID: 1501995, Deletes only root: FALSE)
-		# Not sure what these are.
+        # Not sure what these are.
      13 DISABLE Hitbox of Entity ID: 1503210
      14 DISABLE Object with Entity ID: 1501800
      15 DISABLE Object with Entity ID: 1501801
@@ -29,7 +29,7 @@ Parameters: {} ()
      19 DISABLE Object with Entity ID: 1501805
      20 DISABLE Object with Entity ID: 1501806
      21 DISABLE Object with Entity ID: 1501807
-		# Not sure. Animations skipped.
+        # Not sure. Animations skipped.
      22 SKIP 1 lines IF Event Flag ID: 11500803 is ON
      23 "Reproduction of object animation" (Object Entity ID: 1501790, Animation ID: 3)
      24 SKIP 1 lines IF Event Flag ID: 11500806 is OFF
@@ -38,9 +38,9 @@ Parameters: {} ()
      27 "Reproduction of object animation" (Object Entity ID: 1501790, Animation ID: 1)
      28 SKIP 1 lines IF Event Flag ID: 11500812 is OFF
      29 "Reproduction of object animation" (Object Entity ID: 1501790, Animation ID: 2)
-		# Not sure. These hitboxes and corresponding objects are only enabled based
-		# on three certain flags being on. Related to iron ball traps, I suspect. Maybe
-		# these are the three balls that stack up in the hole?
+        # Not sure. These hitboxes and corresponding objects are only enabled based
+        # on three certain flags being on. Related to iron ball traps, I suspect. Maybe
+        # these are the three balls that stack up in the hole?
      30 DISABLE Hitbox of Entity ID: 1503200
      31 DISABLE Hitbox of Entity ID: 1503201
      32 DISABLE Hitbox of Entity ID: 1503202
@@ -56,10 +56,10 @@ Parameters: {} ()
      42 ENABLE Object with Entity ID: 1501803
      43 "Reproduction of object animation" (Object Entity ID: 1501803, Animation ID: 7)
      44 ENABLE Hitbox of Entity ID: 1503202
-	 
-		# Elevator stuff. Not sure why Navimesh stuff is involved, as I can't think
-		# of an elevator that enemies can enter. Cage elevator, I think. Not messing
-		# with this anyway.
+
+        # Elevator stuff. Not sure why Navimesh stuff is involved, as I can't think
+        # of an elevator that enemies can enter. Cage elevator, I think. Not messing
+        # with this anyway.
      45 SKIP 21 lines IF Event Flag ID: 11500100 is OFF
      46 SKIP 10 lines IF Event Flag ID: 11500101 is ON
      47 Add Bit 8 (Wall) for Navimesh Entity ID: 1503100
@@ -86,78 +86,78 @@ Parameters: {} ()
      68 Add Bit 1 (Solid) for Navimesh Entity ID: 1503101
      69 Add Bit 1 (Solid) for Navimesh Entity ID: 1503102
      70 Add Bit 1 (Solid) for Navimesh Entity ID: 1503103
-	 
-		# Fog wall checkpoints.
+
+        # Fog wall checkpoints.
      71 Initialize Event (Event ID: 11500090, Slot Number: 0, Arguments: {1501700, 1501701, 1502600, 1502601})
      72 Initialize Event (Event ID: 11500090, Slot Number: 1, Arguments: {1501702, 1501703, 1502602, 1502603})
-		# Gravelord stuff.
+        # Gravelord stuff.
      73 Initialize Event (Event ID: 11505090, Slot Number: 0, Arguments: {0})
      74 Initialize Event (Event ID: 11505091, Slot Number: 0, Arguments: {0})
      75 Initialize Event (Event ID: 11505092, Slot Number: 0, Arguments: {0})
-		# Open main gate.
+        # Open main gate.
      76 Initialize Event (Event ID: 11500201, Slot Number: 0, Arguments: {0})
-		# Create damaging pendulums and elevator ceiling spikes.
+        # Create damaging pendulums and elevator ceiling spikes.
      77 Initialize Event (Event ID: 11505300, Slot Number: 0, Arguments: {0})
-		# "Confirm synchronisation right after client load." Weird short flag sync,
-		# don't touch. Related to iron balls, I think.
+        # "Confirm synchronisation right after client load." Weird short flag sync,
+        # don't touch. Related to iron balls, I think.
      78 Initialize Event (Event ID: 11500840, Slot Number: 0, Arguments: {0})
-		# Related to above sync for rolling ball directions.
+        # Related to above sync for rolling ball directions.
      79 Initialize Event (Event ID: 11500841, Slot Number: 0, Arguments: {11500803})
      80 Initialize Event (Event ID: 11500841, Slot Number: 1, Arguments: {11500806})
      81 Initialize Event (Event ID: 11500841, Slot Number: 2, Arguments: {11500809})
      82 Initialize Event (Event ID: 11500841, Slot Number: 3, Arguments: {11500812})
-		# Iron ball trap control.
+        # Iron ball trap control.
      83 Initialize Event (Event ID: 11500790, Slot Number: 0, Arguments: {0})
-		# First iron ball trap (that hits the snake outside).
+        # First iron ball trap (that hits the snake outside).
      84 Initialize Event (Event ID: 11500791, Slot Number: 0, Arguments: {0})
-		# Four directions of iron ball launch (these call one of two subscripts that
-		# actually launch the balls, one for "injection" and one for "accumulation").
+        # Four directions of iron ball launch (these call one of two subscripts that
+        # actually launch the balls, one for "injection" and one for "accumulation").
      85 Initialize Event (Event ID: 11500795, Slot Number: 0, Arguments: {0})
      86 Initialize Event (Event ID: 11500796, Slot Number: 0, Arguments: {0})
      87 Initialize Event (Event ID: 11500797, Slot Number: 0, Arguments: {0})
      88 Initialize Event (Event ID: 11500798, Slot Number: 0, Arguments: {0})
-		# Flags that the player is present to witness the balls stacking up in the pit.
+        # Flags that the player is present to witness the balls stacking up in the pit.
      89 Initialize Event (Event ID: 11500830, Slot Number: 0, Arguments: {0})
-		# Player is crushed to death (between stacked iron balls I think).
-		# The event flags that trigger this don't appear elsewhere. Weird that there's
-		# only two of them for the stacked balls, though.
+        # Player is crushed to death (between stacked iron balls I think).
+        # The event flags that trigger this don't appear elsewhere. Weird that there's
+        # only two of them for the stacked balls, though.
      90 Initialize Event (Event ID: 11500831, Slot Number: 0, Arguments: {0})
-		# Player rotates iron ball switch.
+        # Player rotates iron ball switch.
      91 Initialize Event (Event ID: 11500850, Slot Number: 0, Arguments: {0})
-		# Automatic iron ball switch (triggered by area).
+        # Automatic iron ball switch (triggered by area).
      92 Initialize Event (Event ID: 11505255, Slot Number: 0, Arguments: {0})
-		# Cage elevator.
+        # Cage elevator.
      93 Initialize Event (Event ID: 11500100, Slot Number: 0, Arguments: {0})
-		# Player opens cage elevator for the first time with Cage Key.
+        # Player opens cage elevator for the first time with Cage Key.
      94 Initialize Event (Event ID: 11500102, Slot Number: 0, Arguments: {0})
-		# Cage is locked and player doesn't have Cage Key.
+        # Cage is locked and player doesn't have Cage Key.
      95 Initialize Event (Event ID: 11500103, Slot Number: 0, Arguments: {0})
-		# Prison shortcut door does not open from the front.
+        # Prison shortcut door does not open from the front.
      96 Initialize Event (Event ID: 11500106, Slot Number: 0, Arguments: {0})
-		# Prison shortcut door opens from the back.
+        # Prison shortcut door opens from the back.
      97 Initialize Event (Event ID: 11500107, Slot Number: 0, Arguments: {0})
-		# Open other cages with Cage Key.
+        # Open other cages with Cage Key.
      98 Initialize Event (Event ID: 11500110, Slot Number: 0, Arguments: {1501030, 11500110})
      99 Initialize Event (Event ID: 11500110, Slot Number: 1, Arguments: {1501031, 11500111})
     100 Initialize Event (Event ID: 11500110, Slot Number: 2, Arguments: {1501032, 11500112})
     101 Initialize Event (Event ID: 11500110, Slot Number: 3, Arguments: {1501033, 11500113})
     102 Initialize Event (Event ID: 11500110, Slot Number: 5, Arguments: {1501035, 11500115})
     103 Initialize Event (Event ID: 11500110, Slot Number: 6, Arguments: {1501036, 11500116})
-		# Enable (combat) AI of ball-loading giant.
+        # Enable (combat) AI of ball-loading giant.
     104 Initialize Event (Event ID: 11505050, Slot Number: 0, Arguments: {0})
-		# Ball-loading giant loads balls.
+        # Ball-loading giant loads balls.
     105 Initialize Event (Event ID: 11505051, Slot Number: 0, Arguments: {0})
-		# "Ball throwing giant gives up ball throw." It seems that the bomb-throwing giant stops
-		# throwing bombs if you destroy all of them?
+        # "Ball throwing giant gives up ball throw." It seems that the bomb-throwing giant stops
+        # throwing bombs if you destroy all of them?
     106 Initialize Event (Event ID: 11505055, Slot Number: 0, Arguments: {0})
-		# Ball-throwing giant's ball throw.
+        # Ball-throwing giant's ball throw.
     107 Initialize Event (Event ID: 11505110, Slot Number: 0, Arguments: {0})
-		# Ball-throwing flag sync.
+        # Ball-throwing flag sync.
     108 Initialize Event (Event ID: 11505101, Slot Number: 0, Arguments: {0})
-		# I think this starts a 30-second timer for the ball-thrower to give up throwing balls
-		# anywhere.
+        # I think this starts a 30-second timer for the ball-thrower to give up throwing balls
+        # anywhere.
     109 Initialize Event (Event ID: 11505102, Slot Number: 0, Arguments: {0})
-		# Ball-throwing giant decides where to throw ball (seven choices).
+        # Ball-throwing giant decides where to throw ball (seven choices).
     110 Initialize Event (Event ID: 11505111, Slot Number: 0, Arguments: {11505111, 1502700, 1})
     111 Initialize Event (Event ID: 11505111, Slot Number: 1, Arguments: {11505112, 1502701, 2})
     112 Initialize Event (Event ID: 11505111, Slot Number: 2, Arguments: {11505113, 1502702, 3})
@@ -165,30 +165,30 @@ Parameters: {} ()
     114 Initialize Event (Event ID: 11505111, Slot Number: 4, Arguments: {11505115, 1502704, 5})
     115 Initialize Event (Event ID: 11505111, Slot Number: 5, Arguments: {11505116, 1502705, 6})
     116 Initialize Event (Event ID: 11505111, Slot Number: 6, Arguments: {11505117, 1502710, 4294967295})
-		# Giant is stunned (ball-thrower, ball-loader, gate-opener).
+        # Giant is stunned (ball-thrower, ball-loader, gate-opener).
     117 Initialize Event (Event ID: 11505060, Slot Number: 0, Arguments: {1500100})
     118 Initialize Event (Event ID: 11505060, Slot Number: 1, Arguments: {1500101})
     119 Initialize Event (Event ID: 11505060, Slot Number: 2, Arguments: {1500102})
-		# Giant stun ends after ten seconds.
+        # Giant stun ends after ten seconds.
     120 Initialize Event (Event ID: 11505070, Slot Number: 0, Arguments: {1500100})
     121 Initialize Event (Event ID: 11505070, Slot Number: 1, Arguments: {1500101})
     122 Initialize Event (Event ID: 11505070, Slot Number: 2, Arguments: {1500102})
-		# Serpent-Man sleeping against the destructible wall.
+        # Serpent-Man sleeping against the destructible wall.
     123 Initialize Event (Event ID: 11505080, Slot Number: 0, Arguments: {0})
-		# Warp to Anor Londo from Iron Golem arena.
+        # Warp to Anor Londo from Iron Golem arena.
     124 Initialize Event (Event ID: 11500210, Slot Number: 0, Arguments: {0})
-		# More flag-syncing for rolling ball contraption.
+        # More flag-syncing for rolling ball contraption.
     125 Initialize Event (Event ID: 11500835, Slot Number: 0, Arguments: {0})
-		
-		# Iron Golem scripts.
+
+        # Iron Golem scripts.
     126 DISABLE Map Sound (Entity ID: 1503800)
     127 SKIP 4 lines IF Event Flag ID: 00000011 is OFF
     128 Initialize Event (Event ID: 11505392, Slot Number: 0, Arguments: {0})
     129 DISABLE Object with Entity ID: 1501990
     130 Delete Map SFX (Entity ID: 1501991, Deletes only root: FALSE)
     131 SKIP 9 lines
-		# Basic stuff: player enters fog, client enters fog, boss entry notification,
-		# boss AI, boss death, boss music starts, boss music stops
+        # Basic stuff: player enters fog, client enters fog, boss entry notification,
+        # boss AI, boss death, boss music starts, boss music stops
     132 Initialize Event (Event ID: 11505390, Slot Number: 0, Arguments: {0})
     133 Initialize Event (Event ID: 11505391, Slot Number: 0, Arguments: {0})
     134 Initialize Event (Event ID: 11505393, Slot Number: 0, Arguments: {0})
@@ -196,12 +196,12 @@ Parameters: {} ()
     136 Initialize Event (Event ID: 11500001, Slot Number: 0, Arguments: {0})
     137 Initialize Event (Event ID: 11505394, Slot Number: 0, Arguments: {0})
     138 Initialize Event (Event ID: 11505395, Slot Number: 0, Arguments: {0})
-		# Boss died from a fall.
+        # Boss died from a fall.
     139 Initialize Event (Event ID: 11505350, Slot Number: 0, Arguments: {0})
-		# Boss "hit switching". Switches a hitbox (1503000) based on Iron Golem event message.
+        # Boss "hit switching". Switches a hitbox (1503000) based on Iron Golem event message.
     140 Initialize Event (Event ID: 11505353, Slot Number: 0, Arguments: {0})
-	
-		# Mimic ambush, and other mimic stuff.
+
+        # Mimic ambush, and other mimic stuff.
     141 Initialize Event (Event ID: 11505010, Slot Number: 0, Arguments: {0})
     142 Initialize Event (Event ID: 11505011, Slot Number: 0, Arguments: {0})
     143 Initialize Event (Event ID: 11505012, Slot Number: 0, Arguments: {0})
@@ -209,28 +209,28 @@ Parameters: {} ()
     145 Initialize Event (Event ID: 11505014, Slot Number: 0, Arguments: {0})
     146 Initialize Event (Event ID: 11500900, Slot Number: 0, Arguments: {0})		
     147 Initialize Event (Event ID: 11505015, Slot Number: 0, Arguments: {0})
-		# Single dart traps.
+        # Single dart traps.
     148 Initialize Event (Event ID: 11505270, Slot Number: 0, Arguments: {1502200, 1501200, 1503500, 1501210, 0, 11505280})
     149 Initialize Event (Event ID: 11505270, Slot Number: 1, Arguments: {1502201, 1501201, 1503500, 1501211, 90, 11505281})
     150 Initialize Event (Event ID: 11505270, Slot Number: 2, Arguments: {1502202, 1501202, 1503500, 1501212, 90, 11505282})
     151 Initialize Event (Event ID: 11505270, Slot Number: 3, Arguments: {1502203, 1501203, 1503500, 1501213, 270, 11505283})
     152 Initialize Event (Event ID: 11505270, Slot Number: 4, Arguments: {1502204, 1501204, 1503500, 1501214, 180, 11505284})
     153 Initialize Event (Event ID: 11505270, Slot Number: 5, Arguments: {1502205, 1501205, 1503500, 1501213, 270, 11505285})
-		# Four-part dart trap on side wall of corridor.
+        # Four-part dart trap on side wall of corridor.
     154 Initialize Event (Event ID: 11505260, Slot Number: 0, Arguments: {0})
-		# Non-respawning enemies.
-		# Undead Prince Ricard.
+        # Non-respawning enemies.
+        # Undead Prince Ricard.
     155 Initialize Event (Event ID: 11500860, Slot Number: 0, Arguments: {6600})
-		# Four Titanite Demons?
+        # Four Titanite Demons?
     156 Initialize Event (Event ID: 11500860, Slot Number: 1, Arguments: {1500300})
     157 Initialize Event (Event ID: 11500860, Slot Number: 2, Arguments: {1500301})
     158 Initialize Event (Event ID: 11500860, Slot Number: 3, Arguments: {1500302})
     159 Initialize Event (Event ID: 11500860, Slot Number: 4, Arguments: {1500303})
-		# Ball-throwing giant.
+        # Ball-throwing giant.
     160 Initialize Event (Event ID: 11500860, Slot Number: 5, Arguments: {1500100})
-		# Gate-opening giant.
+        # Gate-opening giant.
     161 Initialize Event (Event ID: 11500860, Slot Number: 7, Arguments: {1500102})
-		# Five Treasure Chests (not including Mimic).
+        # Five Treasure Chests (not including Mimic).
     162 Initialize Event (Event ID: 11500600, Slot Number: 0, Arguments: {1501650, 11500600})
     163 Initialize Event (Event ID: 11500600, Slot Number: 2, Arguments: {1501652, 11500602})
     164 Initialize Event (Event ID: 11500600, Slot Number: 4, Arguments: {1501654, 11500604})
@@ -239,13 +239,13 @@ Parameters: {} ()
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Undead Prince Ricard.
+        # Undead Prince Ricard.
       0 Humanity Registration for Entity ID: 6600 ("First Event Flag ID to retain humanity ID": 8980)
-		# Black Iron Tarkus.
+        # Black Iron Tarkus.
       1 Humanity Registration for Entity ID: 6510 ("First Event Flag ID to retain humanity ID": 8924)
       2 Initialize Event (Event ID: 11505030, Slot Number: 0, Arguments: {0})
       3 Initialize Event (Event ID: 11505032, Slot Number: 0, Arguments: {0})
-		# Big Hat Logan.
+        # Big Hat Logan.
       4 Humanity Registration for Entity ID: 6030 ("First Event Flag ID to retain humanity ID": 8334)
       5 SKIP 3 lines IF Event Flag ID: 00001090 is ON
       6 SKIP 2 lines IF Event Flag ID: 00001091 is ON
@@ -256,13 +256,13 @@ Parameters: {} ()
      11 Initialize Event (Event ID: 11500530, Slot Number: 0, Arguments: {0})
      12 Initialize Event (Event ID: 11500531, Slot Number: 0, Arguments: {6030, 1090, 1109, 1091})
      13 Initialize Event (Event ID: 11500532, Slot Number: 0, Arguments: {6030, 1090, 1109, 1092})
-		# Hollow Griggs.
+        # Hollow Griggs.
      14 Switch character (Entity ID: 6043) to team Hostile Ally and exit forced standby animation
      15 SKIP 1 lines IF Event Flag ID: 00001117 is ON
      16 DISABLE Entity ID: 6043
      17 Initialize Event (Event ID: 11500520, Slot Number: 1, Arguments: {6043, 1110, 1119, 1115})
      18 Initialize Event (Event ID: 11500533, Slot Number: 0, Arguments: {6043, 1110, 1119, 1117})
-		# Siegmeyer of Catarina (outside and inside).
+        # Siegmeyer of Catarina (outside and inside).
      19 Humanity Registration for Entity ID: 6280 ("First Event Flag ID to retain humanity ID": 8446)
      20 SKIP 3 lines IF Event Flag ID: 00001514 is ON
      21 SKIP 2 lines IF Event Flag ID: 00001513 is ON
@@ -274,7 +274,7 @@ Parameters: {} ()
      27 Issue Warp request for Entity ID: 6280 (Warp Destination Type: Area, Destination Target ID: 1502510, Damipoly ID: -1) and SET "floor" to Hitbox Entity ID: 1503300
      28 SKIP 1 lines IF Event Flag ID: 00001491 to 00001492 are not all OFF
      29 SKIP 2 lines
-		# Kill the two Serpent-Men that threaten Siegmeyer, I think.
+        # Kill the two Serpent-Men that threaten Siegmeyer, I think.
      30 Request forced death of Entity ID: 1500120 (Yields souls: FALSE)
      31 Request forced death of Entity ID: 1500121 (Yields souls: FALSE)
      32 Initialize Event (Event ID: 11500510, Slot Number: 2, Arguments: {6280, 1512})
@@ -282,15 +282,15 @@ Parameters: {} ()
      34 Initialize Event (Event ID: 11500534, Slot Number: 0, Arguments: {6280, 1490, 1539, 1491})
      35 Initialize Event (Event ID: 11500535, Slot Number: 0, Arguments: {6280, 1490, 1539, 1492})
      36 Initialize Event (Event ID: 11500536, Slot Number: 0, Arguments: {6280, 1490, 1539, 1493})
-		# Crestfallen Merchant.
+        # Crestfallen Merchant.
      37 Humanity Registration for Entity ID: 6250 ("First Event Flag ID to retain humanity ID": 8422)
      38 SKIP 1 lines IF Event Flag ID: 00001420 to 00001429 are not all OFF
      39 SET Event Flag ID 1420 to ON
      40 Initialize Event (Event ID: 11500510, Slot Number: 3, Arguments: {6250, 1421})
      41 Initialize Event (Event ID: 11500520, Slot Number: 3, Arguments: {6250, 1420, 1429, 1422})
 
-	# Event One Billion? Never initialized. Disables the dart spawner. Take note that event IDs
-	# can go this high, though...
+    # Event One Billion? Never initialized. Disables the dart spawner. Take note that event IDs
+    # can go this high, though...
 Event ID: 1000000000, Int: 0
 Parameters: {} ()
       0 DISABLE Entity ID: 1500200

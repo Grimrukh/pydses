@@ -1,25 +1,25 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Only register "Chamber of the Princess" bonfire if Ornstein and Smough are dead.
+        # Only register "Chamber of the Princess" bonfire if Ornstein and Smough are dead.
       0 SKIP 1 lines IF Event Flag ID: 00000012 is OFF
       1 Register Bonfire (Event Flag ID: 11510920, Entity ID: 1511950, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Register "Anor Londo", "Darkmoon Tomb", and the bonfire behind the closed door (not sure about order of last two).
+        # Register "Anor Londo", "Darkmoon Tomb", and the bonfire behind the closed door (not sure about order of last two).
       2 Register Bonfire (Event Flag ID: 11510992, Entity ID: 1511960, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 10)
       3 Register Bonfire (Event Flag ID: 11510984, Entity ID: 1511961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       4 Register Bonfire (Event Flag ID: 11510976, Entity ID: 1511962, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Register ladders above painting room.
+        # Register ladders above painting room.
       5 ? Register Ladder (Entity ID: 1511140, Unknown Event Flag ID: 11510010, Unknown Event Flag ID: 11510011)
       6 ? Register Ladder (Entity ID: 1511141, Unknown Event Flag ID: 11510012, Unknown Event Flag ID: 11510013)
-		# Flag related to rotating staircase "polyupload processing."
+        # Flag related to rotating staircase "polyupload processing."
       7 SET Event Flag ID 11510304 to OFF
-		# Fog wall blocking summons from Duke's Archives, I presume.
+        # Fog wall blocking summons from Duke's Archives, I presume.
       8 SKIP 2 lines IF muliplayer status is Client
       9 DISABLE Object with Entity ID: 1511994
      10 Delete Map SFX (Entity ID: 1511995, Deletes only root: FALSE)
      11 DISABLE Object with Entity ID: 1511310
-		
-		# Rotating staircase stuff.
-		# Enable one of three positions depending on height.
+
+        # Rotating staircase stuff.
+        # Enable one of three positions depending on height.
      12 DISABLE Hitbox of Entity ID: 1513301
      13 DISABLE Hitbox of Entity ID: 1513302
      14 DISABLE Hitbox of Entity ID: 1513303
@@ -44,85 +44,85 @@ Parameters: {} ()
      33 SET Event Flag ID 11510303 to OFF
      34 "Reproduction of object animation" (Object Entity ID: 1511300, Animation ID: 51)
      35 ENABLE Hitbox of Entity ID: 1513301
-		# Not sure what this is. Something related to Darkmoon Tomb.
+        # Not sure what this is. Something related to Darkmoon Tomb.
      36 DISABLE Object with Entity ID: 1511450
      37 SET Event Flag ID 11510460 to OFF
-		# Checkpoint fog walls.
+        # Checkpoint fog walls.
      38 Initialize Event (Event ID: 11510090, Slot Number: 0, Arguments: {1511700, 1511701, 1512600, 1512601})
      39 Initialize Event (Event ID: 11510090, Slot Number: 1, Arguments: {1511702, 1511703, 1512602, 1512603})
-		# Gravelord stuff.
+        # Gravelord stuff.
      40 Initialize Event (Event ID: 11515040, Slot Number: 0, Arguments: {0})
      41 Initialize Event (Event ID: 11515041, Slot Number: 0, Arguments: {0})
      42 Initialize Event (Event ID: 11515042, Slot Number: 0, Arguments: {0})
-		# Rotating lever to open the doors of the royal palace.
+        # Rotating lever to open the doors of the royal palace.
      43 Initialize Event (Event ID: 11510200, Slot Number: 0, Arguments: {0})
-		# Royal palace doors locked from the outside.
+        # Royal palace doors locked from the outside.
      44 Initialize Event (Event ID: 11510201, Slot Number: 0, Arguments: {0})
-		# Break the chandelier above the painting.
+        # Break the chandelier above the painting.
      45 Initialize Event (Event ID: 11510100, Slot Number: 0, Arguments: {0})
-		# Open the one-way gate from the blacksmith side.
+        # Open the one-way gate from the blacksmith side.
      46 Initialize Event (Event ID: 11510210, Slot Number: 0, Arguments: {0})
-		# One-way gate is locked from the palace door side.
+        # One-way gate is locked from the palace door side.
      47 Initialize Event (Event ID: 11510211, Slot Number: 0, Arguments: {0})
-		# First activation of corkscrew elevator near area start.
+        # First activation of corkscrew elevator near area start.
      48 Initialize Event (Event ID: 11510220, Slot Number: 0, Arguments: {0})
-		# Main rotating staircase activation.
+        # Main rotating staircase activation.
      49 Initialize Event (Event ID: 11510300, Slot Number: 0, Arguments: {0})
-		# "Polyupload processing". Just seems to flag whether player is in
-		# a certain area (on the staircase, I'm guessing).
+        # "Polyupload processing". Just seems to flag whether player is in
+        # a certain area (on the staircase, I'm guessing).
      50 Initialize Event (Event ID: 11510319, Slot Number: 0, Arguments: {0})
-		# Update navimesh changes based on staircase position.
+        # Update navimesh changes based on staircase position.
      51 Initialize Event (Event ID: 11510340, Slot Number: 0, Arguments: {0})
-		# "Multi-synchronisation". Seems to repeat the staircase positioning
-		# stuff from lines 12-35 for host only, and based on flag 11515301.
+        # "Multi-synchronisation". Seems to repeat the staircase positioning
+        # stuff from lines 12-35 for host only, and based on flag 11515301.
      52 Initialize Event (Event ID: 11510350, Slot Number: 0, Arguments: {0})
-		# Display message that staircase can't be pushed.
+        # Display message that staircase can't be pushed.
      53 Initialize Event (Event ID: 11510310, Slot Number: 0, Arguments: {0})
-	 
-		# Ambush by Painting Guardian.
+
+        # Ambush by Painting Guardian.
      54 Initialize Event (Event ID: 11515250, Slot Number: 0, Arguments: {0})
-		# Provoke a Silver Knight.
+        # Provoke a Silver Knight.
      55 Initialize Event (Event ID: 11515251, Slot Number: 0, Arguments: {0})
-		# Open door to Gwynevere's chamber.
+        # Open door to Gwynevere's chamber.
      56 Initialize Event (Event ID: 11510110, Slot Number: 0, Arguments: {0})
-		# Kill Gwynevere, trigger cutscene, and make Anor Londo dark.
-		# Note that this event flag is used frequently as the marker for
-		# Dark Anor Londo.
+        # Kill Gwynevere, trigger cutscene, and make Anor Londo dark.
+        # Note that this event flag is used frequently as the marker for
+        # Dark Anor Londo.
      57 Initialize Event (Event ID: 11510400, Slot Number: 0, Arguments: {0})
-		# Disable the Darkmoon Tomb wall.
+        # Disable the Darkmoon Tomb wall.
      58 Initialize Event (Event ID: 11510401, Slot Number: 0, Arguments: {0})
-		# Enter Painted World if you have the Peculiar Doll.
+        # Enter Painted World if you have the Peculiar Doll.
      59 Initialize Event (Event ID: 11510230, Slot Number: 0, Arguments: {0})
-		# Return to Sen's Fortress (light or dark cutscene).
+        # Return to Sen's Fortress (light or dark cutscene).
      60 Initialize Event (Event ID: 11510240, Slot Number: 0, Arguments: {0})
-		# Offend Pale Demon, which permanently cuts off return to Sen's Fortress.
+        # Offend Pale Demon, which permanently cuts off return to Sen's Fortress.
      61 Initialize Event (Event ID: 11515050, Slot Number: 0, Arguments: {0})
-		# Enable special effect 4501 in Darkmoon Tomb. Not sure what it does.
+        # Enable special effect 4501 in Darkmoon Tomb. Not sure what it does.
      62 Initialize Event (Event ID: 11510120, Slot Number: 0, Arguments: {0})
-		# In Dark Anor Londo: enable the two "Kuratsuki" knights in the palace, move
-		# the Fire Keeper to the bridge, and delete all other enemies.
+        # In Dark Anor Londo: enable the two "Kuratsuki" knights in the palace, move
+        # the Fire Keeper to the bridge, and delete all other enemies.
      63 Initialize Event (Event ID: 11510130, Slot Number: 0, Arguments: {0})
-		# Player always respawns at dead "Anor Londo" bonfire in Dark Anor Londo.
+        # Player always respawns at dead "Anor Londo" bonfire in Dark Anor Londo.
      64 Initialize Event (Event ID: 11510131, Slot Number: 0, Arguments: {0})
-		# Kneel to Darkmoon covenant.
+        # Kneel to Darkmoon covenant.
      65 Initialize Event (Event ID: 11510460, Slot Number: 0, Arguments: {0})
-		# 2-frame sync for above.
+        # 2-frame sync for above.
      66 Initialize Event (Event ID: 11510462, Slot Number: 0, Arguments: {0})
-		# Kneel to Darkmoon covenant, simple version.
+        # Kneel to Darkmoon covenant, simple version.
      67 Initialize Event (Event ID: 11510461, Slot Number: 0, Arguments: {0})
-		# Move your bloodstain from Gwyndolin boss battle corridor to real corridor
-		# if Gwyndolin is dead.
+        # Move your bloodstain from Gwyndolin boss battle corridor to real corridor
+        # if Gwyndolin is dead.
      68 Initialize Event (Event ID: 11510140, Slot Number: 0, Arguments: {0})
-		# Event that cares about you having the Bellowing Dragoncrest Ring in a certain
-		# area. Weird, no idea what this is.
+        # Event that cares about you having the Bellowing Dragoncrest Ring in a certain
+        # area. Weird, no idea what this is.
      69 Initialize Event (Event ID: 11510150, Slot Number: 0, Arguments: {0})
-		# "Anor Londo" bonfire unavailable if Fire Keeper is dead.
+        # "Anor Londo" bonfire unavailable if Fire Keeper is dead.
      70 Initialize Event (Event ID: 151, Slot Number: 0, Arguments: {0})
-		# Illusory wall in fireplace (before Havel's gear).
-		"Moving Havel's gear, but wall stays."
+        # Illusory wall in fireplace (before Havel's gear).
+        "Moving Havel's gear, but wall stays."
      71 Initialize Event (Event ID: 11510215, Slot Number: 0, Arguments: {0})
-		# Seems to consider the Sentinels' shields a separate part of them.
-		# Probably necessary to make the shields invulnerable.
+        # Seems to consider the Sentinels' shields a separate part of them.
+        # Probably necessary to make the shields invulnerable.
      72 Initialize Event (Event ID: 11515060, Slot Number: 0, Arguments: {1510400})
      73 Initialize Event (Event ID: 11515060, Slot Number: 1, Arguments: {1510401})
      74 Initialize Event (Event ID: 11515060, Slot Number: 2, Arguments: {1510402})
@@ -137,19 +137,19 @@ Parameters: {} ()
      83 Initialize Event (Event ID: 11515060, Slot Number: 11, Arguments: {1510411})
      84 Initialize Event (Event ID: 11515060, Slot Number: 12, Arguments: {1510412})
      85 Initialize Event (Event ID: 11515060, Slot Number: 13, Arguments: {1510413})
-		# Gargoyles' tail cuts.
+        # Gargoyles' tail cuts.
      86 Initialize Event (Event ID: 11515080, Slot Number: 0, Arguments: {1510450, 1510451})
      87 Initialize Event (Event ID: 11515080, Slot Number: 1, Arguments: {1510452, 1510453})
-		# One-way locked doors.
+        # One-way locked doors.
      88 Initialize Event (Event ID: 11510260, Slot Number: 0, Arguments: {11510251, 1512251, 1512250})
      89 Initialize Event (Event ID: 11510260, Slot Number: 1, Arguments: {11510257, 1512253, 1512252})
      90 Initialize Event (Event ID: 11510260, Slot Number: 2, Arguments: {11510258, 1512255, 1512254})
-		
-		# Ornstein and Smough.
+
+        # Ornstein and Smough.
      91 DISABLE Map Sound (Entity ID: 1513800)
      92 SKIP 10 lines IF Event Flag ID: 00000012 is OFF
-		# If O&S are dead, get their elevators working, disable all four boss entities,
-		# and delete the fog walls.
+        # If O&S are dead, get their elevators working, disable all four boss entities,
+        # and delete the fog walls.
      93 Force Entity ID: 1511401 to play Animation ID: 0 (Loop: TRUE, Wait for completion: FALSE, Do not wait for transition: FALSE)
      94 Force Entity ID: 1511402 to play Animation ID: 0 (Loop: TRUE, Wait for completion: FALSE, Do not wait for transition: FALSE)
      95 Initialize Event (Event ID: 11515392, Slot Number: 0, Arguments: {0})
@@ -160,26 +160,26 @@ Parameters: {} ()
     100 DISABLE Object with Entity ID: 1511988
     101 Delete Map SFX (Entity ID: 1511989, Deletes only root: FALSE)
     102 SKIP 11 lines
-		# Usual boss stuff.
+        # Usual boss stuff.
     103 Initialize Event (Event ID: 11515390, Slot Number: 0, Arguments: {0})
     104 Initialize Event (Event ID: 11515391, Slot Number: 0, Arguments: {0})
     105 Initialize Event (Event ID: 11515393, Slot Number: 0, Arguments: {0})
     106 Initialize Event (Event ID: 11515392, Slot Number: 0, Arguments: {0})
-		# Death script has two sections for the two phases.
+        # Death script has two sections for the two phases.
     107 Initialize Event (Event ID: 11510001, Slot Number: 0, Arguments: {0})
     108 Initialize Event (Event ID: 11515394, Slot Number: 0, Arguments: {0})
     109 Initialize Event (Event ID: 11515395, Slot Number: 0, Arguments: {0})
-		# Phase 1 -> Phase 2.
+        # Phase 1 -> Phase 2.
     110 Initialize Event (Event ID: 11515396, Slot Number: 0, Arguments: {0})
-		# Enables immortality for the boss who ISN'T killed in the first phase
-		# in the moment before the cutscene.
+        # Enables immortality for the boss who ISN'T killed in the first phase
+        # in the moment before the cutscene.
     111 Initialize Event (Event ID: 11515397, Slot Number: 0, Arguments: {0})
-		# Create multi-part Smough's hammer.
+        # Create multi-part Smough's hammer.
     112 Initialize Event (Event ID: 11515398, Slot Number: 0, Arguments: {0})
-		# Create multi-part Lightning Smough's hammer.
+        # Create multi-part Lightning Smough's hammer.
     113 Initialize Event (Event ID: 11515399, Slot Number: 0, Arguments: {0})
-	
-		# Gwndyolin.
+
+        # Gwndyolin.
     114 DISABLE Map Sound (Entity ID: 1513802)
     115 SKIP 6 lines IF Event Flag ID: 11510900 is OFF
     116 Initialize Event (Event ID: 11515382, Slot Number: 0, Arguments: {0})
@@ -196,12 +196,12 @@ Parameters: {} ()
     127 Initialize Event (Event ID: 11515384, Slot Number: 0, Arguments: {0})
     128 Initialize Event (Event ID: 11515385, Slot Number: 0, Arguments: {0})
     129 Initialize Event (Event ID: 11515386, Slot Number: 0, Arguments: {0})
-		# Gwyndolin warp triggers.
+        # Gwyndolin warp triggers.
     130 Initialize Event (Event ID: 11510450, Slot Number: 0, Arguments: {0})
-		
-		# Seems to allow Silver Knights to open three particular doors, or maybe
-		# just makes them invincible near the doors to avoid glitches if the player
-		# opens a door into them.
+
+        # Seems to allow Silver Knights to open three particular doors, or maybe
+        # just makes them invincible near the doors to avoid glitches if the player
+        # opens a door into them.
     131 Initialize Event (Event ID: 11510710, Slot Number: 0, Arguments: {11510251, 1510300, 1512251, 1512250})
     132 Initialize Event (Event ID: 11510710, Slot Number: 1, Arguments: {11510251, 1510301, 1512251, 1512250})
     133 Initialize Event (Event ID: 11510710, Slot Number: 2, Arguments: {11510251, 1510302, 1512251, 1512250})
@@ -244,8 +244,8 @@ Parameters: {} ()
     170 Initialize Event (Event ID: 11510710, Slot Number: 51, Arguments: {11510258, 1510327, 1512255, 1512254})
     171 Initialize Event (Event ID: 11510710, Slot Number: 52, Arguments: {11510258, 1510328, 1512255, 1512254})
     172 Initialize Event (Event ID: 11510710, Slot Number: 53, Arguments: {11510258, 1510329, 1512255, 1512254})
-		
-		# Mimic scripts (x4).
+
+        # Mimic scripts (x4).
     173 Initialize Event (Event ID: 11515200, Slot Number: 0, Arguments: {1510200})
     174 Initialize Event (Event ID: 11515210, Slot Number: 0, Arguments: {1510200})
     175 Initialize Event (Event ID: 11515220, Slot Number: 0, Arguments: {1510200})
@@ -274,8 +274,8 @@ Parameters: {} ()
     198 Initialize Event (Event ID: 11515240, Slot Number: 3, Arguments: {1510203, 1512013})
     199 Initialize Event (Event ID: 11510850, Slot Number: 3, Arguments: {1510203})
     200 Initialize Event (Event ID: 11515190, Slot Number: 3, Arguments: {1510203})
-	
-		# Treasure chests - lots of them.
+
+        # Treasure chests - lots of them.
     201 Initialize Event (Event ID: 11510600, Slot Number: 1, Arguments: {1511651, 11510601})
     202 Initialize Event (Event ID: 11510600, Slot Number: 2, Arguments: {1511652, 11510602})
     203 Initialize Event (Event ID: 11510600, Slot Number: 3, Arguments: {1511653, 11510603})
@@ -292,28 +292,28 @@ Parameters: {} ()
     214 Initialize Event (Event ID: 11510600, Slot Number: 17, Arguments: {1511667, 11510617})
     215 Initialize Event (Event ID: 11510600, Slot Number: 18, Arguments: {1511668, 11510618})
     216 Initialize Event (Event ID: 11510600, Slot Number: 19, Arguments: {1511669, 11510619})
-		
-		# Non-respawning enemies.
-		# Titanite Demon.
+
+        # Non-respawning enemies.
+        # Titanite Demon.
     217 Initialize Event (Event ID: 11510860, Slot Number: 0, Arguments: {1510250, 0})
-		# Gargoyles.
+        # Gargoyles.
     218 Initialize Event (Event ID: 11510860, Slot Number: 1, Arguments: {1510450, 53500000})
     219 Initialize Event (Event ID: 11510860, Slot Number: 2, Arguments: {1510452, 53500000})
-		# Kuratsuki Knights in Dark Anor Londo.
+        # Kuratsuki Knights in Dark Anor Londo.
     220 Initialize Event (Event ID: 11510860, Slot Number: 3, Arguments: {6640, 0})
     221 Initialize Event (Event ID: 11510860, Slot Number: 4, Arguments: {6650, 0})
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Kuratsuki Knights.
+        # Kuratsuki Knights.
       0 Humanity Registration for Entity ID: 6640 ("First Event Flag ID to retain humanity ID": 8258)
       1 Humanity Registration for Entity ID: 6650 ("First Event Flag ID to retain humanity ID": 8266)
-		# Knight Solaire (summon).
+        # Knight Solaire (summon).
       2 Humanity Registration for Entity ID: 6543 ("First Event Flag ID to retain humanity ID": 8310)
       3 Initialize Event (Event ID: 11515030, Slot Number: 0, Arguments: {0})
       4 Initialize Event (Event ID: 11515032, Slot Number: 0, Arguments: {0})
       5 Initialize Event (Event ID: 11515033, Slot Number: 0, Arguments: {0})
-		# Knight Solaire (at bonfire).
+        # Knight Solaire (at bonfire).
       6 Humanity Registration for Entity ID: 6003 ("First Event Flag ID to retain humanity ID": 8310)
       7 SKIP 2 lines IF Event Flag ID: 00001008 is ON
       8 SKIP 1 lines IF Event Flag ID: 00001004 is ON
@@ -321,29 +321,29 @@ Parameters: {} ()
      10 Initialize Event (Event ID: 11510510, Slot Number: 0, Arguments: {6003, 1004})
      11 Initialize Event (Event ID: 11510520, Slot Number: 0, Arguments: {6003, 1000, 1029, 1005})
      12 Initialize Event (Event ID: 11510530, Slot Number: 0, Arguments: {6003, 1000, 1029, 1008})
-		# Fire Keeper ("Knight Kuratsuki").
+        # Fire Keeper ("Knight Kuratsuki").
      13 Humanity Registration for Entity ID: 6010 ("First Event Flag ID to retain humanity ID": 8318)
      14 Initialize Event (Event ID: 11510501, Slot Number: 0, Arguments: {6010, 1033})
      15 Initialize Event (Event ID: 11510520, Slot Number: 1, Arguments: {6010, 1030, 1036, 1034})
      16 Initialize Event (Event ID: 11510531, Slot Number: 0, Arguments: {6010, 1030, 1036, 1036})
      17 Initialize Event (Event ID: 11510532, Slot Number: 0, Arguments: {6010, 1030, 1036, 1031})
      18 Initialize Event (Event ID: 11510533, Slot Number: 0, Arguments: {6010})
-		# Gwynevere.
+        # Gwynevere.
      19 DISABLE Entity ID: 1510600
      20 Initialize Event (Event ID: 11510520, Slot Number: 2, Arguments: {1510600, 1230, 1239, 1232})
-		# Gwyndolin.
+        # Gwyndolin.
      21 Switch Entity ID: 1510650 to team Ally
      22 SKIP 1 lines IF Event Flag ID: 00001240 to 00001249 are not all OFF
      23 SET Event Flag ID 1240 to ON
      24 Initialize Event (Event ID: 11510520, Slot Number: 3, Arguments: {1510650, 1240, 1249, 1242})
      25 Initialize Event (Event ID: 11510502, Slot Number: 0, Arguments: {1510650, 1241})
-		# Not sure who 6210 is, but it's probably invisible Gwyndolin.
+        # Not sure who 6210 is, but it's probably invisible Gwyndolin.
      26 Initialize Event (Event ID: 11515090, Slot Number: 0, Arguments: {6210})
      27 Initialize Event (Event ID: 11515091, Slot Number: 0, Arguments: {6210})
      28 Initialize Event (Event ID: 11515092, Slot Number: 0, Arguments: {6210, 1511110, 1361, 1362})
      29 Initialize Event (Event ID: 11510510, Slot Number: 4, Arguments: {6210, 1361})
      30 Initialize Event (Event ID: 11510520, Slot Number: 4, Arguments: {6210, 1360, 1363, 1362})
-		# Siegmeyer of Catarina.
+        # Siegmeyer of Catarina.
      31 Humanity Registration for Entity ID: 6283 ("First Event Flag ID to retain humanity ID": 8446)
      32 SKIP 3 lines IF Event Flag ID: 00001512 is ON
      33 SKIP 2 lines IF Event Flag ID: 00001494 is ON
@@ -353,7 +353,7 @@ Parameters: {} ()
      37 Initialize Event (Event ID: 11510520, Slot Number: 5, Arguments: {6283, 1490, 1514, 1513})
      38 Initialize Event (Event ID: 11510535, Slot Number: 0, Arguments: {6283, 1490, 1514, 1494})
      39 Initialize Event (Event ID: 11510536, Slot Number: 0, Arguments: {6283})
-		# Embraced Knight Lautrec and his cronies.
+        # Embraced Knight Lautrec and his cronies.
      40 Humanity Registration for Entity ID: 6302 ("First Event Flag ID to retain humanity ID": 8462)
      41 Humanity Registration for Entity ID: 6490 ("First Event Flag ID to retain humanity ID": 8908)
      42 Humanity Registration for Entity ID: 6500 ("First Event Flag ID to retain humanity ID": 8916)

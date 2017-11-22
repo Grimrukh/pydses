@@ -1,16 +1,16 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Register bonfires, ladders, and hazardous fires in lower Burg (I think).
+        # Register bonfires, ladders, and hazardous fires in lower Burg (I think).
       0 Initialize Event (Event ID: 11010008, Slot Number: 0, Arguments: {0})
-		# Reset flag for the Sunlight Altar interaction event, 
-		# which is enabled again after a two-frame delay by event 11010585.
+        # Reset flag for the Sunlight Altar interaction event,
+        # which is enabled again after a two-frame delay by event 11010585.
       1 SET Event Flag ID 11010580 to OFF
-		# Initialize the Parish gate (if open, skip opening animation and enable Navimesh).
+        # Initialize the Parish gate (if open, skip opening animation and enable Navimesh).
       2 SKIP 2 lines IF Event Flag ID: 61010610 is OFF
       3 "Reproduction of object animation" (Object Entity ID: 1011101, Animation ID: 2)
       4 Add Bit# 1 (Solid) for Navimesh Entity ID: 1013100
-		
-		# Host only: disable eleven objects and map SFX.
+
+        # Host only: disable eleven objects and map SFX.
       5 SKIP 22 lines IF muliplayer status is Client
       6 DISABLE Object with Entity ID: 1011994
       7 Delete Map SFX (Entity ID: 1011995, Deletes only root: FALSE)
@@ -34,104 +34,104 @@ Parameters: {} ()
      25 Delete Map SFX (Entity ID: 1011977, Deletes only root: FALSE)
      26 DISABLE Object with Entity ID: 1011974
      27 Delete Map SFX (Entity ID: 1011975, Deletes only root: FALSE)
-	 
-		# First fog wall (just before first Hellkite appearance). Can be passed from both sides.
+
+        # First fog wall (just before first Hellkite appearance). Can be passed from both sides.
      28 Initialize Event (Event ID: 11010090, Slot Number: 0, Arguments: {1011700, 1011701, 1012600, 1012601})
-		# Second fog wall (above Armored Tusk). Can be passed from both sides.
+        # Second fog wall (above Armored Tusk). Can be passed from both sides.
      29 Initialize Event (Event ID: 11010090, Slot Number: 1, Arguments: {1011702, 1011703, 1012602, 1012603})
-		# Gravelord events: spawn enemies, kill them, and manage 10-minute timer.
+        # Gravelord events: spawn enemies, kill them, and manage 10-minute timer.
      30 Initialize Event (Event ID: 11015070, Slot Number: 0, Arguments: {0})
      31 Initialize Event (Event ID: 11015071, Slot Number: 0, Arguments: {0})
      32 Initialize Event (Event ID: 11015072, Slot Number: 0, Arguments: {0})
-	 
-		# Prevent Armored Tusk from respawning.
+
+        # Prevent Armored Tusk from respawning.
      33 Initialize Event (Event ID: 11010903, Slot Number: 0, Arguments: {0})
-		# Hollow ambush, breaks through an object (one-time). The one near the Undead Merchant.
+        # Hollow ambush, breaks through an object (one-time). The one near the Undead Merchant.
      34 Initialize Event (Event ID: 11015110, Slot Number: 0, Arguments: {0})
-		# Aggression of archer on turret near Gold Pine Resin chest.
+        # Aggression of archer on turret near Gold Pine Resin chest.
      35 Initialize Event (Event ID: 11015113, Slot Number: 0, Arguments: {0})
-		# Hollow beneath Boar who runs back into ambush room.
+        # Hollow beneath Boar who runs back into ambush room.
      36 Initialize Event (Event ID: 11015112, Slot Number: 0, Arguments: {0})
-		# Crystal Lizard appears before Taurus Demon.
+        # Crystal Lizard appears before Taurus Demon.
      37 Initialize Event (Event ID: 11015130, Slot Number: 0, Arguments: {0})
-		# Crystal Lizard dies and awards items.
+        # Crystal Lizard dies and awards items.
      38 Initialize Event (Event ID: 11010710, Slot Number: 0, Arguments: {0})
-		# Hollow Soldier who kicks the door open near the lower Burg shortcut (one-time).
+        # Hollow Soldier who kicks the door open near the lower Burg shortcut (one-time).
      39 Initialize Event (Event ID: 11010111, Slot Number: 0, Arguments: {0})
-		# Flaming barrel trap before Taurus Demon (one-time).
+        # Flaming barrel trap before Taurus Demon (one-time).
      40 Initialize Event (Event ID: 11010120, Slot Number: 0, Arguments: {0})
-		# Applies a special effect (4150) in two areas at first, then both once opened (below).
-		# Huh, this is the Lower Burg shortcut door after all.
+        # Applies a special effect (4150) in two areas at first, then both once opened (below).
+        # Huh, this is the Lower Burg shortcut door after all.
      41 Initialize Event (Event ID: 11010150, Slot Number: 0, Arguments: {11010160, 1012401, 1012400})
-		# Prevents above door (Lower Burg shortcut) from being re-activated 
-		# and adds effect to both sides.
+        # Prevents above door (Lower Burg shortcut) from being re-activated
+        # and adds effect to both sides.
      42 Initialize Event (Event ID: 11010160, Slot Number: 0, Arguments: {11010160, 1011314})
-		# Displays an unlocking message on two doors and prevents re-activation.
-		# Key to the Depths door.
+        # Displays an unlocking message on two doors and prevents re-activation.
+        # Key to the Depths door.
      43 Initialize Event (Event ID: 11010170, Slot Number: 1, Arguments: {11010171, 10010873, 1011306})
-		# Basement key door.
+        # Basement key door.
      44 Initialize Event (Event ID: 11010170, Slot Number: 2, Arguments: {11010172, 10010860, 1011311})
-		# Also displays a message, but doesn't disable door activation (door can be closed).
-		# This is Griggs's door. The Residence Key is checked somewhere else.
+        # Also displays a message, but doesn't disable door activation (door can be closed).
+        # This is Griggs's door. The Residence Key is checked somewhere else.
      45 Initialize Event (Event ID: 11010180, Slot Number: 1, Arguments: {11010181, 10010881, 1011317})
-		# Residence Key door (can be closed again). The one near the Gold Pine Resin.
+        # Residence Key door (can be closed again). The one near the Gold Pine Resin.
      46 Initialize Event (Event ID: 11010140, Slot Number: 0, Arguments: {11010140, 10010881, 1011310, 10010883, 2021})
-		# Mystery Key door (Lautrec's cell). Can't be closed.
+        # Mystery Key door (Lautrec's cell). Can't be closed.
      47 Initialize Event (Event ID: 11010190, Slot Number: 0, Arguments: {11010190, 10010876, 1011308, 10010883, 2017})
-		# Watchtower Basement Key doors (above and below, not sure which is which). Can't be closed.
-		# No support for Master Key, not sure how it unlocks them.
+        # Watchtower Basement Key doors (above and below, not sure which is which). Can't be closed.
+        # No support for Master Key, not sure how it unlocks them.
      48 Initialize Event (Event ID: 11010190, Slot Number: 1, Arguments: {11010191, 10010878, 1011315, 10010883, 2019})
      49 Initialize Event (Event ID: 11010190, Slot Number: 2, Arguments: {11010192, 10010878, 1011316, 10010883, 2019})
-		# "Shortcut door" opening. Lower Undead Burg shortcut, presumably.
+        # "Shortcut door" opening. Lower Undead Burg shortcut, presumably.
      50 Initialize Event (Event ID: 11010101, Slot Number: 0, Arguments: {1011320, 1, 101, 121, 7110})
-		# Message for attempting to open the shortcut above from the wrong side.
+        # Message for attempting to open the shortcut above from the wrong side.
      51 Initialize Event (Event ID: 11010102, Slot Number: 0, Arguments: {11010142, 1011320, 100})
-		# Parish gate lever operation flags (triggered by lever).
+        # Parish gate lever operation flags (triggered by lever).
      52 Initialize Event (Event ID: 11015185, Slot Number: 0, Arguments: {0})
-		# Wait 10 frames before lever becomes useable.
+        # Wait 10 frames before lever becomes useable.
      53 Initialize Event (Event ID: 11010611, Slot Number: 0, Arguments: {0})
-		# Parish gate opening and closing.
+        # Parish gate opening and closing.
      54 Initialize Event (Event ID: 11010600, Slot Number: 0, Arguments: {0})
-		# Damage from being under closing gate.
+        # Damage from being under closing gate.
      55 Initialize Event (Event ID: 11010601, Slot Number: 0, Arguments: {0})
-		# Trigger for gate-closing enemy.
+        # Trigger for gate-closing enemy.
      56 Initialize Event (Event ID: 11015116, Slot Number: 0, Arguments: {0})
-		# Enable gate activation after enemy is triggered.
+        # Enable gate activation after enemy is triggered.
      57 Initialize Event (Event ID: 11010609, Slot Number: 0, Arguments: {0})
-		# Change nest of gate-closing enemy after their mission is complete.
+        # Change nest of gate-closing enemy after their mission is complete.
      58 Initialize Event (Event ID: 11010607, Slot Number: 0, Arguments: {0})
-		# Change nest of Armored Tusk depending on whether gate is open or closed.
+        # Change nest of Armored Tusk depending on whether gate is open or closed.
      59 Initialize Event (Event ID: 11010608, Slot Number: 0, Arguments: {0})
-		# Pull lever near Sunlight Altar.
+        # Pull lever near Sunlight Altar.
      60 Initialize Event (Event ID: 11010621, Slot Number: 0, Arguments: {0})
-		# Ring Bell of Awakening above Parish.
+        # Ring Bell of Awakening above Parish.
      61 Initialize Event (Event ID: 11010700, Slot Number: 0, Arguments: {0})
-		# Play bell sounds online.
+        # Play bell sounds online.
      62 Initialize Event (Event ID: 11015170, Slot Number: 0, Arguments: {0})
-		# Kick down ladder shortcut and register it near first bonfire.
+        # Kick down ladder shortcut and register it near first bonfire.
      63 Initialize Event (Event ID: 11010100, Slot Number: 0, Arguments: {0})
-		# Hellkite breaks a spire on its first landing.
+        # Hellkite breaks a spire on its first landing.
      64 Initialize Event (Event ID: 11010780, Slot Number: 0, Arguments: {0})
-		# Kneel to the Sunlight Altar. Quite complex.
+        # Kneel to the Sunlight Altar. Quite complex.
      65 Initialize Event (Event ID: 11010580, Slot Number: 0, Arguments: {0})
-		# Enable flag for above event after two frames.
+        # Enable flag for above event after two frames.
      66 Initialize Event (Event ID: 11010585, Slot Number: 0, Arguments: {0})
-		# Disable Bell Gargoyles boss music.
+        # Disable Bell Gargoyles boss music.
      67 DISABLE Map Sound (Entity ID: 1013800)
-		# Disable some Gargoyle sound if they're dead?
-		# Not sure what this is, but appearently the Gargoyles produce some kind
-		# of background sound when they're alive.
+        # Disable some Gargoyle sound if they're dead?
+        # Not sure what this is, but appearently the Gargoyles produce some kind
+        # of background sound when they're alive.
      68 SKIP 1 lines IF Event Flag ID: 00000003 is ON
      69 DISABLE Map Sound (Entity ID: 1013801)
-		# Disable Gargoyles and delete fog walls if they're dead.
+        # Disable Gargoyles and delete fog walls if they're dead.
      70 SKIP 6 lines IF Event Flag ID: 00000003 is OFF
      71 Initialize Event (Event ID: 11015392, Slot Number: 0, Arguments: {0})
      72 DISABLE Object with Entity ID: 1011990
      73 Delete Map SFX (Entity ID: 1011991, Deletes only root: FALSE)
      74 DISABLE Object with Entity ID: 1011992
      75 Delete Map SFX (Entity ID: 1011993, Deletes only root: FALSE)
-		# Otherwise, run Gargoyle boss scripts. These are all fairly standard except
-		# for the additional tail stuff and second gargoyle trigger.
+        # Otherwise, run Gargoyle boss scripts. These are all fairly standard except
+        # for the additional tail stuff and second gargoyle trigger.
      76 SKIP 11 lines
      77 Initialize Event (Event ID: 11010000, Slot Number: 0, Arguments: {0})
      78 Initialize Event (Event ID: 11015390, Slot Number: 0, Arguments: {0})
@@ -144,12 +144,12 @@ Parameters: {} ()
      85 Initialize Event (Event ID: 11015396, Slot Number: 0, Arguments: {0})
      86 Initialize Event (Event ID: 11010750, Slot Number: 0, Arguments: {1010800, 53500000})
      87 Initialize Event (Event ID: 11010750, Slot Number: 1, Arguments: {1010801, 53500100})
-		# Tail cut reward. Not sure why this runs even when the Gargoyles are dead.
+        # Tail cut reward. Not sure why this runs even when the Gargoyles are dead.
      88 Initialize Event (Event ID: 11015397, Slot Number: 0, Arguments: {1010800, 5350, 5350, 1010810})
-		# Enable hitbox for tail. Again, useless if they're dead. Better leave it.
+        # Enable hitbox for tail. Again, useless if they're dead. Better leave it.
      89 Initialize Event (Event ID: 11015398, Slot Number: 0, Arguments: {1010801, 1010811})
-	 
-		# Taurus Demon stuff below. Very basic, except for jump ambush.
+
+        # Taurus Demon stuff below. Very basic, except for jump ambush.
      90 DISABLE Map Sound (Entity ID: 1013802)
      91 SKIP 6 lines IF Event Flag ID: 11010901 is OFF
      92 Initialize Event (Event ID: 11010901, Slot Number: 0, Arguments: {0})
@@ -166,9 +166,9 @@ Parameters: {} ()
     103 Initialize Event (Event ID: 11015385, Slot Number: 0, Arguments: {0})
     104 Initialize Event (Event ID: 11015386, Slot Number: 0, Arguments: {0})
     105 Initialize Event (Event ID: 11010901, Slot Number: 0, Arguments: {0})
-	
-		# Capra Demon stuff below. Very basic, about as basic as a boss can get.
-		# Good base model for coding other (simple) bosses.
+
+        # Capra Demon stuff below. Very basic, about as basic as a boss can get.
+        # Good base model for coding other (simple) bosses.
     106 DISABLE Map Sound (Entity ID: 1013803)
     107 SKIP 4 lines IF Event Flag ID: 11010902 is OFF
     108 Initialize Event (Event ID: 11010902, Slot Number: 0, Arguments: {0})
@@ -182,10 +182,10 @@ Parameters: {} ()
     116 Initialize Event (Event ID: 11015374, Slot Number: 0, Arguments: {0})
     117 Initialize Event (Event ID: 11015375, Slot Number: 0, Arguments: {0})
     118 Initialize Event (Event ID: 11010902, Slot Number: 0, Arguments: {0})
-		
-		# Hellkite stuff. Insanely complex.
+
+        # Hellkite stuff. Insanely complex.
     119 SKIP 2 lines IF Event Flag ID: 11010900 is OFF
-		# Hellkite is dead, skip everything below.
+        # Hellkite is dead, skip everything below.
     120 Initialize Event (Event ID: 11010900, Slot Number: 0, Arguments: {0})
     121 SKIP 29 lines
     122 Initialize Event (Event ID: 11010899, Slot Number: 0, Arguments: {0})
@@ -217,151 +217,151 @@ Parameters: {} ()
     148 Initialize Event (Event ID: 11010200, Slot Number: 7, Arguments: {80, 7008})
     149 Initialize Event (Event ID: 11010200, Slot Number: 8, Arguments: {90, 7009})
     150 Initialize Event (Event ID: 11010200, Slot Number: 9, Arguments: {100, 7011})
-		
-		# Hollows hanging over the ledges near the start of Burg.
-	151 Initialize Event (Event ID: 11015250, Slot Number: 0, Arguments: {1010250, 1010250, 1084227584, 0})
+
+        # Hollows hanging over the ledges near the start of Burg.
+    151 Initialize Event (Event ID: 11015250, Slot Number: 0, Arguments: {1010250, 1010250, 1084227584, 0})
     152 Initialize Event (Event ID: 11015250, Slot Number: 1, Arguments: {1010251, 1010250, 1085276160, 0})
     153 Initialize Event (Event ID: 11015250, Slot Number: 2, Arguments: {1010260, 1010260, 1084227584, 0})
     154 Initialize Event (Event ID: 11015250, Slot Number: 3, Arguments: {1010261, 1010260, 1082130432, 0})
     155 Initialize Event (Event ID: 11015250, Slot Number: 4, Arguments: {1010262, 1010260, 1077936128, 0})
     156 Initialize Event (Event ID: 11015250, Slot Number: 5, Arguments: {1010263, 1010260, 1077936128, 0})
-		# Assassin ambushes in Lower Undead Burg.
+        # Assassin ambushes in Lower Undead Burg.
     157 Initialize Event (Event ID: 11010130, Slot Number: 0, Arguments: {1011250, 1010150, 1012150})
     158 Initialize Event (Event ID: 11010130, Slot Number: 1, Arguments: {1011251, 1010151, 1012150})
     159 Initialize Event (Event ID: 11010130, Slot Number: 2, Arguments: {1011252, 1010152, 1012150})
     160 Initialize Event (Event ID: 11010130, Slot Number: 3, Arguments: {1011253, 1010153, 1012151})
     161 Initialize Event (Event ID: 11010130, Slot Number: 4, Arguments: {1011254, 1010154, 1012151})
     162 Initialize Event (Event ID: 11010130, Slot Number: 5, Arguments: {1011255, 1010155, 1012151})
-		# Non-respawning enemies. 
-		# Havel doesn't respawn.
+        # Non-respawning enemies.
+        # Havel doesn't respawn.
     163 Initialize Event (Event ID: 11010860, Slot Number: 0, Arguments: {6580, 0, 0})
-		# Black Knight (first one I guess, near Blue Tearstone Ring).
+        # Black Knight (first one I guess, near Blue Tearstone Ring).
     164 Initialize Event (Event ID: 11010860, Slot Number: 1, Arguments: {1010350, 1, 27900000})
-		# Black Knight (second one I guess, on top of tower).
+        # Black Knight (second one I guess, on top of tower).
     165 Initialize Event (Event ID: 11010860, Slot Number: 2, Arguments: {1010351, 1, 27900100})
-		# Not sure about these three. Berenike Knight, Channeler, maybe Titanite Demon if it's on the map?
+        # Not sure about these three. Berenike Knight, Channeler, maybe Titanite Demon if it's on the map?
     166 Initialize Event (Event ID: 11010860, Slot Number: 3, Arguments: {1010320, 0, 0})
     167 Initialize Event (Event ID: 11010860, Slot Number: 4, Arguments: {1010340, 0, 0})
     168 Initialize Event (Event ID: 11010860, Slot Number: 5, Arguments: {1010370, 0, 0})
-		# Gate-opening Hollow doesn't respawn.
+        # Gate-opening Hollow doesn't respawn.
     169 Initialize Event (Event ID: 11010860, Slot Number: 6, Arguments: {6010, 0, 0})
-		# Treasure urns, I think.
+        # Treasure urns, I think.
     170 Initialize Event (Event ID: 11010400, Slot Number: 2, Arguments: {1011652, 1011502})
     171 Initialize Event (Event ID: 11010400, Slot Number: 3, Arguments: {1011653, 1011503})
     172 Initialize Event (Event ID: 11010400, Slot Number: 4, Arguments: {1011654, 1011504})
-		# Treasure chests.
+        # Treasure chests.
     173 Initialize Event (Event ID: 11010650, Slot Number: 0, Arguments: {1011670, 11010650})
     174 Initialize Event (Event ID: 11010650, Slot Number: 1, Arguments: {1011671, 11010651})
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Reset positions of Solaire, Griggs, Rhea, Oswald, Crestfallen Merchant, and Lautrec when sin is removed by Oswald.
+        # Reset positions of Solaire, Griggs, Rhea, Oswald, Crestfallen Merchant, and Lautrec when sin is removed by Oswald.
       0 Initialize Event (Event ID: 11010583, Slot Number: 0, Arguments: {0})
-		# Register humanity of Havel, Solaire (Gargoyles summon), Lautrec (Gargoyles summon).
+        # Register humanity of Havel, Solaire (Gargoyles summon), Lautrec (Gargoyles summon).
       1 Humanity Registration for Entity ID: 6580 ("First Event Flag ID to retain humanity ID": 8972)
       2 Humanity Registration for Entity ID: 6540 ("First Event Flag ID to retain humanity ID": 8310)
       3 Humanity Registration for Entity ID: 6590 ("First Event Flag ID to retain humanity ID": 8462)
-		# Solaire summon sign placement.
+        # Solaire summon sign placement.
       4 Initialize Event (Event ID: 11015100, Slot Number: 0, Arguments: {0})
-		# Solaire enters Gargoyles fog (after player).
+        # Solaire enters Gargoyles fog (after player).
       5 Initialize Event (Event ID: 11015101, Slot Number: 0, Arguments: {0})
-		# Lautrec summon sign placement.
+        # Lautrec summon sign placement.
       6 Initialize Event (Event ID: 11015103, Slot Number: 0, Arguments: {0})
-		# Lautrec enters Gargoyles fog (after player)
+        # Lautrec enters Gargoyles fog (after player)
       7 Initialize Event (Event ID: 11015104, Slot Number: 0, Arguments: {0})
-		
-		# Register NPC Solaire (four flags that disable).
+
+        # Register NPC Solaire (four flags that disable).
       8 Humanity Registration for Entity ID: 6001 ("First Event Flag ID to retain humanity ID": 8310)
       9 SKIP 4 lines IF Event Flag ID: 00001007 is ON
      10 SKIP 3 lines IF Event Flag ID: 00001004 is ON
      11 SKIP 2 lines IF Event Flag ID: 00001001 is ON
      12 SKIP 1 lines IF Event Flag ID: 00001000 is ON
      13 DISABLE Entity ID: 6001
-		# Move Solaire to Sunlight Altar (weird way of expressing the condition).
+        # Move Solaire to Sunlight Altar (weird way of expressing the condition).
      14 SKIP 1 lines IF Event Flag ID: 11510594 is ON
      15 SKIP 1 lines
      16 Issue Warp request for Entity ID: 6001 (Warp Destination Type: Area, Destination Target ID: 1012530, Damipoly ID: -1) and SET "floor" to Hitbox Entity ID: 1013050
-		# Solaire hostility and death triggers.
+        # Solaire hostility and death triggers.
      17 Initialize Event (Event ID: 11010510, Slot Number: 0, Arguments: {6001, 1004})
      18 Initialize Event (Event ID: 11010520, Slot Number: 0, Arguments: {6001, 1000, 1029, 1005})
-		# Some Solaire questline milestones that move him around. Seem partially redundant given
-		# the warp above.
+        # Some Solaire questline milestones that move him around. Seem partially redundant given
+        # the warp above.
      19 Initialize Event (Event ID: 11010530, Slot Number: 0, Arguments: {6001, 1000, 1029, 1001})
      20 Initialize Event (Event ID: 11010531, Slot Number: 0, Arguments: {6001, 1000, 1029, 1007})
-		
-		# Register Griggs.
+
+        # Register Griggs.
      21 Humanity Registration for Entity ID: 6040 ("First Event Flag ID to retain humanity ID": 8342)
-		# Disable Griggs based on story flags.
+        # Disable Griggs based on story flags.
      22 SKIP 1 lines IF Event Flag ID: 00001112 to 00001113 are all OFF
      23 DISABLE Entity ID: 6040
-		# Griggs hostility and death.
+        # Griggs hostility and death.
      24 Initialize Event (Event ID: 11010510, Slot Number: 1, Arguments: {6040, 1114})
      25 Initialize Event (Event ID: 11010520, Slot Number: 1, Arguments: {6040, 1110, 1119, 1115})
-		# Disable Griggs' special standby state for being locked in the room, I think.
+        # Disable Griggs' special standby state for being locked in the room, I think.
      26 Initialize Event (Event ID: 11010532, Slot Number: 0, Arguments: {6040, 1110, 1119, 1111})
-	 
-		# Register Rhea of Thorolund.
+
+        # Register Rhea of Thorolund.
      27 Humanity Registration for Entity ID: 6072 ("First Event Flag ID to retain humanity ID": 8358)
-		# Disable her based on story flag.
+        # Disable her based on story flag.
      28 SKIP 1 lines IF Event Flag ID: 00001175 is ON
      29 DISABLE Entity ID: 6072
-		# Rhea storyline flag management.
+        # Rhea storyline flag management.
      30 Initialize Event (Event ID: 11010533, Slot Number: 0, Arguments: {6072, 1170, 1189, 1175})
-		# Unique hostility trigger for Rhea ("no resistance").
+        # Unique hostility trigger for Rhea ("no resistance").
      31 Initialize Event (Event ID: 11010501, Slot Number: 0, Arguments: {6072, 1179})
-		# Unique death trigger for Rhea ("no resistance").
+        # Unique death trigger for Rhea ("no resistance").
      32 Initialize Event (Event ID: 11010535, Slot Number: 0, Arguments: {6072, 1170, 1189, 1180})
-		# Disable Rhea based on story flags.
+        # Disable Rhea based on story flags.
      33 Initialize Event (Event ID: 11010534, Slot Number: 0, Arguments: {6072, 1170, 1189, 1181})
-		# Rhea's story event death (by Petrus).
+        # Rhea's story event death (by Petrus).
      34 Initialize Event (Event ID: 11010537, Slot Number: 0, Arguments: {6072, 1170, 1189, 1177})
-		# Rhea's "danger index" resets.
+        # Rhea's "danger index" resets.
      35 Initialize Event (Event ID: 11010538, Slot Number: 0, Arguments: {0})
-		# Enables flag 815 when the player picks up Rhea's pendant ("confirm assassination").
+        # Enables flag 815 when the player picks up Rhea's pendant ("confirm assassination").
      36 Initialize Event (Event ID: 11010539, Slot Number: 0, Arguments: {0})
-		# Disable Berenike Knight if Rhea is here.
+        # Disable Berenike Knight if Rhea is here.
      37 Initialize Event (Event ID: 11010582, Slot Number: 0, Arguments: {0})
-		
-		# Andre hostility and death triggers.
+
+        # Andre hostility and death triggers.
      38 Initialize Event (Event ID: 11010510, Slot Number: 3, Arguments: {6190, 1321})
      39 Initialize Event (Event ID: 11010520, Slot Number: 3, Arguments: {6190, 1320, 1339, 1322})
-		# Destroy Andre's chair if he's hostile or dead.
+        # Destroy Andre's chair if he's hostile or dead.
      40 Initialize Event (Event ID: 11015090, Slot Number: 0, Arguments: {1321, 1322, 1011010})
-		
-		# Crestfallen Merchant hostility and death triggers.
+
+        # Crestfallen Merchant hostility and death triggers.
      41 Initialize Event (Event ID: 11010510, Slot Number: 4, Arguments: {6230, 1401})
      42 Initialize Event (Event ID: 11010520, Slot Number: 4, Arguments: {6230, 1400, 1409, 1402})
-		
-		# Register Lautrec humanity.
+
+        # Register Lautrec humanity.
      43 Humanity Registration for Entity ID: 6300 ("First Event Flag ID to retain humanity ID": 8462)
-		# Disables a Lautrec-related flag for hosts.
+        # Disables a Lautrec-related flag for hosts.
      44 SKIP 1 lines IF muliplayer status is Client
      45 SET Event Flag ID 11010584 to OFF
-		# Disable Lautrec based on story flags (and the above event, which can only possibly be
-		# enabled for clients at this point).
+        # Disable Lautrec based on story flags (and the above event, which can only possibly be
+        # enabled for clients at this point).
      46 SKIP 3 lines IF Event Flag ID: 11010584 is ON
      47 SKIP 2 lines IF Event Flag ID: 00001574 is ON
      48 SKIP 1 lines IF Event Flag ID: 00001570 is ON
      49 DISABLE Entity ID: 6300
-		# Lautrec hostility and death triggers.
+        # Lautrec hostility and death triggers.
      50 Initialize Event (Event ID: 11010510, Slot Number: 6, Arguments: {6300, 1574})
      51 Initialize Event (Event ID: 11010520, Slot Number: 6, Arguments: {6300, 1570, 1599, 1575})
-		# Lautrec story progression (he has been freed, I think).
+        # Lautrec story progression (he has been freed, I think).
      52 Initialize Event (Event ID: 11010550, Slot Number: 0, Arguments: {6300, 1570, 1599, 1571})
-		# Lautrec disappears from his cell.
+        # Lautrec disappears from his cell.
      53 Initialize Event (Event ID: 11010552, Slot Number: 0, Arguments: {6300, 1570, 1599, 1577})
-		# Enables some object activation if you don't free Lautrec, I believe.
+        # Enables some object activation if you don't free Lautrec, I believe.
      54 Initialize Event (Event ID: 11010551, Slot Number: 0, Arguments: {0})
-	 
-		# Register Oswald humanity.
+
+        # Register Oswald humanity.
      55 Humanity Registration for Entity ID: 6370 ("First Event Flag ID to retain humanity ID": 8486)
-		# Disable Oswald if the bell isn't rung yet.
+        # Disable Oswald if the bell isn't rung yet.
      56 SKIP 1 lines IF Event Flag ID: 11010581 is ON
      57 DISABLE Entity ID: 6370
-		# Oswald hostility and death triggers.
+        # Oswald hostility and death triggers.
      58 Initialize Event (Event ID: 11010510, Slot Number: 7, Arguments: {6370, 1701})
      59 Initialize Event (Event ID: 11010520, Slot Number: 7, Arguments: {6370, 1700, 1709, 1702})
-		# Oswald bell check.
+        # Oswald bell check.
      60 Initialize Event (Event ID: 11010581, Slot Number: 0, Arguments: {6370})
 
 Event ID: 11010008, Int: 0

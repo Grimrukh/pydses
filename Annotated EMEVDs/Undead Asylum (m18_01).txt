@@ -3,70 +3,70 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
 
-	# None of the below will be changed.
-		
-		# Register bonfires. These won't be touched.
+    # None of the below will be changed.
+
+        # Register bonfires. These won't be touched.
       0 Register Bonfire (Event Flag ID: 11810992, Entity ID: 1811960, Reaction Distance: 1.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       1 Register Bonfire (Event Flag ID: 11810984, Entity ID: 1811961, Reaction Distance: 1.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Register the ladder up from your cell. Won't be touched.
+        # Register the ladder up from your cell. Won't be touched.
       2 ? Register Ladder (Entity ID: 1811140, Unknown Event Flag ID: 11810010, Unknown Event Flag ID: 11810011)
-		# Disables the portcullis hitbox, which is only enabled for the split second that the portcullis is closing.
+        # Disables the portcullis hitbox, which is only enabled for the split second that the portcullis is closing.
       3 DISABLE Hitbox of Entity ID: 1813121
-		# Flag: portcullis is open.
+        # Flag: portcullis is open.
       4 SET Event Flag ID 11810315 to OFF
-		# Flag: cathedral door is open.
+        # Flag: cathedral door is open.
       5 SET Event Flag ID 11810112 to OFF
-		# Disable activation of three gates (not sure which three).
+        # Disable activation of three gates (not sure which three).
       6 ObjAct Activation (Entity ID: 1811100, Object Parameter ID: -1, State: DISABLE)
       7 ObjAct Activation (Entity ID: 1811101, Object Parameter ID: -1, State: DISABLE)
       8 ObjAct Activation (Entity ID: 1811102, Object Parameter ID: -1, State: DISABLE)
-		
-		# Play the opening cutscene once and set initial spawn point.
+
+        # Play the opening cutscene once and set initial spawn point.
       9 SKIP 4 lines IF it is FALSE that player is in Map<18><1>
      10 SKIP 3 lines IF Event Flag ID: 11810002 is ON
      11 Play Cutscene (Cutscene ID: 180101, Playback Method: Skippable with Fade-out) and Warp Player Entity ID: 00010000 to (Warp Point ID: 1812011, Map<18><1>)
      12 SET Event Flag ID 11810002 to ON
      13 Set Player respawn point to Point ID: 1812900
-	 
-	# Initializing events.
-	
-		# Fog gate trigger (past equipment).
+
+    # Initializing events.
+
+        # Fog gate trigger (past equipment).
      14 Initialize Event (Event ID: 11810090, Slot Number: 0, Arguments: {1811700, 1811701, 1812600, 1812601})
-		# First departure from Asylum after tutorial (automatically activated).
+        # First departure from Asylum after tutorial (automatically activated).
      15 Initialize Event (Event ID: 11810000, Slot Number: 0, Arguments: {0})
-		# Departure from Asylum return visits (manually activated).
+        # Departure from Asylum return visits (manually activated).
      16 Initialize Event (Event ID: 11810150, Slot Number: 0, Arguments: {0})
-		# Roll the iron ball down the stairs (resets once, on first return visit).
+        # Roll the iron ball down the stairs (resets once, on first return visit).
      17 Initialize Event (Event ID: 11810211, Slot Number: 0, Arguments: {0})
-		# Wall destroyed by rolling ball.
+        # Wall destroyed by rolling ball.
      18 Initialize Event (Event ID: 11810200, Slot Number: 1, Arguments: {1811210, 1811211, 1811212})
-		# Move Asylum Demon above the cathedral and make it jump down for first encounter.
+        # Move Asylum Demon above the cathedral and make it jump down for first encounter.
      19 Initialize Event (Event ID: 11810310, Slot Number: 0, Arguments: {0})
-		# Trap player in cathedral and open side portcullis.
+        # Trap player in cathedral and open side portcullis.
      20 Initialize Event (Event ID: 11810311, Slot Number: 0, Arguments: {0})
-		# Shut portcullis behind you and disable front door of cathedral.
+        # Shut portcullis behind you and disable front door of cathedral.
      21 Initialize Event (Event ID: 11810312, Slot Number: 0, Arguments: {0})
-		# Display 'locked' message at front cathedral door.
+        # Display 'locked' message at front cathedral door.
      22 Initialize Event (Event ID: 11810313, Slot Number: 0, Arguments: {0})
-		# Open one-way gate (courtyard shortcut).		
+        # Open one-way gate (courtyard shortcut).
      23 Initialize Event (Event ID: 11810120, Slot Number: 0, Arguments: {0})
-		# Open church back door (stays open afterward).
+        # Open church back door (stays open afterward).
      24 Initialize Event (Event ID: 11810110, Slot Number: 0, Arguments: {0})
-		# Open church front door.
+        # Open church front door.
      25 Initialize Event (Event ID: 11810111, Slot Number: 0, Arguments: {0})
-		# I think these are tip messages for the Estus flask.
+        # I think these are tip messages for the Estus flask.
      26 Initialize Event (Event ID: 11810450, Slot Number: 0, Arguments: {0})
-		# Stray Demon invincible patrol during tutorial.
+        # Stray Demon invincible patrol during tutorial.
      27 Initialize Event (Event ID: 11810320, Slot Number: 0, Arguments: {0})
-		# Change rewards when Asylum Demon is killed on the first try. This works by controlling
-		# whether the game thinks that the Demon's Great Hammer or Big Pilgrim's Key have already
-		# dropped.
+        # Change rewards when Asylum Demon is killed on the first try. This works by controlling
+        # whether the game thinks that the Demon's Great Hammer or Big Pilgrim's Key have already
+        # dropped.
      28 Initialize Event (Event ID: 11810300, Slot Number: 0, Arguments: {0})
-		# Awards items for killing the Black Knights.
+        # Awards items for killing the Black Knights.
      29 Initialize Event (Event ID: 11810850, Slot Number: 0, Arguments: {1810200, 27907000})
      30 Initialize Event (Event ID: 11810850, Slot Number: 1, Arguments: {1810213, 27907000})
-	
-		# Snuggly trades. Host only (which suggests that the above is all safe for summons loading the map).
+
+        # Snuggly trades. Host only (which suggests that the above is all safe for summons loading the map).
      31 SKIP 44 lines IF muliplayer status is Client
      32 Initialize Event (Event ID: 11810641, Slot Number: 0, Arguments: {3, 111, 11810601, 51810800})
      33 Initialize Event (Event ID: 11810641, Slot Number: 1, Arguments: {3, 270, 11810602, 51810810})
@@ -112,8 +112,8 @@ Parameters: {} ()
      73 Initialize Event (Event ID: 11815110, Slot Number: 18, Arguments: {11810619, 3180, 51810980})
      74 Initialize Event (Event ID: 11815110, Slot Number: 19, Arguments: {11810620, 3190, 51810990})
      75 Initialize Event (Event ID: 11815110, Slot Number: 20, Arguments: {11810621, 3200, 51811000})
-	 
-		# Control gates. Won't be changing these I believe.
+
+        # Control gates. Won't be changing these I believe.
      76 Initialize Event (Event ID: 11810100, Slot Number: 0, Arguments: {11810100, 1811100, 10010869})
      77 Initialize Event (Event ID: 11810100, Slot Number: 1, Arguments: {11810101, 1811101, 10010869})
      78 Initialize Event (Event ID: 11810100, Slot Number: 2, Arguments: {11810102, 1811102, 10010869})
@@ -121,9 +121,9 @@ Parameters: {} ()
      80 Initialize Event (Event ID: 11810100, Slot Number: 4, Arguments: {11810104, 1811104, 10010875})
      81 Initialize Event (Event ID: 11810100, Slot Number: 5, Arguments: {11810105, 1811105, 0})
      82 Initialize Event (Event ID: 11810100, Slot Number: 6, Arguments: {11810106, 1811106, 10010871})
-		# Something to do with Snuggly's appearance. Don't touch this.
+        # Something to do with Snuggly's appearance. Don't touch this.
      83 Initialize Event (Event ID: 11815150, Slot Number: 0, Arguments: {0})
-		# Enables only the equipment for the player's current class.
+        # Enables only the equipment for the player's current class.
      84 Initialize Event (Event ID: 11810400, Slot Number: 0, Arguments: {0, 1811601, 1811602, 1811602, 0})
      85 Initialize Event (Event ID: 11810400, Slot Number: 1, Arguments: {1, 1811603, 1811604, 1811604, 0})
      86 Initialize Event (Event ID: 11810400, Slot Number: 2, Arguments: {2, 1811605, 1811606, 1811606, 0})
@@ -134,113 +134,113 @@ Parameters: {} ()
      91 Initialize Event (Event ID: 11810400, Slot Number: 7, Arguments: {7, 1811617, 1811618, 1811619, 256})
      92 Initialize Event (Event ID: 11810400, Slot Number: 8, Arguments: {8, 1811620, 1811621, 1811622, 16777216})
      93 Initialize Event (Event ID: 11810400, Slot Number: 9, Arguments: {9, 1811623, 1811624, 1811624, 0})
-		# Disable boss music. Safety precaution I assume.
+        # Disable boss music. Safety precaution I assume.
      94 DISABLE Map Sound (Entity ID: 1813800)
-		# Reset Asylum Demon initial jump down if the fight hasn't been escaped yet.
+        # Reset Asylum Demon initial jump down if the fight hasn't been escaped yet.
      95 SKIP 2 lines IF Event Flag ID: 11810312 is ON
      96 SET Event Flag ID 11810310 to OFF
      97 SET Event Flag ID 11810314 to OFF
-		# Disable cathedral front door if an unknown event flag is ON.
+        # Disable cathedral front door if an unknown event flag is ON.
      98 SKIP 1 lines IF Event Flag ID: 61810105 is OFF
      99 ObjAct Activation (Entity ID: 1811111, Object Parameter ID: -1, State: DISABLE)
-		
-		# If Asylum Demon is dead...
+
+        # If Asylum Demon is dead...
     100 SKIP 7 lines IF Event Flag ID: 00000016 is OFF
-		# Disable Asylum Demon (by running its initialization)
+        # Disable Asylum Demon (by running its initialization)
     101 Initialize Event (Event ID: 11815392, Slot Number: 0, Arguments: {0})
-		# Disable fog gate (up top)
+        # Disable fog gate (up top)
     102 DISABLE Object with Entity ID: 1811990
-		# Delete fog gate effect
+        # Delete fog gate effect
     103 Delete Map SFX (Entity ID: 1811991, Deletes only root: FALSE)
-		# Open the front cathedral door and side portcullis
+        # Open the front cathedral door and side portcullis
     104 "Reproduction of object animation" (Object Entity ID: 1811115, Animation ID: 1)
     105 "Reproduction of object animation" (Object Entity ID: 1811111, Animation ID: 1)
-		# Disable front cathedral door
+        # Disable front cathedral door
     106 ObjAct Activation (Entity ID: 1811111, Object Parameter ID: -1, State: DISABLE)
     107 SKIP 6 lines
-	
-		# If Asylum Demon is alive...
-		# For entering fog gate
+
+        # If Asylum Demon is alive...
+        # For entering fog gate
     108 Initialize Event (Event ID: 11815390, Slot Number: 0, Arguments: {0})
-		# For starting boss fight
+        # For starting boss fight
     109 Initialize Event (Event ID: 11815393, Slot Number: 0, Arguments: {0})
-		# For enabling behavior
+        # For enabling behavior
     110 Initialize Event (Event ID: 11815392, Slot Number: 0, Arguments: {0})
-		# For checking its death
+        # For checking its death
     111 Initialize Event (Event ID: 11810001, Slot Number: 0, Arguments: {0})
-		# For starting music and HP bar
+        # For starting music and HP bar
     112 Initialize Event (Event ID: 11815394, Slot Number: 0, Arguments: {0})
-		# For stopping music and HP bar
+        # For stopping music and HP bar
     113 Initialize Event (Event ID: 11815395, Slot Number: 0, Arguments: {0})
-	
-		# Disable Stray Demon ladder fog (exit)
+
+        # Disable Stray Demon ladder fog (exit)
     114 DISABLE Object with Entity ID: 1811890
-		# Delete Stray Demon ladder fog effect
+        # Delete Stray Demon ladder fog effect
     115 Delete Map SFX (Entity ID: 1811891, Deletes only root: FALSE)
-		# Disable Stray Demon boss music
+        # Disable Stray Demon boss music
     116 DISABLE Map Sound (Entity ID: 1813801)
-		
-		# If this is a return visit...
+
+        # If this is a return visit...
     117 END event IF Event Flag ID: 11810000 is OFF
-		# If Stray Demon is dead...
+        # If Stray Demon is dead...
     118 SKIP 2 lines IF Event Flag ID: 11810900 is OFF
-		# Disable Stray Demon (by running its initialization)
+        # Disable Stray Demon (by running its initialization)
     119 Initialize Event (Event ID: 11815382, Slot Number: 0, Arguments: {0})
-		# If Stray Demon is alive...
+        # If Stray Demon is alive...
     120 SKIP 4 lines
-		# Enable Stray Demon behavior
+        # Enable Stray Demon behavior
     121 Initialize Event (Event ID: 11815382, Slot Number: 0, Arguments: {0})
-		# For checking its death
+        # For checking its death
     122 Initialize Event (Event ID: 11810900, Slot Number: 0, Arguments: {0})
-		# For starting its music and HP
+        # For starting its music and HP
     123 Initialize Event (Event ID: 11815384, Slot Number: 0, Arguments: {0})
-		# For stopping its music and HP
+        # For stopping its music and HP
     124 Initialize Event (Event ID: 11815385, Slot Number: 0, Arguments: {0})
 
 # PRECONSTRUCTOR event. I have no idea what the difference is to the constructor above,
 # but these events are generally more concerned with NPCs.
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# New game plus events (run once per playthrough only, and only for host):
+        # New game plus events (run once per playthrough only, and only for host):
       0 SKIP 11 lines IF muliplayer status is Client
       1 SKIP 10 lines IF Event Flag ID: 00000705 is ON
       2 CONDITION: IF player's number of completed playthroughs is >= 001 --> Register AND(01)
       3 SKIP 8 lines IF register AND(01) is FALSE
-		# Marks that this code has already run.
+        # Marks that this code has already run.
       4 SET Event Flag ID 705 to ON
-		# Mark Estus Flask item lot as already collected.
+        # Mark Estus Flask item lot as already collected.
       5 SET Event Flag ID 50000082 to ON
-		# Set player spawn point to cell (not sure why this needs to be done again).
+        # Set player spawn point to cell (not sure why this needs to be done again).
       6 Set Player respawn point to Point ID: 1812900
-		# Disable four flags related to the Kiln (not sure what these are).
-		# These flags are also disabled after Gwyn's death, but have no other apparent use so far.
+        # Disable four flags related to the Kiln (not sure what these are).
+        # These flags are also disabled after Gwyn's death, but have no other apparent use so far.
       7 SET Event Flag ID 11807200 to OFF
       8 SET Event Flag ID 11807210 to OFF
       9 SET Event Flag ID 11807220 to OFF
      10 SET Event Flag ID 11807240 to OFF
-		# Darkmoon Blade events.
+        # Darkmoon Blade events.
      11 Initialize Event (Event ID: 11810050, Slot Number: 0, Arguments: {0})
-		# Switch between tutorial enemies/treasure and return enemies/treasure.
+        # Switch between tutorial enemies/treasure and return enemies/treasure.
      12 Initialize Event (Event ID: 11810350, Slot Number: 0, Arguments: {0})
-		# Control destruction of cathedral floor.
+        # Control destruction of cathedral floor.
      13 Initialize Event (Event ID: 11810220, Slot Number: 0, Arguments: {0})
-		# Register friendly Oscar.
+        # Register friendly Oscar.
      14 Humanity Registration for Entity ID: 6023 ("First Event Flag ID to retain humanity ID": 8326)
-		# If 1601 is on, leave hollow Oscar enabled.
+        # If 1601 is on, leave hollow Oscar enabled.
      15 SKIP 1 lines IF Event Flag ID: 00001061 is ON
      16 DISABLE Entity ID: 6024
      17 Switch Entity ID: 6024 to team Hostile Ally
-		# When friendly Oscar dies, disable 1060 and 1074 and enable 1073.
+        # When friendly Oscar dies, disable 1060 and 1074 and enable 1073.
      18 Initialize Event (Event ID: 11810520, Slot Number: 0, Arguments: {6023, 1060, 1074, 1073})
-		# If 1060 is enabled, kill friendly Oscar when the player leaves his vicinity.
+        # If 1060 is enabled, kill friendly Oscar when the player leaves his vicinity.
      19 Initialize Event (Event ID: 11810530, Slot Number: 0, Arguments: {6023})
-		# If 1073 is enabled and this is a return visit, disable 1060 and 1074, enable 1061,
-		# and enable hollow Oscar.
+        # If 1073 is enabled and this is a return visit, disable 1060 and 1074, enable 1061,
+        # and enable hollow Oscar.
      20 Initialize Event (Event ID: 11810531, Slot Number: 0, Arguments: {6024, 1060, 1074, 1061})
-		# If 1061 is on and hollow Oscar is dead, disable 1060 and 1074 and enable 1062.
+        # If 1061 is on and hollow Oscar is dead, disable 1060 and 1074 and enable 1062.
      21 Initialize Event (Event ID: 11810532, Slot Number: 0, Arguments: {6024, 1060, 1074, 1062})
-		# Give friendly Oscar's special effect (one hit from death) and briefly disable his
-		# health bar, which I'm guessing was to stop a bug where it appeared on map load.
+        # Give friendly Oscar's special effect (one hit from death) and briefly disable his
+        # health bar, which I'm guessing was to stop a bug where it appeared on map load.
      22 Initialize Event (Event ID: 11815010, Slot Number: 0, Arguments: {0})
 
 Event ID: 11810090, Int: 0
@@ -700,10 +700,10 @@ Parameters: {} ()
 
 Event ID: 11810320, Int: 0
 Parameters: {} ()
-		"This makes the Stray Demon patrol during the tutorial. I need this behavior to stop\
-		when the Asylum Demon fight begins. I can use the same event to make the Stray Demon\
-		teleport up to the top of the cathedral and jump down when the Asylum Demon fight\
-		begins."
+        "This makes the Stray Demon patrol during the tutorial. I need this behavior to stop\
+        when the Asylum Demon fight begins. I can use the same event to make the Stray Demon\
+        teleport up to the top of the cathedral and jump down when the Asylum Demon fight\
+        begins."
       0 END event IF Event Flag ID: 11810000 is ON
       1 ENABLE Invincibility for Entity ID: 1810810
       2 ??? CONDITION: IF Entity ID: 01810810 "Back lead" status is TRUE --> Register MAIN
@@ -712,25 +712,25 @@ Parameters: {} ()
       5 DISABLE Invincibility for Entity ID: 1810810
       6 ??? CONDITION: IF Entity ID: 01810810 "Back lead" status is TRUE --> Register MAIN
       7 Issue AI instruction request to Entity ID: 1810810 (Command ID: -1, Slot Number: 0)
-	  """
-		End event if Stray Demon is dead.
-		If 11810000 is OFF:
-			Enable Stray Demon invincibility.
-			When backloaded...
-			Issue patrol AI request.
-			When Asylum Demon fight has begun...
-			Move Stray Demon to its initial position.
-			Reset Stray Demon AI.
-			Disable AI.
-			Disable Stray Demon invincibility (or do I want it to be invincible?).
-			(Don't enable the ladder fog, the player is supposed to escape.)
-		Else (if 11810000 is ON):
-			Move Stray Demon to top of cathedral.
-			When player enters the under-room (or maybe when battle starts, or maybe when Asylum Demon health is low enough)...
-			Play Stray Demon jumping animation (see 11810310).
-			Enable Stray Demon health bar in slot 2.
-	  """
-	  
+      """
+        End event if Stray Demon is dead.
+        If 11810000 is OFF:
+            Enable Stray Demon invincibility.
+            When backloaded...
+            Issue patrol AI request.
+            When Asylum Demon fight has begun...
+            Move Stray Demon to its initial position.
+            Reset Stray Demon AI.
+            Disable AI.
+            Disable Stray Demon invincibility (or do I want it to be invincible?).
+            (Don't enable the ladder fog, the player is supposed to escape.)
+        Else (if 11810000 is ON):
+            Move Stray Demon to top of cathedral.
+            When player enters the under-room (or maybe when battle starts, or maybe when Asylum Demon health is low enough)...
+            Play Stray Demon jumping animation (see 11810310).
+            Enable Stray Demon health bar in slot 2.
+      """
+
 
 Event ID: 11810300, Int: 0
 Parameters: {} ()

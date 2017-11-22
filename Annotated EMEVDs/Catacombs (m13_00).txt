@@ -1,14 +1,14 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Bonfires. One near the first Necromancer, one behind the illusory wall.
+        # Bonfires. One near the first Necromancer, one behind the illusory wall.
       0 Register Bonfire (Event Flag ID: 11300992, Entity ID: 1301960, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       1 Register Bonfire (Event Flag ID: 11300984, Entity ID: 1301961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Many ladders
+        # Many ladders
       2 ? Register Ladder (Entity ID: 1301140, Unknown Event Flag ID: 11300010, Unknown Event Flag ID: 11300011)
       3 ? Register Ladder (Entity ID: 1301141, Unknown Event Flag ID: 11300012, Unknown Event Flag ID: 11300013)
       4 ? Register Ladder (Entity ID: 1301142, Unknown Event Flag ID: 11300014, Unknown Event Flag ID: 11300015)
       5 SKIP 1 lines IF Event Flag ID: 00000006 is OFF
-		# This is the ladder after Pinwheel.
+        # This is the ladder after Pinwheel.
       6 ? Register Ladder (Entity ID: 1301143, Unknown Event Flag ID: 11300016, Unknown Event Flag ID: 11300017)
       7 ? Register Ladder (Entity ID: 1301144, Unknown Event Flag ID: 11300018, Unknown Event Flag ID: 11300019)
       8 ? Register Ladder (Entity ID: 1301145, Unknown Event Flag ID: 11300020, Unknown Event Flag ID: 11300021)
@@ -16,72 +16,72 @@ Parameters: {} ()
      10 ? Register Ladder (Entity ID: 1301147, Unknown Event Flag ID: 11300024, Unknown Event Flag ID: 11300025)
      11 ? Register Ladder (Entity ID: 1301148, Unknown Event Flag ID: 11300026, Unknown Event Flag ID: 11300027)
      12 ? Register Ladder (Entity ID: 1301149, Unknown Event Flag ID: 11300028, Unknown Event Flag ID: 11300029)
-		# Hosts only: disable the fog wall to Firelink Shrine.
+        # Hosts only: disable the fog wall to Firelink Shrine.
      13 SKIP 3 lines IF muliplayer status is Client
      14 SET Event Flag ID 11300000 to OFF
      15 DISABLE Object with Entity ID: 1301994
      16 Delete Map SFX (Entity ID: 1301995, Deletes only root: FALSE)
-		# Checkpoint fog wall (can't remember where this is).
+        # Checkpoint fog wall (can't remember where this is).
      17 Initialize Event (Event ID: 11300090, Slot Number: 0, Arguments: {1301700, 1301701, 1302650, 1302651})
-		# Gravelord.
+        # Gravelord.
      18 Initialize Event (Event ID: 11305065, Slot Number: 0, Arguments: {0})
      19 Initialize Event (Event ID: 11305066, Slot Number: 0, Arguments: {0})
      20 Initialize Event (Event ID: 11305067, Slot Number: 0, Arguments: {0})
-		# BIG: initializes all skeleton assembly (11305070), skeleton immortality (11305100), and Wisp disabling (11305210) in sub-events.
-		# Note that these sub-events all have event type 2, which seems to imply something even stronger than bonfire resting,
-		# but definitely includes at least that.
+        # BIG: initializes all skeleton assembly (11305070), skeleton immortality (11305100), and Wisp disabling (11305210) in sub-events.
+        # Note that these sub-events all have event type 2, which seems to imply something even stronger than bonfire resting,
+        # but definitely includes at least that.
      21 Initialize Event (Event ID: 11300800, Slot Number: 0, Arguments: {0})
-		# Create the spikes on the two rotating bridges.
+        # Create the spikes on the two rotating bridges.
      22 Initialize Event (Event ID: 11300300, Slot Number: 0, Arguments: {0})
      23 Initialize Event (Event ID: 11300350, Slot Number: 0, Arguments: {0})
-		# Gates opened by levers.
+        # Gates opened by levers.
      24 Initialize Event (Event ID: 11300900, Slot Number: 0, Arguments: {11300900, 1301000, 1301100, 1304000})
      25 Initialize Event (Event ID: 11300900, Slot Number: 1, Arguments: {11300901, 1301001, 1301101, 1304001})
-		# Bridge lever operation (two modes) and actual bridge rotation.
+        # Bridge lever operation (two modes) and actual bridge rotation.
      26 Initialize Event (Event ID: 11305032, Slot Number: 0, Arguments: {11300902, 11300903, 11305035, 11305036})
      27 Initialize Event (Event ID: 11305030, Slot Number: 0, Arguments: {11300402, 11305035, 11305036, 1301002, 1301102, 1304002})
      28 Initialize Event (Event ID: 11305032, Slot Number: 1, Arguments: {11300904, 11300905, 11305037, 11305038})
      29 Initialize Event (Event ID: 11305030, Slot Number: 1, Arguments: {11300403, 11305037, 11305038, 1301003, 1301103, 1304003})
-		# Coffin warp to Gravelord Nito (requires Eye of Death).
+        # Coffin warp to Gravelord Nito (requires Eye of Death).
      30 Initialize Event (Event ID: 11305000, Slot Number: 0, Arguments: {0})
-		# Flags that the player is in the coffin.
+        # Flags that the player is in the coffin.
      31 Initialize Event (Event ID: 11305001, Slot Number: 0, Arguments: {0})
-		# Flags that no one is in the coffin.
+        # Flags that no one is in the coffin.
      32 Initialize Event (Event ID: 11305002, Slot Number: 0, Arguments: {0})
-		# "Coffin is turned to empty." Not sure what all these do.
+        # "Coffin is turned to empty." Not sure what all these do.
      33 Initialize Event (Event ID: 11305003, Slot Number: 0, Arguments: {0})
-		# Makes the Titanite Demon  back off if you're in the coffin.
+        # Makes the Titanite Demon  back off if you're in the coffin.
      34 Initialize Event (Event ID: 11305004, Slot Number: 0, Arguments: {0})
-		# Delay before you can get in the coffin again.
+        # Delay before you can get in the coffin again.
      35 Initialize Event (Event ID: 11305009, Slot Number: 0, Arguments: {0})
-		# Animation for players getting in the coffin. It seems that other players
-		# can get in, though it won't do anything.
+        # Animation for players getting in the coffin. It seems that other players
+        # can get in, though it won't do anything.
      36 Initialize Event (Event ID: 11300420, Slot Number: 0, Arguments: {10000})
      37 Initialize Event (Event ID: 11300420, Slot Number: 1, Arguments: {10001})
      38 Initialize Event (Event ID: 11300420, Slot Number: 2, Arguments: {10002})
      39 Initialize Event (Event ID: 11300420, Slot Number: 3, Arguments: {10003})
      40 Initialize Event (Event ID: 11300420, Slot Number: 4, Arguments: {10004})
      41 Initialize Event (Event ID: 11300420, Slot Number: 5, Arguments: {10005})
-		# Vamos cutscene(s).
+        # Vamos cutscene(s).
      42 Initialize Event (Event ID: 11300210, Slot Number: 0, Arguments: {0})
-		# Some kind of Vamos cutscene flag sync.
+        # Some kind of Vamos cutscene flag sync.
      43 Initialize Event (Event ID: 11305060, Slot Number: 0, Arguments: {0})
-		# Block slides away to reveal ladder when Pinwheel dies.
+        # Block slides away to reveal ladder when Pinwheel dies.
      44 Initialize Event (Event ID: 11300200, Slot Number: 0, Arguments: {0})
-		# Titanite Demon aggro.
+        # Titanite Demon aggro.
      45 Initialize Event (Event ID: 11305045, Slot Number: 0, Arguments: {0})
-		# Scaffolding collapses.
+        # Scaffolding collapses.
      46 Initialize Event (Event ID: 11300100, Slot Number: 0, Arguments: {11300100, 1302100, 1301010, 303000000})
      47 Initialize Event (Event ID: 11300100, Slot Number: 1, Arguments: {11300101, 1302101, 1301011, 303100000})
      48 Initialize Event (Event ID: 11300100, Slot Number: 2, Arguments: {11300102, 1302102, 1301012, 303200000})
      49 Initialize Event (Event ID: 11300100, Slot Number: 3, Arguments: {11300103, 1302103, 1301013, 303300000})
      50 Initialize Event (Event ID: 11300100, Slot Number: 4, Arguments: {11300104, 1302104, 1301014, 303400000})
      51 Initialize Event (Event ID: 11300100, Slot Number: 5, Arguments: {11300105, 1302105, 1301015, 303500000})
-		# Ceiling breaks, and it seems an enemy appears?
+        # Ceiling breaks, and it seems an enemy appears?
      52 Initialize Event (Event ID: 11300150, Slot Number: 0, Arguments: {0})
-		# Illusory wall (second bonfire).
+        # Illusory wall (second bonfire).
      53 Initialize Event (Event ID: 11300160, Slot Number: 0, Arguments: {0})
-		# Statue spike traps. Didn't realize there were so many of these.
+        # Statue spike traps. Didn't realize there were so many of these.
      54 Initialize Event (Event ID: 11300700, Slot Number: 0, Arguments: {1301200, 11300750})
      55 Initialize Event (Event ID: 11300700, Slot Number: 1, Arguments: {1301201, 11300751})
      56 Initialize Event (Event ID: 11300700, Slot Number: 2, Arguments: {1301202, 11300752})
@@ -101,46 +101,46 @@ Parameters: {} ()
      70 Initialize Event (Event ID: 11300700, Slot Number: 17, Arguments: {1301217, 11300767})
      71 Initialize Event (Event ID: 11300700, Slot Number: 18, Arguments: {1301218, 11300768})
      72 Initialize Event (Event ID: 11300700, Slot Number: 19, Arguments: {1301219, 11300769})
-		
-		# Makes all of Pinwheel's clones immortal.
+
+        # Makes all of Pinwheel's clones immortal.
      73 Initialize Event (Event ID: 11300880, Slot Number: 0, Arguments: {0})
      74 DISABLE Map Sound (Entity ID: 1303800)
-		# Disable Pinwheel if dead.
+        # Disable Pinwheel if dead.
      75 SKIP 4 lines IF Event Flag ID: 00000006 is OFF
      76 DISABLE Object with Entity ID: 1301990
      77 Delete Map SFX (Entity ID: 1301991, Deletes only root: FALSE)
      78 Initialize Event (Event ID: 11305392, Slot Number: 0, Arguments: {0})
      79 SKIP 32 lines
-		# Host enters fog.
+        # Host enters fog.
      80 Initialize Event (Event ID: 11305390, Slot Number: 0, Arguments: {0})
-		# Summon enters fog.
+        # Summon enters fog.
      81 Initialize Event (Event ID: 11305391, Slot Number: 0, Arguments: {0})
-		# Boss room entry notification.
+        # Boss room entry notification.
      82 Initialize Event (Event ID: 11305393, Slot Number: 0, Arguments: {0})
-		# Cutscene and AI.
+        # Cutscene and AI.
      83 Initialize Event (Event ID: 11305392, Slot Number: 0, Arguments: {0})
-		# Pinwheel's death. Calls 11300880 again to kill all clones.
+        # Pinwheel's death. Calls 11300880 again to kill all clones.
      84 Initialize Event (Event ID: 11300001, Slot Number: 0, Arguments: {0})
-		# Pinwheel music on.
+        # Pinwheel music on.
      85 Initialize Event (Event ID: 11305394, Slot Number: 0, Arguments: {0})
-		# Pinwheel music off.
+        # Pinwheel music off.
      86 Initialize Event (Event ID: 11305395, Slot Number: 0, Arguments: {0})
-		# "Boss warp sync." No idea what this actually does, but basically, flags
-		# 11305320-11305326 cause themselves to be enables when 11305329 is on,
-		# which is then turned off.
+        # "Boss warp sync." No idea what this actually does, but basically, flags
+        # 11305320-11305326 cause themselves to be enables when 11305329 is on,
+        # which is then turned off.
      87 Initialize Event (Event ID: 11300882, Slot Number: 0, Arguments: {0})
-		# Warp. Pinwheel warps to one of seven random locations (above flags)
-		# when they have event message 600.
+        # Warp. Pinwheel warps to one of seven random locations (above flags)
+        # when they have event message 600.
      88 Initialize Event (Event ID: 11305396, Slot Number: 0, Arguments: {0})
-		# Pinwheel clone flag-setting. 
+        # Pinwheel clone flag-setting.
      89 Initialize Event (Event ID: 11305397, Slot Number: 0, Arguments: {0})
-		# Triggers Pinwheel's last phase at 30% health: he summons eight (I think)
-		# of his clones at once. He *may* also do this attack rarely at higher
-		# health, reports are conflicted.
+        # Triggers Pinwheel's last phase at 30% health: he summons eight (I think)
+        # of his clones at once. He *may* also do this attack rarely at higher
+        # health, reports are conflicted.
      90 Initialize Event (Event ID: 11305398, Slot Number: 0, Arguments: {0})
-		# AI event request for clones.
+        # AI event request for clones.
      91 Initialize Event (Event ID: 11305250, Slot Number: 0, Arguments: {0})
-		# Clone appearance.
+        # Clone appearance.
      92 Initialize Event (Event ID: 11305350, Slot Number: 0, Arguments: {11305251, 11305252, 1300801, 1300802, 1302600, 1302612, 11305300})
      93 Initialize Event (Event ID: 11305350, Slot Number: 1, Arguments: {11305253, 11305254, 1300803, 1300804, 1302601, 1302611, 11305301})
      94 Initialize Event (Event ID: 11305350, Slot Number: 2, Arguments: {11305255, 11305256, 1300805, 1300806, 1302602, 1302610, 11305302})
@@ -148,7 +148,7 @@ Parameters: {} ()
      96 Initialize Event (Event ID: 11305350, Slot Number: 4, Arguments: {11305259, 11305260, 1300809, 1300810, 1302604, 1302608, 11305304})
      97 Initialize Event (Event ID: 11305350, Slot Number: 5, Arguments: {11305261, 11305262, 1300811, 1300812, 1302605, 1302607, 11305305})
      98 Initialize Event (Event ID: 11305350, Slot Number: 6, Arguments: {11305263, 11305264, 1300813, 1300814, 1302606, 1302606, 11305306})
-		# Clone disappearance.
+        # Clone disappearance.
      99 Initialize Event (Event ID: 11305370, Slot Number: 0, Arguments: {1300801, 11305251})
     100 Initialize Event (Event ID: 11305370, Slot Number: 1, Arguments: {1300802, 11305252})
     101 Initialize Event (Event ID: 11305370, Slot Number: 2, Arguments: {1300803, 11305253})
@@ -163,33 +163,33 @@ Parameters: {} ()
     110 Initialize Event (Event ID: 11305370, Slot Number: 11, Arguments: {1300812, 11305262})
     111 Initialize Event (Event ID: 11305370, Slot Number: 12, Arguments: {1300813, 11305263})
     112 Initialize Event (Event ID: 11305370, Slot Number: 13, Arguments: {1300814, 11305264})
-		
-		# Non-respawning enemies.
-		# Necromancers I assume.
+
+        # Non-respawning enemies.
+        # Necromancers I assume.
     113 Initialize Event (Event ID: 11300850, Slot Number: 0, Arguments: {1300100, 0})
     114 Initialize Event (Event ID: 11300850, Slot Number: 1, Arguments: {1300120, 0})
     115 Initialize Event (Event ID: 11300850, Slot Number: 2, Arguments: {1300140, 0})
     116 Initialize Event (Event ID: 11300850, Slot Number: 3, Arguments: {1300160, 0})
     117 Initialize Event (Event ID: 11300850, Slot Number: 4, Arguments: {1300180, 0})
     118 Initialize Event (Event ID: 11300850, Slot Number: 5, Arguments: {1300200, 0})
-		# Crystal lizards.
+        # Crystal lizards.
     119 Initialize Event (Event ID: 11300850, Slot Number: 6, Arguments: {1300500, 33003000})
     120 Initialize Event (Event ID: 11300850, Slot Number: 7, Arguments: {1300501, 33003000})
-		# Titanite Demon.
+        # Titanite Demon.
     121 Initialize Event (Event ID: 11300850, Slot Number: 8, Arguments: {1300300, 0})
-		# Black Knight.
+        # Black Knight.
     122 Initialize Event (Event ID: 11300850, Slot Number: 9, Arguments: {1300400, 27902000})
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Paladin Leeroy.
+        # Paladin Leeroy.
       0 Humanity Registration for Entity ID: 6550 ("First Event Flag ID to retain humanity ID": 8948)
       1 Initialize Event (Event ID: 11305025, Slot Number: 0, Arguments: {0})
       2 Initialize Event (Event ID: 11305027, Slot Number: 0, Arguments: {0})
       3 Initialize Event (Event ID: 11300510, Slot Number: 0, Arguments: {6200, 1341})
       4 Initialize Event (Event ID: 11300520, Slot Number: 0, Arguments: {6200, 1340, 1343, 1342})
       5 Initialize Event (Event ID: 11305061, Slot Number: 0, Arguments: {6200})
-		# Patches.
+        # Patches.
       6 Humanity Registration for Entity ID: 6320 ("First Event Flag ID to retain humanity ID": 8478)
       7 SKIP 2 lines IF Event Flag ID: 00001627 is ON
       8 SKIP 1 lines IF Event Flag ID: 00001620 to 00001621 are not all OFF
