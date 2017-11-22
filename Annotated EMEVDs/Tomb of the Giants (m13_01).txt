@@ -1,12 +1,12 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Register Nito's bonfire (Altar of the Gravelord) if he is dead.
+        # Register Nito's bonfire (Altar of the Gravelord) if he is dead.
       0 SKIP 1 lines IF Event Flag ID: 00000007 is OFF
       1 Register Bonfire (Event Flag ID: 11310920, Entity ID: 1311950, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Other two bonfires.
+        # Other two bonfires.
       2 Register Bonfire (Event Flag ID: 11310992, Entity ID: 1311960, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       3 Register Bonfire (Event Flag ID: 11310984, Entity ID: 1311961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Many ladders.
+        # Many ladders.
       4 ? Register Ladder (Entity ID: 1311140, Unknown Event Flag ID: 11310010, Unknown Event Flag ID: 11310011)
       5 ? Register Ladder (Entity ID: 1311141, Unknown Event Flag ID: 11310012, Unknown Event Flag ID: 11310013)
       6 ? Register Ladder (Entity ID: 1311142, Unknown Event Flag ID: 11310014, Unknown Event Flag ID: 11310015)
@@ -16,64 +16,64 @@ Parameters: {} ()
      10 ? Register Ladder (Entity ID: 1311146, Unknown Event Flag ID: 11310022, Unknown Event Flag ID: 11310023)
      11 ? Register Ladder (Entity ID: 1311147, Unknown Event Flag ID: 11310024, Unknown Event Flag ID: 11310025)
      12 ? Register Ladder (Entity ID: 1311148, Unknown Event Flag ID: 11310026, Unknown Event Flag ID: 11310027)
-		# Not sure what 401 does (maybe make Nito's covenant unavailable?) but the second sets the default
-		# that Nito's awakening cutscene has not happened yet.
+        # Not sure what 401 does (maybe make Nito's covenant unavailable?) but the second sets the default
+        # that Nito's awakening cutscene has not happened yet.
      13 SKIP 2 lines IF muliplayer status is Client
      14 SET Event Flag ID 401 to ON
      15 SET Event Flag ID 11310000 to OFF
-		# Summon fog wall blocking the Catacombs..
+        # Summon fog wall blocking the Catacombs..
      16 CONDITION: IF player Multiplayer State is Client --> Register AND(01)
      17 CONDITION: IF it is TRUE that player is in Map<13><1> --> Register AND(01)
      18 SKIP 2 lines IF register AND(01) is TRUE
      19 DISABLE Object with Entity ID: 1311994
      20 Delete Map SFX (Entity ID: 1311995, Deletes only root: FALSE)
-		# Enable Leeroy's corpse in Nito's room if Leeroy invasion is over.
+        # Enable Leeroy's corpse in Nito's room if Leeroy invasion is over.
      21 SKIP 2 lines IF Event Flag ID: 11310810 is ON
      22 DISABLE Treasure of Entity ID: 1311600
      23 DISABLE Object with Entity ID: 1311600
      24 SKIP 1 lines IF Event Flag ID: 11310810 is OFF
      25 ENABLE Treasure of Entity ID: 1311600
-		# Fog wall checkpoint near Black Knight.
+        # Fog wall checkpoint near Black Knight.
      26 Initialize Event (Event ID: 11310090, Slot Number: 0, Arguments: {1311700, 1311701, 1312600, 1312601})
-		# Gravelording.
+        # Gravelording.
      27 Initialize Event (Event ID: 11315040, Slot Number: 0, Arguments: {0})
      28 Initialize Event (Event ID: 11315041, Slot Number: 0, Arguments: {0})
      29 Initialize Event (Event ID: 11315042, Slot Number: 0, Arguments: {0})
-		# Golden light wall.
+        # Golden light wall.
      30 Initialize Event (Event ID: 11310095, Slot Number: 0, Arguments: {0})
-		# Skull Lantern resonance. Three-second blue light timer resets constantly
-		# as you have the Lantern out.
+        # Skull Lantern resonance. Three-second blue light timer resets constantly
+        # as you have the Lantern out.
      31 Initialize Event (Event ID: 11315100, Slot Number: 0, Arguments: {0})
-		# Covenant visit stuff via the coffin from the Catacombs.
+        # Covenant visit stuff via the coffin from the Catacombs.
      32 Initialize Event (Event ID: 11310051, Slot Number: 0, Arguments: {0})
      33 Initialize Event (Event ID: 11310052, Slot Number: 0, Arguments: {0})
      34 Initialize Event (Event ID: 11310053, Slot Number: 0, Arguments: {0})
      35 Initialize Event (Event ID: 11310054, Slot Number: 0, Arguments: {0})
-		# Illusory wall. Can't remember where this is. Somewhere near the Patches pit.
+        # Illusory wall. Can't remember where this is. Somewhere near the Patches pit.
      36 Initialize Event (Event ID: 11310100, Slot Number: 0, Arguments: {0})
-		# "Skeleton combination." Some kind of skeleton ambush. Maybe the crypt up top
-		# or the totem that traps you near the end.
+        # "Skeleton combination." Some kind of skeleton ambush. Maybe the crypt up top
+        # or the totem that traps you near the end.
      37 Initialize Event (Event ID: 11315080, Slot Number: 0, Arguments: {0})
-		# Spawns first Totem based on distance <= 5 to second after waiting 0 seconds.
+        # Spawns first Totem based on distance <= 5 to second after waiting 0 seconds.
      38 Initialize Event (Event ID: 11315050, Slot Number: 0, Arguments: {1310200, 1310200, 0})
      39 Initialize Event (Event ID: 11315050, Slot Number: 1, Arguments: {1310201, 1310202, 0})
      40 Initialize Event (Event ID: 11315050, Slot Number: 2, Arguments: {1310202, 1310202, 0})
-		# Spawns totem based on event flag after waiting some seconds (picking up White Titanite Chunk).
+        # Spawns totem based on event flag after waiting some seconds (picking up White Titanite Chunk).
      41 Initialize Event (Event ID: 11315060, Slot Number: 0, Arguments: {1310203, 51310100, 0})
      42 Initialize Event (Event ID: 11315060, Slot Number: 1, Arguments: {1310204, 51310100, 1045220557})
      43 Initialize Event (Event ID: 11315060, Slot Number: 2, Arguments: {1310205, 51310100, 1063675494})
      44 Initialize Event (Event ID: 11315060, Slot Number: 3, Arguments: {1310206, 51310100, 1065353216})
-		# Spawns five totems when player enters a particular area. 
+        # Spawns five totems when player enters a particular area.
      45 Initialize Event (Event ID: 11315070, Slot Number: 0, Arguments: {1310207, 1312251, 0})
      46 Initialize Event (Event ID: 11315070, Slot Number: 1, Arguments: {1310208, 1312251, 1045220557})
      47 Initialize Event (Event ID: 11315070, Slot Number: 2, Arguments: {1310209, 1312251, 1053609165})
      48 Initialize Event (Event ID: 11315070, Slot Number: 3, Arguments: {1310210, 1312251, 1058642330})
      49 Initialize Event (Event ID: 11315070, Slot Number: 4, Arguments: {1310211, 1312251, 1061997773})
-		# Non-respawning enemies (Black Knight, crystal lizard.
+        # Non-respawning enemies (Black Knight, crystal lizard.
      50 Initialize Event (Event ID: 11310820, Slot Number: 0, Arguments: {1310300, 27903000})
      51 Initialize Event (Event ID: 11310820, Slot Number: 1, Arguments: {1310400, 33005000})
-		
-		# Nito stuff.
+
+        # Nito stuff.
      52 DISABLE Map Sound (Entity ID: 1313800)
      53 SKIP 4 lines IF Event Flag ID: 00000007 is OFF
      54 Initialize Event (Event ID: 11315392, Slot Number: 0, Arguments: {0})
@@ -83,21 +83,21 @@ Parameters: {} ()
      58 Initialize Event (Event ID: 11315390, Slot Number: 0, Arguments: {0})
      59 Initialize Event (Event ID: 11315391, Slot Number: 0, Arguments: {0})
      60 Initialize Event (Event ID: 11315393, Slot Number: 0, Arguments: {0})
-		# Also initializes the skeletons in the arena.
+        # Also initializes the skeletons in the arena.
      61 Initialize Event (Event ID: 11315392, Slot Number: 0, Arguments: {0})
-		# Death. Registers bonfire as well.
+        # Death. Registers bonfire as well.
      62 Initialize Event (Event ID: 11310001, Slot Number: 0, Arguments: {0})
-		# Music on/off.
+        # Music on/off.
      63 Initialize Event (Event ID: 11315394, Slot Number: 0, Arguments: {0})
      64 Initialize Event (Event ID: 11315395, Slot Number: 0, Arguments: {0})
-		# Kills all the parts of Nito when he dies, and only rewards souls for them
-		# if you haven't already destroyed them. Haven't actually noticed these bits
-		# myself. They're only initialized by 11315397, which is never even called,
-		# so I think this is cut content.
+        # Kills all the parts of Nito when he dies, and only rewards souls for them
+        # if you haven't already destroyed them. Haven't actually noticed these bits
+        # myself. They're only initialized by 11315397, which is never even called,
+        # so I think this is cut content.
      65 Initialize Event (Event ID: 11315396, Slot Number: 0, Arguments: {0})
-		# Gravelord sword attack.
+        # Gravelord sword attack.
      66 Initialize Event (Event ID: 11315398, Slot Number: 0, Arguments: {0})
-		# Skeletons in Nito's arena.
+        # Skeletons in Nito's arena.
      67 Initialize Event (Event ID: 11315350, Slot Number: 0, Arguments: {1310120})
      68 Initialize Event (Event ID: 11315350, Slot Number: 1, Arguments: {1310121})
      69 Initialize Event (Event ID: 11315350, Slot Number: 2, Arguments: {1310122})
@@ -107,11 +107,11 @@ Parameters: {} ()
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Paladin Leeroy invasion.
+        # Paladin Leeroy invasion.
       0 Humanity Registration for Entity ID: 6551 ("First Event Flag ID to retain humanity ID": 8948)
       1 Initialize Event (Event ID: 11315030, Slot Number: 0, Arguments: {0})
       2 Initialize Event (Event ID: 11310810, Slot Number: 0, Arguments: {0})
-		# Rhea of Thorolund.
+        # Rhea of Thorolund.
       3 Humanity Registration for Entity ID: 6071 ("First Event Flag ID to retain humanity ID": 8358)
       4 SKIP 2 lines IF Event Flag ID: 00001174 is ON
       5 SKIP 1 lines IF Event Flag ID: 00001173 is ON
@@ -123,17 +123,17 @@ Parameters: {} ()
      11 Initialize Event (Event ID: 11310530, Slot Number: 0, Arguments: {0})
      12 Initialize Event (Event ID: 11310531, Slot Number: 0, Arguments: {6071, 1170, 1181, 1174})
      13 Initialize Event (Event ID: 11310532, Slot Number: 0, Arguments: {6071, 1170, 1181, 1175})
-		# Hollow Vince.
+        # Hollow Vince.
      14 SKIP 1 lines IF Event Flag ID: 00001216 is ON
      15 DISABLE Entity ID: 6091
      16 Switch Entity ID: 6091 to team Hostile Ally
      17 Initialize Event (Event ID: 11310520, Slot Number: 1, Arguments: {6091, 1210, 1219, 1214})
      18 SKIP 1 lines IF Event Flag ID: 00001226 is ON
-		# Hollow Nico.
+        # Hollow Nico.
      19 DISABLE Entity ID: 6101
      20 Switch Entity ID: 6101 to team Hostile Ally
      21 Initialize Event (Event ID: 11310520, Slot Number: 2, Arguments: {6101, 1220, 1229, 1224})
-		# Trusty Patches.
+        # Trusty Patches.
      22 Humanity Registration for Entity ID: 6321 ("First Event Flag ID to retain humanity ID": 8478)
      23 SKIP 1 lines IF Event Flag ID: 00001623 to 00001625 are not all OFF
      24 DISABLE Entity ID: 6321
@@ -142,7 +142,7 @@ Parameters: {} ()
      27 Initialize Event (Event ID: 11310542, Slot Number: 0, Arguments: {6321, 1628})
      28 Initialize Event (Event ID: 11310540, Slot Number: 0, Arguments: {6321, 1620, 1631, 1623})
      29 Initialize Event (Event ID: 11310541, Slot Number: 0, Arguments: {6321, 1620, 1631, 1624})
-		# Patches kicking cutscene.
+        # Patches kicking cutscene.
      30 Initialize Event (Event ID: 11310002, Slot Number: 0, Arguments: {0})
 
 Event ID: 11310090, Int: 0

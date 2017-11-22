@@ -1,17 +1,17 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Bed of Chaos bonfire.
+        # Bed of Chaos bonfire.
       0 SKIP 1 lines IF Event Flag ID: 00000010 is OFF
       1 Register Bonfire (Event Flag ID: 11410920, Entity ID: 1411950, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       2 Register Bonfire (Event Flag ID: 11410992, Entity ID: 1411960, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       3 Register Bonfire (Event Flag ID: 11410984, Entity ID: 1411961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       4 SKIP 1 lines IF Event Flag ID: 11410900 is OFF
-		# Bonfire under the rockworm doesn't appear until Ceaseless Discharge is dead,
-		# so players who skipped the lava won't get trapped down there.
+        # Bonfire under the rockworm doesn't appear until Ceaseless Discharge is dead,
+        # so players who skipped the lava won't get trapped down there.
       5 Register Bonfire (Event Flag ID: 11410976, Entity ID: 1411962, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       6 Register Bonfire (Event Flag ID: 11410968, Entity ID: 1411963, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
       7 Register Bonfire (Event Flag ID: 11410960, Entity ID: 1411964, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Summon fog walls all over the shop.
+        # Summon fog walls all over the shop.
       8 SKIP 14 lines IF muliplayer status is Client
       9 DISABLE Object with Entity ID: 1411994
      10 Delete Map SFX (Entity ID: 1411995, Deletes only root: FALSE)
@@ -27,7 +27,7 @@ Parameters: {} ()
      20 Delete Map SFX (Entity ID: 1411985, Deletes only root: FALSE)
      21 DISABLE Object with Entity ID: 1411982
      22 Delete Map SFX (Entity ID: 1411983, Deletes only root: FALSE)
-		# Fog walls, I think. Up here instead of in their own slotted event.
+        # Fog walls, I think. Up here instead of in their own slotted event.
      23 SKIP 3 lines IF Event Flag ID: 11410291 is OFF
      24 DISABLE Object with Entity ID: 1411121
      25 Delete Map SFX (Entity ID: 1413400, Deletes only root: TRUE)
@@ -36,33 +36,33 @@ Parameters: {} ()
      28 DISABLE Object with Entity ID: 1411122
      29 Delete Map SFX (Entity ID: 1413401, Deletes only root: TRUE)
      30 Delete Map SFX (Entity ID: 1413411, Deletes only root: TRUE)
-		# Golden light wall.
+        # Golden light wall.
      31 Initialize Event (Event ID: 11410095, Slot Number: 0, Arguments: {0})
-		# Gravelording.
+        # Gravelording.
      32 Initialize Event (Event ID: 11415090, Slot Number: 0, Arguments: {0})
      33 Initialize Event (Event ID: 11415091, Slot Number: 0, Arguments: {0})
      34 Initialize Event (Event ID: 11415092, Slot Number: 0, Arguments: {0})
-		# Lava drains after killing Ceaseless Discharge. Note that this is a rare case
-		# where the event checks its own flag, which is pre-enabled by Ceaseless's death.
+        # Lava drains after killing Ceaseless Discharge. Note that this is a rare case
+        # where the event checks its own flag, which is pre-enabled by Ceaseless's death.
      35 Initialize Event (Event ID: 11410800, Slot Number: 0, Arguments: {0})
-		# Elevator from Lost Izalith to the Fair Lady.
+        # Elevator from Lost Izalith to the Fair Lady.
      36 Initialize Event (Event ID: 11410400, Slot Number: 0, Arguments: {0})
-		# Open the Lost Izalith Chaos Servant shortcut.
+        # Open the Lost Izalith Chaos Servant shortcut.
      37 Initialize Event (Event ID: 11410340, Slot Number: 0, Arguments: {0})
-		# Shortcut won't open.
+        # Shortcut won't open.
      38 Initialize Event (Event ID: 11410341, Slot Number: 0, Arguments: {0})
-		# "Broken big floor." Something breaks and an item appears. Can't remember where
-		# this is.
+        # "Broken big floor." Something breaks and an item appears. Can't remember where
+        # this is.
      39 Initialize Event (Event ID: 11410350, Slot Number: 0, Arguments: {0})
-		# Illusory wall near hidden bonfire in Lost Izalith wastes.
+        # Illusory wall near hidden bonfire in Lost Izalith wastes.
      40 Initialize Event (Event ID: 11410360, Slot Number: 0, Arguments: {0})
-		# Makes the player invincible during the slide into the Bed of Chaos fight.
+        # Makes the player invincible during the slide into the Bed of Chaos fight.
      41 Initialize Event (Event ID: 11415399, Slot Number: 0, Arguments: {0})
-		# "Izalith death assist." Activates a killplane.
+        # "Izalith death assist." Activates a killplane.
      42 Initialize Event (Event ID: 11410260, Slot Number: 0, Arguments: {0})
-		# Bed of Chaos center floor destruction (when both orbs destroyed).
+        # Bed of Chaos center floor destruction (when both orbs destroyed).
      43 Initialize Event (Event ID: 11410200, Slot Number: 0, Arguments: {0})
-		# Bed of Chaos surrounding floor destruction (when either orb destroyed).
+        # Bed of Chaos surrounding floor destruction (when either orb destroyed).
      44 Initialize Event (Event ID: 11410201, Slot Number: 0, Arguments: {1411210, 462000000})
      45 Initialize Event (Event ID: 11410201, Slot Number: 1, Arguments: {1411211, 462100000})
      46 Initialize Event (Event ID: 11410201, Slot Number: 2, Arguments: {1411212, 462200000})
@@ -76,46 +76,46 @@ Parameters: {} ()
      54 Initialize Event (Event ID: 11410201, Slot Number: 10, Arguments: {1411220, 463000000})
      55 Initialize Event (Event ID: 11410201, Slot Number: 11, Arguments: {1411221, 463100000})
      56 Initialize Event (Event ID: 11410201, Slot Number: 12, Arguments: {1411222, 463200000})
-		# Roots in the tunnel to the Bed of Chaos bug are invulnerable until both orbs are
-		# destroyed.
+        # Roots in the tunnel to the Bed of Chaos bug are invulnerable until both orbs are
+        # destroyed.
      57 Initialize Event (Event ID: 11410250, Slot Number: 0, Arguments: {0})
-		
-		# Ceaseless Discharge.
+
+        # Ceaseless Discharge.
      58 DISABLE Map Sound (Entity ID: 1413801)
      59 SKIP 4 lines IF Event Flag ID: 11410900 is OFF
      60 Initialize Event (Event ID: 11415372, Slot Number: 0, Arguments: {0})
      61 DISABLE Object with Entity ID: 1411790
      62 Delete Map SFX (Entity ID: 1411791, Deletes only root: FALSE)
      63 SKIP 10 lines
-		# Player enters fog.
+        # Player enters fog.
      64 Initialize Event (Event ID: 11415370, Slot Number: 0, Arguments: {0})
-		# Summon enters fog.
+        # Summon enters fog.
      65 Initialize Event (Event ID: 11415371, Slot Number: 0, Arguments: {0})
-		# Boss entry notification.
+        # Boss entry notification.
      66 Initialize Event (Event ID: 11415373, Slot Number: 0, Arguments: {0})
-		# Enables behavior (includes Gold-Hemmed Set trigger).
+        # Enables behavior (includes Gold-Hemmed Set trigger).
      67 Initialize Event (Event ID: 11415372, Slot Number: 0, Arguments: {0})
-		# Music on/off combined into one event.
+        # Music on/off combined into one event.
      68 Initialize Event (Event ID: 11415374, Slot Number: 0, Arguments: {0})
-		# Ceaseless clings to the cliff near the entrance.
+        # Ceaseless clings to the cliff near the entrance.
      69 Initialize Event (Event ID: 11415376, Slot Number: 0, Arguments: {0})
-		# Ceaseless pulls out its middle arm.
+        # Ceaseless pulls out its middle arm.
      70 Initialize Event (Event ID: 11415377, Slot Number: 0, Arguments: {0})
-		# Ceaseless comes to the fog wall if you've already taken the Gold-Hemmed Set
-		# and re-enter the arena.
+        # Ceaseless comes to the fog wall if you've already taken the Gold-Hemmed Set
+        # and re-enter the arena.
      71 Initialize Event (Event ID: 11415378, Slot Number: 0, Arguments: {0})
-		# Instant death of clinging Ceaseless.
+        # Instant death of clinging Ceaseless.
      72 Initialize Event (Event ID: 11415379, Slot Number: 0, Arguments: {0})
-		# Ceaseless death. Triggers lava drain and next bonfire appearance.
+        # Ceaseless death. Triggers lava drain and next bonfire appearance.
      73 Initialize Event (Event ID: 11410900, Slot Number: 0, Arguments: {0})
-		# Counts five hits taken while clinging to the cliff.
+        # Counts five hits taken while clinging to the cliff.
      74 Initialize Event (Event ID: 11415310, Slot Number: 0, Arguments: {11415376})
      75 Initialize Event (Event ID: 11415310, Slot Number: 1, Arguments: {11415310})
      76 Initialize Event (Event ID: 11415310, Slot Number: 2, Arguments: {11415311})
      77 Initialize Event (Event ID: 11415310, Slot Number: 3, Arguments: {11415312})
      78 Initialize Event (Event ID: 11415310, Slot Number: 4, Arguments: {11415313})
-	 
-		# Firesage Demon.
+
+        # Firesage Demon.
      79 DISABLE Map Sound (Entity ID: 1413803)
      80 SKIP 6 lines IF Event Flag ID: 11410410 is OFF
      81 Initialize Event (Event ID: 11415342, Slot Number: 0, Arguments: {0})
@@ -129,15 +129,15 @@ Parameters: {} ()
      89 Initialize Event (Event ID: 11415343, Slot Number: 0, Arguments: {0})
      90 Initialize Event (Event ID: 11415342, Slot Number: 0, Arguments: {0})
      91 Initialize Event (Event ID: 11415344, Slot Number: 0, Arguments: {0})
-		# Firesage Demon death script.
+        # Firesage Demon death script.
      92 Initialize Event (Event ID: 11410410, Slot Number: 0, Arguments: {0})
-		# Very interesting: removes the Fair Lady, Eingyi, and Eingyi's maggots
-		# from the back-read during the Firesage Demon fight. Name suggests that
-		# this is for memory reasons, as they're immediately above. It could also
-		# be to ensure that the Demon's AoE blasts don't hurt them.
+        # Very interesting: removes the Fair Lady, Eingyi, and Eingyi's maggots
+        # from the back-read during the Firesage Demon fight. Name suggests that
+        # this is for memory reasons, as they're immediately above. It could also
+        # be to ensure that the Demon's AoE blasts don't hurt them.
      93 Initialize Event (Event ID: 11415345, Slot Number: 0, Arguments: {0})
-	 
-		# Centipede Demon.
+
+        # Centipede Demon.
      94 DISABLE Map Sound (Entity ID: 1413802)
      95 SKIP 6 lines IF Event Flag ID: 11410901 is OFF
      96 Initialize Event (Event ID: 11415382, Slot Number: 0, Arguments: {0})
@@ -149,14 +149,14 @@ Parameters: {} ()
     102 Initialize Event (Event ID: 11415380, Slot Number: 0, Arguments: {0})
     103 Initialize Event (Event ID: 11415381, Slot Number: 0, Arguments: {0})
     104 Initialize Event (Event ID: 11415383, Slot Number: 0, Arguments: {0})
-		# AI event also loads all the tail and arm parts.
+        # AI event also loads all the tail and arm parts.
     105 Initialize Event (Event ID: 11415382, Slot Number: 0, Arguments: {0})
     106 Initialize Event (Event ID: 11415384, Slot Number: 0, Arguments: {0})
     107 Initialize Event (Event ID: 11410901, Slot Number: 0, Arguments: {0})
-		# Drops Orange Charred Ring whenever the first part is cut off.
+        # Drops Orange Charred Ring whenever the first part is cut off.
     108 Initialize Event (Event ID: 11415386, Slot Number: 0, Arguments: {0})
-	
-		# Bed of Chaos.
+
+        # Bed of Chaos.
     109 DISABLE Map Sound (Entity ID: 1413800)
     110 SKIP 4 lines IF Event Flag ID: 00000010 is OFF
     111 Initialize Event (Event ID: 11415392, Slot Number: 0, Arguments: {0})
@@ -166,33 +166,33 @@ Parameters: {} ()
     115 Initialize Event (Event ID: 11415390, Slot Number: 0, Arguments: {0})
     116 Initialize Event (Event ID: 11415391, Slot Number: 0, Arguments: {0})
     117 Initialize Event (Event ID: 11415393, Slot Number: 0, Arguments: {0})
-		# Enables arm and bug, but only enables fire ghost if an orb has been
-		# destroyed.
+        # Enables arm and bug, but only enables fire ghost if an orb has been
+        # destroyed.
     118 Initialize Event (Event ID: 11415392, Slot Number: 0, Arguments: {0})
-		# Bed of Chaos dies when the bug dies.
+        # Bed of Chaos dies when the bug dies.
     119 Initialize Event (Event ID: 11410001, Slot Number: 0, Arguments: {0})
     120 Initialize Event (Event ID: 11415394, Slot Number: 0, Arguments: {0})
     121 Initialize Event (Event ID: 11415395, Slot Number: 0, Arguments: {0})
-		# Cutscenes and phase changes when orbs are destroyed.
+        # Cutscenes and phase changes when orbs are destroyed.
     122 Initialize Event (Event ID: 11415396, Slot Number: 0, Arguments: {0})
-		# Bug is invincible until both orbs are destroyed.
+        # Bug is invincible until both orbs are destroyed.
     123 Initialize Event (Event ID: 11415397, Slot Number: 0, Arguments: {0})
-		# Change arm/spirit boss AI in different stages.
+        # Change arm/spirit boss AI in different stages.
     124 Initialize Event (Event ID: 11415398, Slot Number: 0, Arguments: {0})
-		# Orb destruction.
+        # Orb destruction.
     125 Initialize Event (Event ID: 11415300, Slot Number: 0, Arguments: {0})
-		# Spawns Sunlight Maggot item drop if the red-eyed bug is dead.
+        # Spawns Sunlight Maggot item drop if the red-eyed bug is dead.
     126 Initialize Event (Event ID: 800, Slot Number: 0, Arguments: {1410100})
-		
-		# Non-respawning enemies.
-		# Burrowing Rockworm that guards the second Demon Ruins bonfire.
+
+        # Non-respawning enemies.
+        # Burrowing Rockworm that guards the second Demon Ruins bonfire.
     127 Initialize Event (Event ID: 11410100, Slot Number: 4, Arguments: {1410307})
-		# Daughter of Chaos outside Bed of Chaos fight.
+        # Daughter of Chaos outside Bed of Chaos fight.
     128 Initialize Event (Event ID: 11410100, Slot Number: 6, Arguments: {6620})
-		# Crystal lizard, which drops items.
+        # Crystal lizard, which drops items.
     129 Initialize Event (Event ID: 11410100, Slot Number: 7, Arguments: {1410110})
     130 Initialize Event (Event ID: 11410100, Slot Number: 8, Arguments: {1410150})
-		# TWENTY-NINE "Bounding Demons of Izalith". Jesus Christ.
+        # TWENTY-NINE "Bounding Demons of Izalith". Jesus Christ.
     131 Initialize Event (Event ID: 11410100, Slot Number: 9, Arguments: {1410350})
     132 Initialize Event (Event ID: 11410100, Slot Number: 10, Arguments: {1410351})
     133 Initialize Event (Event ID: 11410100, Slot Number: 11, Arguments: {1410352})
@@ -222,10 +222,10 @@ Parameters: {} ()
     157 Initialize Event (Event ID: 11410100, Slot Number: 35, Arguments: {1410376})
     158 Initialize Event (Event ID: 11410100, Slot Number: 36, Arguments: {1410377})
     159 Initialize Event (Event ID: 11410100, Slot Number: 37, Arguments: {1410378})
-		# Seven Taurus Demons. Interestingly, I can't find whatever is making them slightly
-		# smaller than the original. Changing the scale does nothing, and changing the model
-		# number to the Burg one crashes the game. I'll have to compare them line by line in the
-		# MSB.
+        # Seven Taurus Demons. Interestingly, I can't find whatever is making them slightly
+        # smaller than the original. Changing the scale does nothing, and changing the model
+        # number to the Burg one crashes the game. I'll have to compare them line by line in the
+        # MSB.
     160 Initialize Event (Event ID: 11410100, Slot Number: 38, Arguments: {1410450})
     161 Initialize Event (Event ID: 11410100, Slot Number: 39, Arguments: {1410451})
     162 Initialize Event (Event ID: 11410100, Slot Number: 40, Arguments: {1410452})
@@ -233,10 +233,10 @@ Parameters: {} ()
     164 Initialize Event (Event ID: 11410100, Slot Number: 42, Arguments: {1410454})
     165 Initialize Event (Event ID: 11410100, Slot Number: 43, Arguments: {1410455})
     166 Initialize Event (Event ID: 11410100, Slot Number: 44, Arguments: {1410456})
-		# Disables egg-carrier prayer sound if too many are dead (all eleven praying ones I
-		# assume).
+        # Disables egg-carrier prayer sound if too many are dead (all eleven praying ones I
+        # assume).
     167 Initialize Event (Event ID: 11415210, Slot Number: 0, Arguments: {11415250, 11415263, 11})
-		# Vile Maggot spawning on egg-carrier death.
+        # Vile Maggot spawning on egg-carrier death.
     168 Initialize Event (Event ID: 11415250, Slot Number: 0, Arguments: {1410200, 1410220, 1410221, 1410222, 1410223, 1410224})
     169 Initialize Event (Event ID: 11415250, Slot Number: 1, Arguments: {1410201, 1410225, 1410226, 1410227, 1410228, 1410229})
     170 Initialize Event (Event ID: 11415250, Slot Number: 2, Arguments: {1410202, 1410230, 1410231, 1410232, 1410233, 1410234})
@@ -251,23 +251,23 @@ Parameters: {} ()
     179 Initialize Event (Event ID: 11415250, Slot Number: 11, Arguments: {1410211, 1410275, 1410276, 1410277, 1410278, 1410279})
     180 Initialize Event (Event ID: 11415250, Slot Number: 12, Arguments: {1410212, 1410280, 1410281, 1410282, 1410283, 1410284})
     181 Initialize Event (Event ID: 11415250, Slot Number: 13, Arguments: {1410213, 1410285, 1410286, 1410287, 1410288, 1410289})
-		# Rockworm appearance based on distance (third one is bonfire guardian).
-	182 Initialize Event (Event ID: 11415100, Slot Number: 0, Arguments: {1410301, 1410301, 9060, 1097859072, 0})
+        # Rockworm appearance based on distance (third one is bonfire guardian).
+    182 Initialize Event (Event ID: 11415100, Slot Number: 0, Arguments: {1410301, 1410301, 9060, 1097859072, 0})
     183 Initialize Event (Event ID: 11415100, Slot Number: 1, Arguments: {1410302, 1410302, 9060, 1092616192, 0})
     184 Initialize Event (Event ID: 11415100, Slot Number: 2, Arguments: {1410307, 1410307, 9060, 1097859072, 0})
-		# Rockworm appearance based on area.
+        # Rockworm appearance based on area.
     185 Initialize Event (Event ID: 11415120, Slot Number: 0, Arguments: {10000, 1410303, 9060, 1412302, 1050253722})
     186 Initialize Event (Event ID: 11415120, Slot Number: 1, Arguments: {10000, 1410304, 9060, 1412302, 1036831949})
     187 Initialize Event (Event ID: 11415120, Slot Number: 2, Arguments: {10000, 1410305, 9060, 1412302, 0})
     188 Initialize Event (Event ID: 11415120, Slot Number: 3, Arguments: {10000, 1410306, 9060, 1412302, 1045220557})
-		# Loot from rockworms (25% Green Titanite Shard).
+        # Loot from rockworms (25% Green Titanite Shard).
     189 Initialize Event (Event ID: 11410150, Slot Number: 1, Arguments: {1410301, 33900000})
     190 Initialize Event (Event ID: 11410150, Slot Number: 2, Arguments: {1410302, 33900000})
     191 Initialize Event (Event ID: 11410150, Slot Number: 3, Arguments: {1410303, 33900000})
     192 Initialize Event (Event ID: 11410150, Slot Number: 4, Arguments: {1410304, 33900000})
     193 Initialize Event (Event ID: 11410150, Slot Number: 5, Arguments: {1410305, 33900000})
     194 Initialize Event (Event ID: 11410150, Slot Number: 6, Arguments: {1410306, 33900000})
-		# Treasure chests.
+        # Treasure chests.
     195 Initialize Event (Event ID: 11410600, Slot Number: 0, Arguments: {1411650, 11410600})
     196 Initialize Event (Event ID: 11410600, Slot Number: 1, Arguments: {1411651, 11410601})
     197 Initialize Event (Event ID: 11410600, Slot Number: 2, Arguments: {1411652, 11410602})
@@ -275,35 +275,35 @@ Parameters: {} ()
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Eingyi's vile maggots don't respawn.
+        # Eingyi's vile maggots don't respawn.
       0 Initialize Event (Event ID: 11410100, Slot Number: 0, Arguments: {1410410})
       1 Initialize Event (Event ID: 11410100, Slot Number: 1, Arguments: {1410411})
       2 Initialize Event (Event ID: 11410100, Slot Number: 2, Arguments: {1410412})
       3 Initialize Event (Event ID: 11410100, Slot Number: 3, Arguments: {1410413})
-		# Daughter of Chaos outside Bed of Chaos fight.
+        # Daughter of Chaos outside Bed of Chaos fight.
       4 Humanity Registration for Entity ID: 6620 ("First Event Flag ID to retain humanity ID": 8250)
-		# Knight Solaire (Centipede Demon summon).
+        # Knight Solaire (Centipede Demon summon).
       5 Humanity Registration for Entity ID: 6542 ("First Event Flag ID to retain humanity ID": 8310)
-		# Kirk, Knight of Thorns (first and second invasion).
+        # Kirk, Knight of Thorns (first and second invasion).
       6 Humanity Registration for Entity ID: 6560 ("First Event Flag ID to retain humanity ID": 8956)
       7 Humanity Registration for Entity ID: 6561 ("First Event Flag ID to retain humanity ID": 8956)
-		
-		# Knight Solaire summon sign.
-	  8 Initialize Event (Event ID: 11415030, Slot Number: 0, Arguments: {0})
-		# Knight Solaire enters Centipede Demon fog.
+
+        # Knight Solaire summon sign.
+      8 Initialize Event (Event ID: 11415030, Slot Number: 0, Arguments: {0})
+        # Knight Solaire enters Centipede Demon fog.
       9 Initialize Event (Event ID: 11415032, Slot Number: 0, Arguments: {0})
-		
-		# First Kirk invasion.
+
+        # First Kirk invasion.
      10 Initialize Event (Event ID: 11415035, Slot Number: 0, Arguments: {0})
-		# Second Kirk invasion.
+        # Second Kirk invasion.
      11 Initialize Event (Event ID: 11415038, Slot Number: 0, Arguments: {0})
-		# Kirk death events.
+        # Kirk death events.
      12 Initialize Event (Event ID: 11410810, Slot Number: 0, Arguments: {6560, 11415036, 11415037})
      13 Initialize Event (Event ID: 11410810, Slot Number: 1, Arguments: {6561, 11415039, 11415040})
-		
-		# Solaire (at bonfire).
+
+        # Solaire (at bonfire).
      14 Humanity Registration for Entity ID: 6002 ("First Event Flag ID to retain humanity ID": 8310)
-		# Solaire (hostile).
+        # Solaire (hostile).
      15 Humanity Registration for Entity ID: 6004 ("First Event Flag ID to retain humanity ID": 8310)
      16 SKIP 3 lines IF Event Flag ID: 00001009 is ON
      17 SKIP 2 lines IF Event Flag ID: 00001004 is ON
@@ -318,18 +318,18 @@ Parameters: {} ()
      26 Initialize Event (Event ID: 11410510, Slot Number: 0, Arguments: {6002, 1004})
      27 Initialize Event (Event ID: 11410520, Slot Number: 0, Arguments: {6002, 1000, 1029, 1005})
      28 Initialize Event (Event ID: 11410530, Slot Number: 0, Arguments: {6002, 1000, 1029, 1009})
-		# Note that this is the script that triggers when you go too far into Lost Izalith
-		# without killing the red-eyed Chaos Bug.
+        # Note that this is the script that triggers when you go too far into Lost Izalith
+        # without killing the red-eyed Chaos Bug.
      29 Initialize Event (Event ID: 11410531, Slot Number: 0, Arguments: {6002, 1000, 1029, 1002})
-		# This one, on the other hand, triggers when you proceed into Lost Izalith but the
-		# red-eyed Chaos Bug is dead.
+        # This one, on the other hand, triggers when you proceed into Lost Izalith but the
+        # red-eyed Chaos Bug is dead.
      30 Initialize Event (Event ID: 11410532, Slot Number: 0, Arguments: {6002, 1000, 1029, 1003})
-		# Some other form of progression.
+        # Some other form of progression.
      31 Initialize Event (Event ID: 11410533, Slot Number: 0, Arguments: {6006, 1000, 1029, 1012})
-		# Maggot-Solaire death story event.
+        # Maggot-Solaire death story event.
      32 Initialize Event (Event ID: 11410534, Slot Number: 0, Arguments: {6004, 1000, 1029, 1011})
-		
-		# Siegmeyer of Catarina. Quite a lot of different combat story events.
+
+        # Siegmeyer of Catarina. Quite a lot of different combat story events.
      33 Humanity Registration for Entity ID: 6286 ("First Event Flag ID to retain humanity ID": 8446)
      34 SKIP 1 lines IF Event Flag ID: 00001503 to 00001507 are not all OFF
      35 DISABLE Entity ID: 6286
@@ -349,7 +349,7 @@ Parameters: {} ()
      49 Initialize Event (Event ID: 11410543, Slot Number: 0, Arguments: {6286, 1490, 1514, 1506})
      50 Initialize Event (Event ID: 11410544, Slot Number: 0, Arguments: {6286, 1490, 1514, 1507})
      51 Initialize Event (Event ID: 11410545, Slot Number: 0, Arguments: {6286, 1490, 1514, 1513})
-		# I think this script (*49) is the success event that sends him to Ash Lake to die.
+        # I think this script (*49) is the success event that sends him to Ash Lake to die.
      52 Initialize Event (Event ID: 11410549, Slot Number: 0, Arguments: {6286})
      53 Initialize Event (Event ID: 11410550, Slot Number: 0, Arguments: {6286, 1490, 1514, 1514})
      54 Initialize Event (Event ID: 11410547, Slot Number: 0, Arguments: {6286})

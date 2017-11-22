@@ -1,18 +1,18 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Bonfire behind illusory wall (surprisingly, only bonfire in the area).
+        # Bonfire behind illusory wall (surprisingly, only bonfire in the area).
       0 Register Bonfire (Event Flag ID: 11200984, Entity ID: 1201961, Reaction Distance: 2.000, Reaction Angle: 180.000, Initial Kindle Level: 0)
-		# Two ladders out of the Basin.
+        # Two ladders out of the Basin.
       1 ? Register Ladder (Entity ID: 1201140, Unknown Event Flag ID: 11200010, Unknown Event Flag ID: 11200011)
       2 ? Register Ladder (Entity ID: 1201141, Unknown Event Flag ID: 11200012, Unknown Event Flag ID: 11200013)
-		# Spawner of some kind. Maybe for the Hydra blast?
+        # Spawner of some kind. Maybe for the Hydra blast?
       3 ??? "Create Bullet Owner" (Entity ID: 1200090)
-		# Disable Sif's sword after Sif's first appearance.
+        # Disable Sif's sword after Sif's first appearance.
       4 SKIP 2 lines IF Event Flag ID: 11200000 is ON
       5 SKIP 1 lines IF Event Flag ID: 11200002 is ON
       6 SKIP 1 lines
       7 DISABLE Object with Entity ID: 1201200
-		# Area fog walls for multiplayer.
+        # Area fog walls for multiplayer.
       8 SKIP 10 lines IF muliplayer status is Client
       9 DISABLE Object with Entity ID: 1201994
      10 Delete Map SFX (Entity ID: 1201995, Deletes only root: FALSE)
@@ -24,66 +24,66 @@ Parameters: {} ()
      16 Delete Map SFX (Entity ID: 1201989, Deletes only root: FALSE)
      17 DISABLE Object with Entity ID: 1201986
      18 Delete Map SFX (Entity ID: 1201987, Deletes only root: FALSE)
-		# Checkpoint fog wall (before grotto, I think).
+        # Checkpoint fog wall (before grotto, I think).
      19 Initialize Event (Event ID: 11200090, Slot Number: 0, Arguments: {1201700, 1201701, 1202600, 1202601})
-		# Gravelord stuff.
+        # Gravelord stuff.
      20 Initialize Event (Event ID: 11205080, Slot Number: 0, Arguments: {0})
      21 Initialize Event (Event ID: 11205081, Slot Number: 0, Arguments: {0})
      22 Initialize Event (Event ID: 11205082, Slot Number: 0, Arguments: {0})
-		# Open door with Crest of Artorias.
+        # Open door with Crest of Artorias.
      23 Initialize Event (Event ID: 11200100, Slot Number: 0, Arguments: {11200110, 1201000, 120020, 1202500, 0, 61200500})
-		# Can't open door (no Crest of Artorias).
+        # Can't open door (no Crest of Artorias).
      24 Initialize Event (Event ID: 11200110, Slot Number: 0, Arguments: {11200100, 1201000, 1202500, 0})
-		# Open door with Crest of Artorias from other side?
+        # Open door with Crest of Artorias from other side?
      25 Initialize Event (Event ID: 11200100, Slot Number: 1, Arguments: {11200111, 1201010, 120021, 1202501, 1, 61200501})
-		# Can't open door from other side (no Crest of Artorias).
+        # Can't open door from other side (no Crest of Artorias).
      26 Initialize Event (Event ID: 11200110, Slot Number: 1, Arguments: {11200101, 1201010, 1202501, 1})
-		# Illusory wall near bonfire.
+        # Illusory wall near bonfire.
      27 Initialize Event (Event ID: 11200120, Slot Number: 0, Arguments: {0})
-		# Triggers gravity and collision for "moving tree" (entity 1200000).
+        # Triggers gravity and collision for "moving tree" (entity 1200000).
      28 Initialize Event (Event ID: 11205000, Slot Number: 0, Arguments: {0})
-		# Golden Crystal Golem.
+        # Golden Crystal Golem.
      29 Initialize Event (Event ID: 11200800, Slot Number: 0, Arguments: {0})
-		# Intruding on Forest Hunter territory (and not in the covenant).
+        # Intruding on Forest Hunter territory (and not in the covenant).
      30 Initialize Event (Event ID: 11200200, Slot Number: 0, Arguments: {0})
-		# Enables Antiquated Armor Set near the Golem after summoning Dusk.
+        # Enables Antiquated Armor Set near the Golem after summoning Dusk.
      31 Initialize Event (Event ID: 11200690, Slot Number: 0, Arguments: {0})
-		# Treasure Chests (both Embers).
+        # Treasure Chests (both Embers).
      32 Initialize Event (Event ID: 11200600, Slot Number: 0, Arguments: {1201650, 11200600})
      33 Initialize Event (Event ID: 11200600, Slot Number: 1, Arguments: {1201651, 11200601})
-		
-		# Disable Sif boss music.
+
+        # Disable Sif boss music.
      34 DISABLE Map Sound (Entity ID: 1203800)
-		# If Sif is dead, disable him and delete fog gate.
+        # If Sif is dead, disable him and delete fog gate.
      35 SKIP 4 lines IF Event Flag ID: 00000005 is OFF
      36 Initialize Event (Event ID: 11205392, Slot Number: 0, Arguments: {0})
      37 DISABLE Object with Entity ID: 1201990
      38 Delete Map SFX (Entity ID: 1201991, Deletes only root: FALSE)
-		
-		# If Sif is alive, run all of these events.
+
+        # If Sif is alive, run all of these events.
      39 SKIP 9 lines
-		# First appearance of Sif if he was NOT rescued in the DLC.
+        # First appearance of Sif if he was NOT rescued in the DLC.
      40 Initialize Event (Event ID: 11200000, Slot Number: 0, Arguments: {0})
-		# Enter Sif's fog gate (host).
+        # Enter Sif's fog gate (host).
      41 Initialize Event (Event ID: 11205390, Slot Number: 0, Arguments: {0})
-		# Enter Sif's fog gate (summon).
+        # Enter Sif's fog gate (summon).
      42 Initialize Event (Event ID: 11205391, Slot Number: 0, Arguments: {0})
-		# Boss room entry notification.
+        # Boss room entry notification.
      43 Initialize Event (Event ID: 11205393, Slot Number: 0, Arguments: {0})
-		# Enable AI and health bar.
+        # Enable AI and health bar.
      44 Initialize Event (Event ID: 11205392, Slot Number: 0, Arguments: {0})
-		# Wait for Sif's death.
+        # Wait for Sif's death.
      45 Initialize Event (Event ID: 11200001, Slot Number: 0, Arguments: {0})
-		# Enable boss music.
+        # Enable boss music.
      46 Initialize Event (Event ID: 11205394, Slot Number: 0, Arguments: {0})
-		# Disable boss music.
+        # Disable boss music.
      47 Initialize Event (Event ID: 11205395, Slot Number: 0, Arguments: {0})
-		# Trigger Sif limping effect at 10% health.
+        # Trigger Sif limping effect at 10% health.
      48 Initialize Event (Event ID: 11205396, Slot Number: 0, Arguments: {0})
-		# First appearance of Sif if he WAS rescued in the DLC.
+        # First appearance of Sif if he WAS rescued in the DLC.
      49 Initialize Event (Event ID: 11200002, Slot Number: 0, Arguments: {0})
-	 
-		# Moonlight Butterfly stuff. All fairly basic.
+
+        # Moonlight Butterfly stuff. All fairly basic.
      50 DISABLE Map Sound (Entity ID: 1203801)
      51 SKIP 6 lines IF Event Flag ID: 11200900 is OFF
      52 Initialize Event (Event ID: 11205382, Slot Number: 0, Arguments: {0})
@@ -99,9 +99,9 @@ Parameters: {} ()
      62 Initialize Event (Event ID: 11200900, Slot Number: 0, Arguments: {0})
      63 Initialize Event (Event ID: 11205384, Slot Number: 0, Arguments: {0})
      64 Initialize Event (Event ID: 11205385, Slot Number: 0, Arguments: {0})
-		# These events short-range warp the Butterfly from area A to area B if it has
-		# a certain flag (10). The game calls this "location alignment" and I shouldn't
-		# need to touch it.
+        # These events short-range warp the Butterfly from area A to area B if it has
+        # a certain flag (10). The game calls this "location alignment" and I shouldn't
+        # need to touch it.
      65 Initialize Event (Event ID: 11205120, Slot Number: 0, Arguments: {1202220, 1202180})
      66 Initialize Event (Event ID: 11205120, Slot Number: 1, Arguments: {1202221, 1202181})
      67 Initialize Event (Event ID: 11205120, Slot Number: 2, Arguments: {1202222, 1202182})
@@ -112,11 +112,11 @@ Parameters: {} ()
      72 Initialize Event (Event ID: 11205120, Slot Number: 7, Arguments: {1202227, 1202187})
      73 Initialize Event (Event ID: 11205120, Slot Number: 8, Arguments: {1202228, 1202188})
      74 Initialize Event (Event ID: 11205120, Slot Number: 9, Arguments: {1202229, 1202189})
-	 
-		# Hydra death (when either the body is dead, or all seven heads).
+
+        # Hydra death (when either the body is dead, or all seven heads).
      75 Initialize Event (Event ID: 11200801, Slot Number: 0, Arguments: {0})
-		
-		# Death scripts for heads. No need to touch.
+
+        # Death scripts for heads. No need to touch.
      76 Initialize Event (Event ID: 11205300, Slot Number: 0, Arguments: {231342081, 3530, 1200011, 91, 256, 5430})
      77 Initialize Event (Event ID: 11205300, Slot Number: 1, Arguments: {231407618, 3531, 1200012, 92, 513, 5431})
      78 Initialize Event (Event ID: 11205300, Slot Number: 2, Arguments: {231473155, 3532, 1200013, 93, 770, 5432})
@@ -124,10 +124,10 @@ Parameters: {} ()
      80 Initialize Event (Event ID: 11205300, Slot Number: 4, Arguments: {231604229, 3534, 1200015, 95, 1284, 5434})
      81 Initialize Event (Event ID: 11205300, Slot Number: 5, Arguments: {231669766, 3535, 1200016, 96, 1541, 5435})
      82 Initialize Event (Event ID: 11205300, Slot Number: 6, Arguments: {231735304, 3536, 1200017, 97, 1798, 5436})
-	 
-		# Various ambushes for Demonic Foliage. 11205250 is based on area, 11205290 is based on an event flag.
+
+        # Various ambushes for Demonic Foliage. 11205250 is based on area, 11205290 is based on an event flag.
      83 Initialize Event (Event ID: 11205250, Slot Number: 0, Arguments: {1200100, 1202110})
-		# These three ambushes are triggered when you pick up the item near the bonfire.
+        # These three ambushes are triggered when you pick up the item near the bonfire.
      84 Initialize Event (Event ID: 11205290, Slot Number: 0, Arguments: {1200101, 51200170, 0, 1})
      85 Initialize Event (Event ID: 11205290, Slot Number: 1, Arguments: {1200102, 51200170, 1045220557, 1})
      86 Initialize Event (Event ID: 11205290, Slot Number: 2, Arguments: {1200103, 51200170, 1061997773, 1})
@@ -136,33 +136,33 @@ Parameters: {} ()
      89 Initialize Event (Event ID: 11205290, Slot Number: 4, Arguments: {1200106, 11205263, 1058642330, 0})
      90 Initialize Event (Event ID: 11205290, Slot Number: 5, Arguments: {1200107, 11205264, 0, 0})
      91 Initialize Event (Event ID: 11205290, Slot Number: 6, Arguments: {1200108, 11205264, 1063675494, 0})
-		# These five are triggered by proximity, not a specific area.
+        # These five are triggered by proximity, not a specific area.
      92 Initialize Event (Event ID: 11205200, Slot Number: 0, Arguments: {1200109, 1090519040})
      93 Initialize Event (Event ID: 11205200, Slot Number: 1, Arguments: {1200110, 1090519040})
      94 Initialize Event (Event ID: 11205200, Slot Number: 2, Arguments: {1200111, 1084227584})
      95 Initialize Event (Event ID: 11205200, Slot Number: 3, Arguments: {1200112, 1084227584})
      96 Initialize Event (Event ID: 11205200, Slot Number: 4, Arguments: {1200113, 1084227584})
-		# Tree lizard ambushes triggered by proximity.
+        # Tree lizard ambushes triggered by proximity.
      97 Initialize Event (Event ID: 11205230, Slot Number: 0, Arguments: {1200600, 1077936128})
      98 Initialize Event (Event ID: 11205230, Slot Number: 2, Arguments: {1200602, 1077936128})
-		# Changes Frog-Ray nests based on effect 5110.
+        # Changes Frog-Ray nests based on effect 5110.
      99 Initialize Event (Event ID: 11205240, Slot Number: 0, Arguments: {1200600, 1202710})
     100 Initialize Event (Event ID: 11205240, Slot Number: 2, Arguments: {1200602, 1202712})
-		# Stone Guardians triggered by proximity OR a specific area.
+        # Stone Guardians triggered by proximity OR a specific area.
     101 Initialize Event (Event ID: 11205280, Slot Number: 0, Arguments: {1200650, 1086324736, 1202112})
     102 Initialize Event (Event ID: 11205280, Slot Number: 1, Arguments: {1200651, 1073741824, 1202112})
-		# Stone Guardians triggered by proximity.
+        # Stone Guardians triggered by proximity.
     103 Initialize Event (Event ID: 11205260, Slot Number: 0, Arguments: {1200652, 1086324736})
     104 Initialize Event (Event ID: 11205260, Slot Number: 1, Arguments: {1200653, 1092616192})
     105 Initialize Event (Event ID: 11205260, Slot Number: 2, Arguments: {1200654, 1090519040})
     106 Initialize Event (Event ID: 11205260, Slot Number: 3, Arguments: {1200655, 1082130432})
     107 Initialize Event (Event ID: 11205260, Slot Number: 4, Arguments: {1200656, 1082130432})
-		# Frog-Rays jump up the cliff.
+        # Frog-Rays jump up the cliff.
     108 Initialize Event (Event ID: 11205190, Slot Number: 0, Arguments: {1200250, 1202113, 0})
     109 Initialize Event (Event ID: 11205190, Slot Number: 1, Arguments: {1200251, 1202113, 1056964608})
     110 Initialize Event (Event ID: 11205190, Slot Number: 2, Arguments: {1200252, 1202113, 1067030938})
     111 Initialize Event (Event ID: 11205190, Slot Number: 3, Arguments: {1200253, 1202113, 1060320051})
-		# Mushroom children run away (to parent I presume) at 80% health.
+        # Mushroom children run away (to parent I presume) at 80% health.
     112 Initialize Event (Event ID: 11205150, Slot Number: 0, Arguments: {1200705})
     113 Initialize Event (Event ID: 11205150, Slot Number: 1, Arguments: {1200706})
     114 Initialize Event (Event ID: 11205150, Slot Number: 2, Arguments: {1200707})
@@ -171,48 +171,48 @@ Parameters: {} ()
     117 Initialize Event (Event ID: 11205150, Slot Number: 5, Arguments: {1200710})
     118 Initialize Event (Event ID: 11205150, Slot Number: 6, Arguments: {1200711})
     119 Initialize Event (Event ID: 11205150, Slot Number: 7, Arguments: {1200712})
-		# Giant Cat triggers.
+        # Giant Cat triggers.
     120 Initialize Event (Event ID: 11205180, Slot Number: 0, Arguments: {1200350, 1})
     121 Initialize Event (Event ID: 11205180, Slot Number: 1, Arguments: {1200351, 0})
     122 Initialize Event (Event ID: 11205180, Slot Number: 2, Arguments: {1200352, 0})
-		# Non-respawning enemies.
-		# Living tree.
+        # Non-respawning enemies.
+        # Living tree.
     123 Initialize Event (Event ID: 11200810, Slot Number: 0, Arguments: {1200000, 0, 0})
-		# Not sure.
+        # Not sure.
     124 Initialize Event (Event ID: 11200810, Slot Number: 1, Arguments: {1200001, 0, 0})
-		# Crystal lizard.
+        # Crystal lizard.
     125 Initialize Event (Event ID: 11200810, Slot Number: 2, Arguments: {1200400, 0, 33004000})
-		# Giant Cats.
+        # Giant Cats.
     126 Initialize Event (Event ID: 11200810, Slot Number: 3, Arguments: {1200350, 0, 0})
     127 Initialize Event (Event ID: 11200810, Slot Number: 4, Arguments: {1200351, 0, 0})
     128 Initialize Event (Event ID: 11200810, Slot Number: 5, Arguments: {1200352, 0, 0})
-		# Black Knight
+        # Black Knight
     129 Initialize Event (Event ID: 11200810, Slot Number: 6, Arguments: {1200750, 0, 27901000})
-		# Three non-respawning Forest Hunters (e.g. Pharis).
+        # Three non-respawning Forest Hunters (e.g. Pharis).
     130 Initialize Event (Event ID: 11200810, Slot Number: 7, Arguments: {1200301, 0, 0})
     131 Initialize Event (Event ID: 11200810, Slot Number: 8, Arguments: {1200304, 1, 0})
     132 Initialize Event (Event ID: 11200810, Slot Number: 9, Arguments: {1200306, 0, 0})
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Witch Beatrice.
+        # Witch Beatrice.
       0 Humanity Registration for Entity ID: 6521 ("First Event Flag ID to retain humanity ID": 8932)
-		# Witch Beatrice summon sign.
+        # Witch Beatrice summon sign.
       1 Initialize Event (Event ID: 11205030, Slot Number: 0, Arguments: {0})
-		# Witch Beatrice enters Butterfly fog.
+        # Witch Beatrice enters Butterfly fog.
       2 Initialize Event (Event ID: 11205032, Slot Number: 0, Arguments: {0})
-		# Flag related to Beatrice's summon in New Londo, I'm guessing.
+        # Flag related to Beatrice's summon in New Londo, I'm guessing.
       3 Initialize Event (Event ID: 11200300, Slot Number: 0, Arguments: {0})
-		
-		# Not sure what these flags are for. Maybe these are the Beatrice storyline flags? Host only.
+
+        # Not sure what these flags are for. Maybe these are the Beatrice storyline flags? Host only.
       4 SKIP 2 lines IF muliplayer status is Client
       5 Batch SET Event Flag IDs from 11200210 to 11200213 to OFF
       6 SET Event Flag ID 11200215 to OFF
-		# Dusk of Oolacile (inside Golem, and from summon sign).
+        # Dusk of Oolacile (inside Golem, and from summon sign).
       7 Humanity Registration for Entity ID: 6050 ("First Event Flag ID to retain humanity ID": 8350)
       8 Humanity Registration for Entity ID: 6051 ("First Event Flag ID to retain humanity ID": 8350)
-	  
-		# Story flag management for Dusk appearances.
+
+        # Story flag management for Dusk appearances.
       9 SKIP 6 lines IF muliplayer status is Client
      10 SKIP 2 lines IF Event Flag ID: 00001123 is OFF
      11 Batch SET Event Flag IDs from 1120 to 1139 to OFF
@@ -227,41 +227,41 @@ Parameters: {} ()
      20 SKIP 1 lines IF Event Flag ID: 00001130 is ON
      21 DISABLE Entity ID: 6051
      22 Special Standby Setting (Entity ID: 6051, Standby Animation: 7875, Cancel Animation: -1, Death Animation: -1, Standby Return Animation: -1)
-		# Dusk death.
+        # Dusk death.
      23 Initialize Event (Event ID: 11200520, Slot Number: 0, Arguments: {6050, 1120, 1139, 1125})
      24 Initialize Event (Event ID: 11200520, Slot Number: 1, Arguments: {6051, 1120, 1139, 1125})
-		# Dusk thanks you after being freed.
+        # Dusk thanks you after being freed.
      25 Initialize Event (Event ID: 11200530, Slot Number: 0, Arguments: {6050, 1120, 1139, 1121})
-		# Dusk disappears after being freed.
+        # Dusk disappears after being freed.
      26 Initialize Event (Event ID: 11200531, Slot Number: 0, Arguments: {6050, 1120, 1139, 1122})
-		# Co-operate with Dusk after freeing her (I think).
+        # Co-operate with Dusk after freeing her (I think).
      27 Initialize Event (Event ID: 11200534, Slot Number: 0, Arguments: {6050, 1120, 1139, 1123})
-		# Don't co-operate with Dusk after freeing her (I think).
+        # Don't co-operate with Dusk after freeing her (I think).
      28 Initialize Event (Event ID: 11200532, Slot Number: 0, Arguments: {6050, 1120, 1139, 1126})
-		#  Randomly enables one of four summon signs if Dusk can be summoned (just different orientations?)
+        #  Randomly enables one of four summon signs if Dusk can be summoned (just different orientations?)
      29 Initialize Event (Event ID: 11200533, Slot Number: 0, Arguments: {0})
-		# Summon Dusk from whichever summon sign was activated (BEFORE rescuing her).
+        # Summon Dusk from whichever summon sign was activated (BEFORE rescuing her).
      30 Initialize Event (Event ID: 11205040, Slot Number: 0, Arguments: {11200210, 1202000, 1203100})
      31 Initialize Event (Event ID: 11205040, Slot Number: 1, Arguments: {11200211, 1202001, 1203101})
      32 Initialize Event (Event ID: 11205040, Slot Number: 2, Arguments: {11200212, 1202002, 1203102})
      33 Initialize Event (Event ID: 11205040, Slot Number: 3, Arguments: {11200213, 1202003, 1203103})
-		# Dusk has been kidnapped.
+        # Dusk has been kidnapped.
      34 Initialize Event (Event ID: 11200529, Slot Number: 0, Arguments: {1120, 1139, 1127})
-		# Dusk has been rescued and not yet spoken to.
+        # Dusk has been rescued and not yet spoken to.
      35 Initialize Event (Event ID: 11200527, Slot Number: 0, Arguments: {6050, 1120, 1139, 1129})
-		# Normal Dusk interactions thereafter.
+        # Normal Dusk interactions thereafter.
      36 Initialize Event (Event ID: 11200525, Slot Number: 0, Arguments: {6050, 1120, 1139, 1130})
-		# Summon Dusk AFTER rescuing her from Manus.
+        # Summon Dusk AFTER rescuing her from Manus.
      37 Initialize Event (Event ID: 11205070, Slot Number: 0, Arguments: {11200210, 1202000, 1203100})
      38 Initialize Event (Event ID: 11205070, Slot Number: 1, Arguments: {11200211, 1202001, 1203101})
      39 Initialize Event (Event ID: 11205070, Slot Number: 2, Arguments: {11200212, 1202002, 1203102})
      40 Initialize Event (Event ID: 11205070, Slot Number: 3, Arguments: {11200213, 1202003, 1203103})
-		# Manus portal, activation cutscene, and warp to Oolacile.
+        # Manus portal, activation cutscene, and warp to Oolacile.
      41 Delete Map SFX (Entity ID: 1202009, Deletes only root: FALSE)
      42 Initialize Event (Event ID: 11200005, Slot Number: 0, Arguments: {0})
      43 Initialize Event (Event ID: 11200006, Slot Number: 0, Arguments: {0})
-	 
-		# Alvina.
+
+        # Alvina.
      44 SKIP 1 lines IF muliplayer status is Client
      45 Batch SET Event Flag IDs from 11205050 to 11205068 to OFF
      46 Set Map Collision for Entity ID: 6380 to Not TRUE
@@ -286,8 +286,8 @@ Parameters: {} ()
      65 Initialize Event (Event ID: 11205060, Slot Number: 6, Arguments: {1200304})
      66 Initialize Event (Event ID: 11205060, Slot Number: 7, Arguments: {1200305})
      67 Initialize Event (Event ID: 11205060, Slot Number: 8, Arguments: {1200306})
-	 
-		# Shiva and his ninja companion.
+
+        # Shiva and his ninja companion.
      68 Humanity Registration for Entity ID: 6310 ("First Event Flag ID to retain humanity ID": 8470)
      69 Humanity Registration for Entity ID: 6420 ("First Event Flag ID to retain humanity ID": 8900)
      70 DISABLE Entity ID: 6310

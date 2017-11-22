@@ -1,51 +1,51 @@
 Event ID: 0, Int: 0
 Parameters: {} ()
-		# Register Shrine bonfire.
+        # Register Shrine bonfire.
       0 Register Bonfire (Event Flag ID: 11020992, Entity ID: 1021960, Reaction Distance: 1.000, Reaction Angle: 180.000, Initial Kindle Level: 10)
-		# Register Shrine bonfire with high kindle if conditions are met (Anastacia saved and Lordvessel fed).
+        # Register Shrine bonfire with high kindle if conditions are met (Anastacia saved and Lordvessel fed).
       1 SKIP 1 lines IF Event Flag ID: 11020108 is OFF
       2 Register Bonfire (Event Flag ID: 11020992, Entity ID: 1021960, Reaction Distance: 1.000, Reaction Angle: 180.000, Initial Kindle Level: 30)
-		# Set status of Undead Parish elevator (1021000).
+        # Set status of Undead Parish elevator (1021000).
       3 SKIP 4 lines IF Event Flag ID: 11020300 is OFF
       4 SKIP 2 lines IF Event Flag ID: 11020302 is ON
       5 "Reproduction of object animation" (Object Entity ID: 1021000, Animation ID: 11)
       6 SKIP 1 lines
       7 "Reproduction of object animation" (Object Entity ID: 1021000, Animation ID: 12)
-		# Run Undead Parish elevator script (redirects to 11020301 after first use).
+        # Run Undead Parish elevator script (redirects to 11020301 after first use).
       8 Initialize Event (Event ID: 11020300, Slot Number: 0, Arguments: {0})
-		# Crow flies away and disappears if its health falls below 30%.
+        # Crow flies away and disappears if its health falls below 30%.
       9 Initialize Event (Event ID: 11025050, Slot Number: 0, Arguments: {0})
-		# Start background music and character backreads for first arrival.
+        # Start background music and character backreads for first arrival.
      10 Initialize Event (Event ID: 11020001, Slot Number: 0, Arguments: {0})
-		# Action for player curling up in crow's nest.
+        # Action for player curling up in crow's nest.
      11 Initialize Event (Event ID: 11020020, Slot Number: 0, Arguments: {0})
-		# Crow transport back to Undead Asylum (20 second timer on first run only).
+        # Crow transport back to Undead Asylum (20 second timer on first run only).
      12 Initialize Event (Event ID: 11020021, Slot Number: 0, Arguments: {0})
-		# Control Anastacia's disappearance and dropped treasure, then 
-		# upgrade Shrine bonfire after placing one soul in the Lordvessel (flags 71020022 or 71020023).
+        # Control Anastacia's disappearance and dropped treasure, then
+        # upgrade Shrine bonfire after placing one soul in the Lordvessel (flags 71020022 or 71020023).
      13 Initialize Event (Event ID: 11020105, Slot Number: 0, Arguments: {0})
-		# Disable Shrine bonfire if 11020100 is ON and 11020101 is OFF (Anastacia's soul taken by Lautrec).
+        # Disable Shrine bonfire if 11020100 is ON and 11020101 is OFF (Anastacia's soul taken by Lautrec).
      14 Initialize Event (Event ID: 11020106, Slot Number: 0, Arguments: {0})
-		# Waits for a soul to be placed in the Lordvessel to enable bonfire upgrade from Anastacia.
+        # Waits for a soul to be placed in the Lordvessel to enable bonfire upgrade from Anastacia.
      15 Initialize Event (Event ID: 11020108, Slot Number: 0, Arguments: {0})
-		# (Useless) Unlock door to New Londo Ruins lift with Lift Chamber Key.
+        # (Useless) Unlock door to New Londo Ruins lift with Lift Chamber Key.
      16 Initialize Event (Event ID: 11020120, Slot Number: 0, Arguments: {11020120, 10010874, 1021465, 10010883, 2015})
-		# Open hole to Firelink Altar when both Bells of Awakening are rung.
+        # Open hole to Firelink Altar when both Bells of Awakening are rung.
      17 Initialize Event (Event ID: 11020350, Slot Number: 0, Arguments: {0})
-		# Warp player to Firelink Altar when they fall in the hole if 710 is ON. Otherwise kill them.
+        # Warp player to Firelink Altar when they fall in the hole if 710 is ON. Otherwise kill them.
      18 Initialize Event (Event ID: 11020351, Slot Number: 0, Arguments: {0})
-		# Disables two hitboxes when 710 is ON. Not sure why it's here instead, but leave it.
+        # Disables two hitboxes when 710 is ON. Not sure why it's here instead, but leave it.
      19 Initialize Event (Event ID: 11020352, Slot Number: 0, Arguments: {0})
-		# Prevents six enemies (the Hollow Soldiers I think) from following the player into a certain
-		# area (1022710).
+        # Prevents six enemies (the Hollow Soldiers I think) from following the player into a certain
+        # area (1022710).
      20 Initialize Event (Event ID: 11025150, Slot Number: 0, Arguments: {0})
-		# Four treasure chests (Petrus's treasure behind the Shrine I guess; NOT the safety chest).
+        # Four treasure chests (Petrus's treasure behind the Shrine I guess; NOT the safety chest).
      21 Initialize Event (Event ID: 11020700, Slot Number: 0, Arguments: {1021650, 11020700})
      22 Initialize Event (Event ID: 11020700, Slot Number: 1, Arguments: {1021651, 11020701})
      23 Initialize Event (Event ID: 11020700, Slot Number: 2, Arguments: {1021652, 11020702})
      24 Initialize Event (Event ID: 11020700, Slot Number: 3, Arguments: {1021653, 11020703})
-		# Skeleton assembly.
-		# Arguments: (trigger_entity_id, entity_id, trigger_distance, time_delay)
+        # Skeleton assembly.
+        # Arguments: (trigger_entity_id, entity_id, trigger_distance, time_delay)
      25 Initialize Event (Event ID: 11025200, Slot Number: 0, Arguments: {1020203, 1020203, 1082130432, 0})
      26 Initialize Event (Event ID: 11025200, Slot Number: 1, Arguments: {1020203, 1020204, 1082130432, 1063675494})
      27 Initialize Event (Event ID: 11025200, Slot Number: 2, Arguments: {1020205, 1020205, 1077936128, 0})
@@ -60,8 +60,8 @@ Parameters: {} ()
      36 Initialize Event (Event ID: 11025200, Slot Number: 13, Arguments: {1020209, 1020212, 1093664768, 1074580685})
      37 Initialize Event (Event ID: 11025200, Slot Number: 14, Arguments: {1020213, 1020213, 1077936128, 0})
 
-	 # Controls the safety chest. Not sure why it's up here above the preconstructor.
-	 # Arguments: (flag_enable_range_start, flag_enable_range_stop)
+     # Controls the safety chest. Not sure why it's up here above the preconstructor.
+     # Arguments: (flag_enable_range_start, flag_enable_range_stop)
 Event ID: 11020899, Int: 0
 Parameters: {X0:3, X4:7} (ii)
       0 END event IF multiplayer status is Client
@@ -95,11 +95,11 @@ Parameters: {X0:3, X4:7} (ii)
      28 "Reproduction of object animation" (Object Entity ID: 1021690, Animation ID: 0)
      29 ObjAct Activation (Entity ID: 1021690, Object Parameter ID: -1, State: DISABLE)
 
-	# Enables safety chest with item (11025300)
-	# Arguments: (flag_must_be_on, flag_must_be_off, item_type, item_id, flag_disabled_by_chest_opening)
-	# Also makes sure it checks your inventory for both empty and full Estus Flasks of the given level.
-	# The flag_must_be_off is usually 703. The flag_must_be_on is presumably usually the flag from
-	# picking up the item lot.
+    # Enables safety chest with item (11025300)
+    # Arguments: (flag_must_be_on, flag_must_be_off, item_type, item_id, flag_disabled_by_chest_opening)
+    # Also makes sure it checks your inventory for both empty and full Estus Flasks of the given level.
+    # The flag_must_be_off is usually 703. The flag_must_be_on is presumably usually the flag from
+    # picking up the item lot.
 Event ID: 11020800, Int: 0
 Parameters: {X0:3, X4:7, X8:8, X12:15, X16:19} (iiBii)
       0 END event IF multiplayer status is Client
@@ -129,9 +129,9 @@ Parameters: {X0:3, X4:7, X8:8, X12:15, X16:19} (iiBii)
 
 Event ID: 50, Int: 0
 Parameters: {} ()
-		# Initialize range of flags that determine if the safety chest should be open.
+        # Initialize range of flags that determine if the safety chest should be open.
       0 Batch SET Event Flag IDs from 50004000 to 50004069 to ON
-		# Keys.
+        # Keys.
       1 Initialize Event (Event ID: 11020800, Slot Number: 0, Arguments: {51010140, 703, 3, 2001, 50004000})
       2 Initialize Event (Event ID: 11020800, Slot Number: 1, Arguments: {11017140, 703, 3, 2002, 50004001})
       3 Initialize Event (Event ID: 11020800, Slot Number: 2, Arguments: {51500150, 703, 3, 2003, 50004002})
@@ -153,38 +153,38 @@ Parameters: {} ()
      19 Initialize Event (Event ID: 11020800, Slot Number: 18, Arguments: {51200140, 703, 3, 2019, 50004018})
      20 Initialize Event (Event ID: 11020800, Slot Number: 19, Arguments: {51700210, 703, 3, 2020, 50004019})
      21 Initialize Event (Event ID: 11020800, Slot Number: 20, Arguments: {11017030, 703, 3, 2021, 50004020})
-		# Lord Souls/Shards.
+        # Lord Souls/Shards.
      22 Initialize Event (Event ID: 11020800, Slot Number: 21, Arguments: {50001560, 11800201, 3, 2500, 50004021})
      23 Initialize Event (Event ID: 11020800, Slot Number: 22, Arguments: {50001580, 11800202, 3, 2501, 50004022})
      24 Initialize Event (Event ID: 11020800, Slot Number: 23, Arguments: {50001630, 11800203, 3, 2502, 50004023})
      25 Initialize Event (Event ID: 11020800, Slot Number: 24, Arguments: {50001640, 11800204, 3, 2503, 50004024})
-		# Lordvessel.
+        # Lordvessel.
      26 Initialize Event (Event ID: 11020800, Slot Number: 25, Arguments: {50000090, 11800100, 3, 2510, 50004025})
-		# Covenant of Artorias.
+        # Covenant of Artorias.
      27 Initialize Event (Event ID: 11020800, Slot Number: 26, Arguments: {50001540, 703, 2, 138, 50004026})
-		# Orange Charred Ring.
+        # Orange Charred Ring.
      28 Initialize Event (Event ID: 11020800, Slot Number: 27, Arguments: {50001670, 703, 2, 139, 50004027})
-		# White Sign Soapstone.
+        # White Sign Soapstone.
      29 Initialize Event (Event ID: 11020800, Slot Number: 28, Arguments: {50000000, 703, 3, 100, 50004028})
-		# Red Sign Soapstone.
+        # Red Sign Soapstone.
      30 Initialize Event (Event ID: 11020800, Slot Number: 29, Arguments: {51100330, 703, 3, 101, 50004029})
-		# Red Eye Orb.
+        # Red Eye Orb.
      31 Initialize Event (Event ID: 11020800, Slot Number: 30, Arguments: {50000390, 703, 3, 102, 50004030})
-		# Black Separation crystal.
+        # Black Separation crystal.
      32 Initialize Event (Event ID: 11020800, Slot Number: 31, Arguments: {200, 703, 3, 103, 50004031})
-		# Orange Guidance Soapstone.
+        # Orange Guidance Soapstone.
      33 Initialize Event (Event ID: 11020800, Slot Number: 32, Arguments: {11017020, 703, 3, 106, 50004032})
-		# Book of the Guilty.
+        # Book of the Guilty.
      34 Initialize Event (Event ID: 11020800, Slot Number: 33, Arguments: {11607020, 703, 3, 108, 50004033})
-		# Servant Roster.
+        # Servant Roster.
      35 Initialize Event (Event ID: 11020800, Slot Number: 34, Arguments: {11407080, 703, 3, 112, 50004034})
-		# Blue Eye Orb.
+        # Blue Eye Orb.
      36 Initialize Event (Event ID: 11020800, Slot Number: 35, Arguments: {50000360, 703, 3, 113, 50004035})
-		# Dragon Eye.
+        # Dragon Eye.
      37 Initialize Event (Event ID: 11020800, Slot Number: 36, Arguments: {50000260, 703, 3, 114, 50004036})
-		# Darksign.
+        # Darksign.
      38 Initialize Event (Event ID: 11020800, Slot Number: 37, Arguments: {200, 703, 3, 117, 50004037})
-		# Estus Flask (all levels).
+        # Estus Flask (all levels).
      39 Initialize Event (Event ID: 11020800, Slot Number: 38, Arguments: {50000082, 8131, 3, 200, 50004038})
      40 Initialize Event (Event ID: 11020800, Slot Number: 39, Arguments: {8131, 8132, 3, 202, 50004039})
      41 Initialize Event (Event ID: 11020800, Slot Number: 40, Arguments: {8132, 8133, 3, 204, 50004040})
@@ -193,24 +193,24 @@ Parameters: {} ()
      44 Initialize Event (Event ID: 11020800, Slot Number: 43, Arguments: {8135, 8136, 3, 210, 50004043})
      45 Initialize Event (Event ID: 11020800, Slot Number: 44, Arguments: {8136, 8137, 3, 212, 50004044})
      46 Initialize Event (Event ID: 11020800, Slot Number: 45, Arguments: {8137, 703, 3, 214, 50004045})
-		# Peculiar Doll.
+        # Peculiar Doll.
      47 Initialize Event (Event ID: 11020800, Slot Number: 46, Arguments: {51810080, 703, 3, 384, 50004046})
-		# Weapon, Armor, Repairboxes.
+        # Weapon, Armor, Repairboxes.
      48 Initialize Event (Event ID: 11020800, Slot Number: 47, Arguments: {11017150, 703, 3, 2600, 50004047})
      49 Initialize Event (Event ID: 11020800, Slot Number: 48, Arguments: {11017160, 703, 3, 2601, 50004048})
      50 Initialize Event (Event ID: 11020800, Slot Number: 49, Arguments: {11017170, 703, 3, 2602, 50004049})
-		# Rite of Kindling.
+        # Rite of Kindling.
      51 Initialize Event (Event ID: 11020800, Slot Number: 50, Arguments: {50001550, 703, 3, 2607, 50004050})
-		# Bottomless Box.
+        # Bottomless Box.
      52 Initialize Event (Event ID: 11020800, Slot Number: 51, Arguments: {11007010, 703, 3, 2608, 50004051})
-		# Re-checks Red Eye Orb and Black Separation Crystal, but as rings. (No idea why.)
+        # Re-checks Red Eye Orb and Black Separation Crystal, but as rings. (No idea why.)
      53 Initialize Event (Event ID: 11020800, Slot Number: 52, Arguments: {50000360, 703, 2, 102, 50004052})
      54 Initialize Event (Event ID: 11020800, Slot Number: 53, Arguments: {50000160, 703, 2, 103, 50004053})
-		# Dragon Head Stone.
+        # Dragon Head Stone.
      55 Initialize Event (Event ID: 11020800, Slot Number: 54, Arguments: {50000260, 703, 3, 377, 50004054})
-		# Dragon Torso Stone.
+        # Dragon Torso Stone.
      56 Initialize Event (Event ID: 11020800, Slot Number: 55, Arguments: {50000270, 703, 3, 378, 50004055})
-		# Embers.
+        # Embers.
      57 Initialize Event (Event ID: 11020800, Slot Number: 56, Arguments: {51000500, 350, 3, 800, 50004056})
      58 Initialize Event (Event ID: 11020800, Slot Number: 57, Arguments: {51600500, 351, 3, 801, 50004057})
      59 Initialize Event (Event ID: 11020800, Slot Number: 58, Arguments: {51700600, 352, 3, 802, 50004058})
@@ -221,39 +221,39 @@ Parameters: {} ()
      64 Initialize Event (Event ID: 11020800, Slot Number: 63, Arguments: {51100370, 360, 3, 810, 50004063})
      65 Initialize Event (Event ID: 11020800, Slot Number: 64, Arguments: {51410100, 362, 3, 812, 50004064})
      66 Initialize Event (Event ID: 11020800, Slot Number: 65, Arguments: {51410530, 363, 3, 813, 50004065})
-		# Master Key.
+        # Master Key.
      67 Initialize Event (Event ID: 11020800, Slot Number: 66, Arguments: {11007020, 703, 3, 2100, 50004066})
-		# DLC: Crest Key.
+        # DLC: Crest Key.
      68 Initialize Event (Event ID: 11020800, Slot Number: 67, Arguments: {51210981, 703, 3, 2022, 50004067})
-		# DLC: Broken Pendant.
+        # DLC: Broken Pendant.
      69 Initialize Event (Event ID: 11020800, Slot Number: 68, Arguments: {51700930, 703, 3, 2520, 50004068})
-		# DLC: Purple Coward's Crystal.
+        # DLC: Purple Coward's Crystal.
      70 Initialize Event (Event ID: 11020800, Slot Number: 69, Arguments: {50001200, 703, 3, 118, 50004069})
      71 Initialize Event (Event ID: 11020899, Slot Number: 0, Arguments: {50004000, 50004069})
-		
-		# Removes Lift Chamber Key use; added late in development I suspect.
+
+        # Removes Lift Chamber Key use; added late in development I suspect.
      72 SET Event Flag ID 11020120 to ON
      73 SET Event Flag ID 61020120 to ON
-		
-		# The Firelink NPC scripts are below. This is a useful place to investigate their flags, as well.
-		
-		# BIG HAT LOGAN
+
+        # The Firelink NPC scripts are below. This is a useful place to investigate their flags, as well.
+
+        # BIG HAT LOGAN
      74 Humanity Registration for Entity ID: 6031 ("First Event Flag ID to retain humanity ID": 8334)
-		# 1092: Logan is at Firelink Shrine (rescued from Sen's Fortress).
+        # 1092: Logan is at Firelink Shrine (rescued from Sen's Fortress).
      75 SKIP 2 lines IF Event Flag ID: 00001092 is ON
-		# 1096: Logan is here, and hostile.
+        # 1096: Logan is here, and hostile.
      76 SKIP 1 lines IF Event Flag ID: 00001096 is ON
      77 DISABLE Entity ID: 6031
-		# Monitor hostility (enable Arg2).
+        # Monitor hostility (enable Arg2).
      78 Initialize Event (Event ID: 11020510, Slot Number: 0, Arguments: {6031, 1096})
-		# Monitor death (disable Arg2 and Arg3, enable Arg4).
+        # Monitor death (disable Arg2 and Arg3, enable Arg4).
      79 Initialize Event (Event ID: 11020530, Slot Number: 0, Arguments: {6031, 1090, 1109, 1097})
-		# Monitor Logan's rescue (disable 1090 and 1109, enable 1092).
+        # Monitor Logan's rescue (disable 1090 and 1109, enable 1092).
      80 Initialize Event (Event ID: 11020550, Slot Number: 0, Arguments: {6031, 1090, 1109, 1092})
-		# Monitor sellout of Logan's spells (disable 1090 and 1109, enable 1093).
+        # Monitor sellout of Logan's spells (disable 1090 and 1109, enable 1093).
      81 Initialize Event (Event ID: 11020551, Slot Number: 0, Arguments: {6031, 1090, 1109, 1093})
-	 
-		# GRIGGS OF VINHEIM
+
+        # GRIGGS OF VINHEIM
      82 Humanity Registration for Entity ID: 6041 ("First Event Flag ID to retain humanity ID": 8342)
      83 SKIP 1 lines IF Event Flag ID: 00001112 to 00001114 are not all OFF
      84 DISABLE Entity ID: 6041
@@ -262,15 +262,15 @@ Parameters: {} ()
      87 Initialize Event (Event ID: 11020552, Slot Number: 0, Arguments: {6041, 1110, 1119, 1112})
      88 Initialize Event (Event ID: 11020553, Slot Number: 0, Arguments: {6041, 1110, 1119, 1113})
      89 Initialize Event (Event ID: 11020554, Slot Number: 0, Arguments: {6041, 1110, 1119, 1117})
-		
-		# Oswald? Why is his code here? ("Gray Saint")
+
+        # Oswald? Why is his code here? ("Gray Saint")
      90 Initialize Event (Event ID: 11020110, Slot Number: 0, Arguments: {0})
      91 Initialize Event (Event ID: 11020555, Slot Number: 0, Arguments: {6060, 1140, 1169, 1141})
      92 Initialize Event (Event ID: 11020556, Slot Number: 0, Arguments: {6060, 1140, 1169, 1146})
      93 Initialize Event (Event ID: 11020557, Slot Number: 0, Arguments: {6060, 1140, 1169, 1142})
      94 Initialize Event (Event ID: 11020558, Slot Number: 0, Arguments: {6060, 1140, 1169, 1145})
-	 
-		# RHEA OF THOROLUND
+
+        # RHEA OF THOROLUND
      95 Humanity Registration for Entity ID: 6070 ("First Event Flag ID to retain humanity ID": 8358)
      96 SKIP 1 lines IF Event Flag ID: 00001171 is ON
      97 DISABLE Entity ID: 6070
@@ -278,8 +278,8 @@ Parameters: {} ()
      99 Initialize Event (Event ID: 11020559, Slot Number: 0, Arguments: {0})
     100 Initialize Event (Event ID: 11020560, Slot Number: 0, Arguments: {0})
     101 Initialize Event (Event ID: 11020530, Slot Number: 2, Arguments: {6070, 1170, 1180, 1177})
-	
-		# PETRUS OF THOROLUND
+
+        # PETRUS OF THOROLUND
     102 Humanity Registration for Entity ID: 6080 ("First Event Flag ID to retain humanity ID": 8366)
     103 SKIP 1 lines IF Event Flag ID: 00001192 is ON
     104 SKIP 1 lines
@@ -290,20 +290,20 @@ Parameters: {} ()
     109 Initialize Event (Event ID: 11020503, Slot Number: 0, Arguments: {6080, 1195})
     110 Initialize Event (Event ID: 11020569, Slot Number: 0, Arguments: {6080, 1190, 1209, 1198})
     111 Initialize Event (Event ID: 11020567, Slot Number: 0, Arguments: {6080, 1190, 1209, 1196})
-	
-		# VINCE OF THOROLUND (or Nico)
+
+        # VINCE OF THOROLUND (or Nico)
     112 Humanity Registration for Entity ID: 6090 ("First Event Flag ID to retain humanity ID": 8374)
     113 SKIP 1 lines IF Event Flag ID: 00001211 is ON
     114 DISABLE Entity ID: 6090
     115 Initialize Event (Event ID: 11020530, Slot Number: 4, Arguments: {6090, 1210, 1219, 1214})
-	
-		# NICO OF THOROLUND (or Vince)
+
+        # NICO OF THOROLUND (or Vince)
     116 Humanity Registration for Entity ID: 6100 ("First Event Flag ID to retain humanity ID": 8382)
     117 SKIP 1 lines IF Event Flag ID: 00001221 is ON
     118 DISABLE Entity ID: 6100
     119 Initialize Event (Event ID: 11020530, Slot Number: 5, Arguments: {6100, 1220, 1229, 1224})
-	
-		# LAURENTIUS OF THE GREAT SWAMP
+
+        # LAURENTIUS OF THE GREAT SWAMP
     120 Humanity Registration for Entity ID: 6131 ("First Event Flag ID to retain humanity ID": 8390)
     121 SKIP 2 lines IF Event Flag ID: 00001252 is ON
     122 SKIP 1 lines IF Event Flag ID: 00001253 is ON
@@ -312,8 +312,8 @@ Parameters: {} ()
     125 Initialize Event (Event ID: 11020530, Slot Number: 6, Arguments: {6131, 1250, 1259, 1254})
     126 Initialize Event (Event ID: 11020574, Slot Number: 0, Arguments: {6131, 1250, 1259, 1252})
     127 Initialize Event (Event ID: 11020575, Slot Number: 0, Arguments: {6131, 1250, 1259, 1256})
-	
-		# INGWARD
+
+        # INGWARD
     128 Humanity Registration for Entity ID: 6181 ("First Event Flag ID to retain humanity ID": 8406)
     129 SKIP 2 lines IF Event Flag ID: 00001314 is ON
     130 SKIP 1 lines IF Event Flag ID: 00001313 is ON
@@ -323,8 +323,8 @@ Parameters: {} ()
     134 Initialize Event (Event ID: 11020576, Slot Number: 0, Arguments: {6181, 1310, 1319, 1313})
     135 Initialize Event (Event ID: 11020504, Slot Number: 8, Arguments: {6240, 1411})
     136 Initialize Event (Event ID: 11020530, Slot Number: 8, Arguments: {6240, 1410, 1413, 1412})
-	
-		# DOMNHALL OF ZENA
+
+        # DOMNHALL OF ZENA
     137 Humanity Registration for Entity ID: 6261 ("First Event Flag ID to retain humanity ID": 8430)
     138 SKIP 2 lines IF Event Flag ID: 00001434 is ON
     139 SKIP 1 lines IF Event Flag ID: 00001431 is ON
@@ -332,8 +332,8 @@ Parameters: {} ()
     141 Initialize Event (Event ID: 11020510, Slot Number: 9, Arguments: {6261, 1434})
     142 Initialize Event (Event ID: 11020413, Slot Number: 0, Arguments: {6261, 1435})
     143 Initialize Event (Event ID: 11020412, Slot Number: 0, Arguments: {6261, 1430, 1459, 1431})
-	
-		# CRESTFALLEN WARRIOR
+
+        # CRESTFALLEN WARRIOR
     144 Humanity Registration for Entity ID: 6270 ("First Event Flag ID to retain humanity ID": 8438)
     145 SKIP 2 lines IF Event Flag ID: 00001464 is ON
     146 SKIP 1 lines IF Event Flag ID: 00001462 is ON
@@ -342,8 +342,8 @@ Parameters: {} ()
     149 Initialize Event (Event ID: 11020510, Slot Number: 10, Arguments: {6270, 1461})
     150 Initialize Event (Event ID: 11020530, Slot Number: 10, Arguments: {6270, 1460, 1464, 1462})
     151 Initialize Event (Event ID: 11020577, Slot Number: 0, Arguments: {6270, 1460, 1464, 1464})
-	
-		# SIEGMEYER OF CATARINA
+
+        # SIEGMEYER OF CATARINA
     152 Humanity Registration for Entity ID: 6287 ("First Event Flag ID to retain humanity ID": 8446)
     153 SKIP 2 lines IF Event Flag ID: 00001512 is ON
     154 SKIP 1 lines IF Event Flag ID: 00001497 is ON
@@ -351,8 +351,8 @@ Parameters: {} ()
     156 Initialize Event (Event ID: 11020510, Slot Number: 11, Arguments: {6287, 1512})
     157 Initialize Event (Event ID: 11020530, Slot Number: 11, Arguments: {6287, 1490, 1514, 1513})
     158 Initialize Event (Event ID: 11020579, Slot Number: 0, Arguments: {6287, 1490, 1514, 1497})
-	
-		# SIEGLINDE OF CATARINA
+
+        # SIEGLINDE OF CATARINA
     159 Humanity Registration for Entity ID: 6292 ("First Event Flag ID to retain humanity ID": 8454)
     160 SKIP 3 lines IF Event Flag ID: 00001547 is ON
     161 SKIP 2 lines IF Event Flag ID: 00001545 is ON
@@ -364,8 +364,8 @@ Parameters: {} ()
     167 Initialize Event (Event ID: 11020584, Slot Number: 0, Arguments: {6292, 1540, 1569, 1544})
     168 Initialize Event (Event ID: 11020585, Slot Number: 0, Arguments: {6292, 1540, 1569, 1545})
     169 Initialize Event (Event ID: 11020586, Slot Number: 0, Arguments: {6292})
-	
-		# KNIGHT LAUTREC OF CARIM
+
+        # KNIGHT LAUTREC OF CARIM
     170 Humanity Registration for Entity ID: 6301 ("First Event Flag ID to retain humanity ID": 8462)
     171 SKIP 3 lines IF Event Flag ID: 00001572 is ON
     172 SKIP 2 lines IF Event Flag ID: 00001574 is ON
@@ -378,8 +378,8 @@ Parameters: {} ()
     179 Initialize Event (Event ID: 11020588, Slot Number: 0, Arguments: {6301, 1570, 1599, 1573, 1572, 1577})
     180 Initialize Event (Event ID: 11020589, Slot Number: 0, Arguments: {6301, 1570, 1599, 1577})
     181 Initialize Event (Event ID: 11020410, Slot Number: 0, Arguments: {6301, 1570, 1599, 1578})
-	
-		# PATCHES
+
+        # PATCHES
     182 Humanity Registration for Entity ID: 6322 ("First Event Flag ID to retain humanity ID": 8478)
     183 SKIP 2 lines IF Event Flag ID: 00001627 is ON
     184 SKIP 1 lines IF Event Flag ID: 00001626 is ON
@@ -387,8 +387,8 @@ Parameters: {} ()
     186 Initialize Event (Event ID: 11020510, Slot Number: 14, Arguments: {6322, 1627})
     187 Initialize Event (Event ID: 11020530, Slot Number: 14, Arguments: {6322, 1620, 1629, 1628})
     188 Initialize Event (Event ID: 11020411, Slot Number: 0, Arguments: {6322, 1620, 1629, 1626})
-	
-		# FRAMPT
+
+        # FRAMPT
     189 SKIP 2 lines IF Event Flag ID: 00000015 is OFF
     190 DISABLE Entity ID: 6330
     191 SKIP 14 lines IF Event Flag ID: 00000015 is ON
@@ -690,9 +690,9 @@ Parameters: {} ()
 
 Event ID: 11020510, Int: 0
 Parameters: {X0:3, X4:7} (ii)
-		# If a) NPC is injured and hostile or b) Arg2 is ON...
-		# Disable the NPC if this event hasn't run before and wait for 703.
-		# Enable Arg2 flag and switch NPC team to Hostile Ally (and save).
+        # If a) NPC is injured and hostile or b) Arg2 is ON...
+        # Disable the NPC if this event hasn't run before and wait for 703.
+        # Enable Arg2 flag and switch NPC team to Hostile Ally (and save).
       0 CONDITION: IF Entity ID: X0:3 has Health Ratio <= 0.900 --> Register AND(01)
       1 CONDITION: IF Entity ID: X0:3 has Health Ratio > 0.000 --> Register AND(01)
       2 CONDITION: IF Entity ID: X0:3 is hostile toward Entity ID: 00010000 --> Register AND(01)
