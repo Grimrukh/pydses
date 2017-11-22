@@ -50,3 +50,7 @@ fabric.properties
 
 # More PyCharm stuff
 .idea/*
+
+# Even MORE PyCharm stuff
+/**/__pycache__/**
+*.pyc
