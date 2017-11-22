@@ -112,6 +112,14 @@ def set_network_sync(network_sync_state):
     return __format_event(event_format, __bint(network_sync_state))
 
 
+def disable_network_sync():
+    return set_network_sync(0)
+
+
+def enable_network_sync():
+    return set_network_sync(1)
+
+
 # 4
 def issue_prefetch_request(request_id):
     event_format = ['2000', '04', 'I']
