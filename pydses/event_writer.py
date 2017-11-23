@@ -1238,16 +1238,16 @@ def set_map_part_state(map_part_id, activation_state):
 
 
 # 1
-def skip_if_condition_true(number_lines, condition = CONT):
+def skip_if_condition_true(number_lines, condition):
     # Skips some number of lines if the condition is true.
     # Default condition is MAIN.
-    return skip_if_condition_state(number_lines, 1, condition.value)
+    return skip_if_condition_state(number_lines, 1, condition)
 
 
-def skip_if_condition_false(number_lines, condition = CONT):
+def skip_if_condition_false(number_lines, condition):
     # Skips some number of lines if the condition is false.
     # Default condition is MAIN.
-    return skip_if_condition_state(number_lines, 0, condition.value)
+    return skip_if_condition_state(number_lines, 0, condition)
 
 
 def skip_if_condition_state(number_lines, required_state, condition):
@@ -1259,37 +1259,37 @@ def skip_if_condition_state(number_lines, required_state, condition):
     OR, alternatively, as constants found directly within event_enums (MAIN, AND1, OR1, etc)
     """
     event_format = ['1000', '01', 'BBb']
-    return __format_event(event_format, number_lines, required_state, condition.value)
+    return __format_event(event_format, number_lines, required_state, condition)
 
 
 # 2
 def restart_if_condition_true(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(1, 1, condition.value)
+    return terminate_if_condition_state(1, 1, condition)
 
 
 def restart_if_condition_false(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
-    return terminate_if_condition_state(1, 0, condition.value)
+    return terminate_if_condition_state(1, 0, condition)
 
 
 def end_if_condition_true(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(0, 1, condition.value)
+    return terminate_if_condition_state(0, 1, condition)
 
 
 def end_if_condition_false(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(0, 0, condition.value)
+    return terminate_if_condition_state(0, 0, condition)
 
 
 def terminate_if_condition_state(event_end_type, required_state, condition):
     event_format = ['1000', '02', 'BBb']
-    return __format_event(event_format, event_end_type, required_state, condition.value)
+    return __format_event(event_format, event_end_type, required_state, condition)
 
 
 # 3
@@ -1424,12 +1424,12 @@ def terminate_if_value_comparison(event_end_type, comparison_type, left, right):
 # 7
 def skip_if_condition_true_finished(number_lines, condition = 0):
     # Default condition is MAIN.
-    return skip_if_condition_state_finished(number_lines, 1, condition.value)
+    return skip_if_condition_state_finished(number_lines, 1, condition)
 
 
 def skip_if_condition_false_finished(number_lines, condition = 0):
     # Default condition is MAIN.
-    return skip_if_condition_state_finished(number_lines, 0, condition.value)
+    return skip_if_condition_state_finished(number_lines, 0, condition)
 
 
 def skip_if_condition_state_finished(number_lines, required_state, condition):
@@ -1438,39 +1438,39 @@ def skip_if_condition_state_finished(number_lines, required_state, condition):
     # group". This may use the condition in a slightly different way.
     # TODO: Examine when this is used versus 1000[01].
     event_format = ['1000', '07', 'BBb']
-    return __format_event(event_format, number_lines, required_state, condition.value)
+    return __format_event(event_format, number_lines, required_state, condition)
 
 
 # 8
 def restart_if_condition_true_finished(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(1, 1, condition.value)
+    return terminate_if_condition_state_finished(1, 1, condition)
 
 
 def restart_if_condition_false_finished(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(1, 0, condition.value)
+    return terminate_if_condition_state_finished(1, 0, condition)
 
 
 def end_if_condition_true_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(0, 1, condition.value)
+    return terminate_if_condition_state_finished(0, 1, condition)
 
 
 def end_if_condition_false_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(0, 0, condition.value)
+    return terminate_if_condition_state_finished(0, 0, condition)
 
 
 def terminate_if_condition_state_finished(event_end_type, required_state, condition):
     # See 1000[07]; unclear how this differs from 1000[02].
     # TODO: Examine usage of this vs. 1000[02].
     event_format = ['1000', '08', 'BBb']
-    return __format_event(event_format, event_end_type, required_state, condition.value)
+    return __format_event(event_format, event_end_type, required_state, condition)
 
 
 # 9
