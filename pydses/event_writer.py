@@ -1238,19 +1238,19 @@ def set_map_part_state(map_part_id, activation_state):
 
 
 # 1
-def skip_if_condition_true(number_lines, condition: condition = CONT):
+def skip_if_condition_true(number_lines, condition = CONT):
     # Skips some number of lines if the condition is true.
     # Default condition is MAIN.
     return skip_if_condition_state(number_lines, 1, condition.value)
 
 
-def skip_if_condition_false(number_lines, condition: condition = CONT):
+def skip_if_condition_false(number_lines, condition = CONT):
     # Skips some number of lines if the condition is false.
     # Default condition is MAIN.
     return skip_if_condition_state(number_lines, 0, condition.value)
 
 
-def skip_if_condition_state(number_lines, required_state, condition: condition):
+def skip_if_condition_state(number_lines, required_state, condition):
     # Skips some number of lines if the specified condition has the specified
     # state.
     """
@@ -1263,31 +1263,31 @@ def skip_if_condition_state(number_lines, required_state, condition: condition):
 
 
 # 2
-def restart_if_condition_true(condition: condition = 0):
+def restart_if_condition_true(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state(1, 1, condition.value)
 
 
-def restart_if_condition_false(condition: condition = 0):
+def restart_if_condition_false(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
     return terminate_if_condition_state(1, 0, condition.value)
 
 
-def end_if_condition_true(condition: condition = 0):
+def end_if_condition_true(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state(0, 1, condition.value)
 
 
-def end_if_condition_false(condition: condition = 0):
+def end_if_condition_false(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state(0, 0, condition.value)
 
 
-def terminate_if_condition_state(event_end_type, required_state, condition: condition):
+def terminate_if_condition_state(event_end_type, required_state, condition):
     event_format = ['1000', '02', 'BBb']
     return __format_event(event_format, event_end_type, required_state, condition.value)
 
@@ -1422,17 +1422,17 @@ def terminate_if_value_comparison(event_end_type, comparison_type, left, right):
 
 
 # 7
-def skip_if_condition_true_finished(number_lines, condition: condition = 0):
+def skip_if_condition_true_finished(number_lines, condition = 0):
     # Default condition is MAIN.
     return skip_if_condition_state_finished(number_lines, 1, condition.value)
 
 
-def skip_if_condition_false_finished(number_lines, condition: condition = 0):
+def skip_if_condition_false_finished(number_lines, condition = 0):
     # Default condition is MAIN.
     return skip_if_condition_state_finished(number_lines, 0, condition.value)
 
 
-def skip_if_condition_state_finished(number_lines, required_state, condition: condition):
+def skip_if_condition_state_finished(number_lines, required_state, condition):
     # It is unclear how this differs from 1000[01]. The instruction name says
     # "finished condition group" (condition) rather than simply "condition
     # group". This may use the condition in a slightly different way.
@@ -1442,31 +1442,31 @@ def skip_if_condition_state_finished(number_lines, required_state, condition: co
 
 
 # 8
-def restart_if_condition_true_finished(condition: condition = 0):
+def restart_if_condition_true_finished(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state_finished(1, 1, condition.value)
 
 
-def restart_if_condition_false_finished(condition: condition = 0):
+def restart_if_condition_false_finished(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
     return terminate_if_condition_state_finished(1, 0, condition.value)
 
 
-def end_if_condition_true_finished(condition: condition = 0):
+def end_if_condition_true_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state_finished(0, 1, condition.value)
 
 
-def end_if_condition_false_finished(condition: condition = 0):
+def end_if_condition_false_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
     return terminate_if_condition_state_finished(0, 0, condition.value)
 
 
-def terminate_if_condition_state_finished(event_end_type, required_state, condition: condition):
+def terminate_if_condition_state_finished(event_end_type, required_state, condition):
     # See 1000[07]; unclear how this differs from 1000[02].
     # TODO: Examine usage of this vs. 1000[02].
     event_format = ['1000', '08', 'BBb']
@@ -1776,15 +1776,15 @@ def terminate_if_object_destruction_state(event_end_type, required_destruction_s
 
 
 # 0
-def if_condition_true(output_condition, input_condition: condition):
+def if_condition_true(output_condition, input_condition):
     return if_condition_state(output_condition, 1, input_condition)
 
 
-def if_condition_false(output_condition, input_condition: condition):
+def if_condition_false(output_condition, input_condition):
     return if_condition_state(output_condition, 0, input_condition)
 
 
-def if_condition_state(output_condition, required_result, input_condition: condition):
+def if_condition_state(output_condition, required_result, input_condition):
     # Evaluates the input condition (as OR or AND), compares it to the
     # required result, and stores the result of the comparison in the output
     # condition (where many values can be stored).
@@ -1940,19 +1940,19 @@ def if_action_button_state(output_condition, category, target_entity_id, reactio
 
 
 # 6
-def if_host(output_condition: condition):
+def if_host(output_condition):
     return if_multiplayer_state(output_condition, 0)
 
 
-def if_client(output_condition: condition):
+def if_client(output_condition):
     return if_multiplayer_state(output_condition, 1)
 
 
-def if_singleplayer(output_condition: condition):
+def if_singleplayer(output_condition):
     return if_multiplayer_state(output_condition, 2)
 
 
-def if_multiplayer(output_condition: condition):
+def if_multiplayer(output_condition):
     return if_multiplayer_state(output_condition, 3)
 
 
@@ -2135,25 +2135,25 @@ def if_event_flag_value_comparison(output_condition, left_event_flag_id, left_nu
 
 
 # 21
-def if_owns_DLC(output_condition: condition):
+def if_owns_DLC(output_condition):
     # Check if player owns Artorias of the Abyss DLC expansion.
     # NOTE: Again, no generic function here.
     event_format = ['   3', '21', 'bB']
     return __format_event(event_format, output_condition, 1)
 
 
-def if_does_not_own_DLC(output_condition: condition):
+def if_does_not_own_DLC(output_condition):
     # Check if player does not own Artorias of the Abyss DLC expansion.
     event_format = ['   3', '21', 'bB']
     return __format_event(event_format, output_condition, 0)
 
 
 # 22
-def if_online(output_condition: condition):
+def if_online(output_condition):
     return if_online_state(output_condition, 1)
 
 
-def if_offline(output_condition: condition):
+def if_offline(output_condition):
     return if_online_state(output_condition, 0)
 
 
@@ -2356,7 +2356,7 @@ def if_ai_state(output_condition, entity_id, required_ai_state):
 
 
 # 10
-def if_skull_lantern_activated(output_condition: condition):
+def if_skull_lantern_activated(output_condition):
     # Check if player is using (holding out) the Skull Lantern. Currently used
     # to alter enemy aggression in Tomb of the Giants, I think. No need for a
     # generic version.
@@ -2364,7 +2364,7 @@ def if_skull_lantern_activated(output_condition: condition):
     return __format_event(event_format, output_condition, 1)
 
 
-def if_skull_lantern_not_activated(output_condition: condition):
+def if_skull_lantern_not_activated(output_condition):
     # Check if player is using (holding out) the Skull Lantern. Currently used
     # to alter enemy aggression in Tomb of the Giants, I think. No need for a
     # generic version.
