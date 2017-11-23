@@ -76,9 +76,9 @@ class button_type(Enum):
 
 
 class category(Enum):
-    objects = 0
-    areas = 1
-    characters = 2
+    object = 0
+    region = 1
+    character = 2
 
 
 class character_type(Enum):
