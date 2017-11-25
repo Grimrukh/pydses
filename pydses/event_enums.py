@@ -47,32 +47,39 @@ OR7 = condition.or7
 
 """ EVENT ENUM DEFINITIONS """
 
+
 class ai_status_type(Enum):
     normal = 0
     recognition = 1
     alert = 2
     battle = 3
 
+
 class bitop(Enum):
     add = 0
     delete = 1
     invert = 2
 
+
 # ENUM_BOOL omitted for lack of necessity and conflict with python keywords
+
 
 class button_number(Enum):
     one_button = 1
     two_button = 2
     no_button = 6
 
+
 class button_type(Enum):
     yes_no = 0
     ok_cancel = 1
 
+
 class category(Enum):
-    objects = 0
-    areas = 1
-    characters = 2
+    object = 0
+    region = 1
+    character = 2
+
 
 class character_type(Enum):
     """
@@ -85,11 +92,13 @@ class character_type(Enum):
     gray_ghost = 8
     intruder = 10
 
+
 class character_update_rate(Enum):
     never = -1
     always = 0
     every_two_frames = 2
     every_five_frames = 5
+
 
 class class_type(Enum):
     warrior = 0
@@ -169,7 +178,6 @@ class equipment_type(Enum):
     armor = 1
     accessory = 2
     item = 3
-    mask = 4 # from event_define.lua
 
 
 class logic_op_type(Enum):

@@ -1238,19 +1238,19 @@ def set_map_part_state(map_part_id, activation_state):
 
 
 # 1
-def skip_if_condition_true(number_lines, condition: condition = CONT):
+def skip_if_condition_true(number_lines, condition):
     # Skips some number of lines if the condition is true.
     # Default condition is MAIN.
-    return skip_if_condition_state(number_lines, 1, condition.value)
+    return skip_if_condition_state(number_lines, 1, condition)
 
 
-def skip_if_condition_false(number_lines, condition: condition = CONT):
+def skip_if_condition_false(number_lines, condition):
     # Skips some number of lines if the condition is false.
     # Default condition is MAIN.
-    return skip_if_condition_state(number_lines, 0, condition.value)
+    return skip_if_condition_state(number_lines, 0, condition)
 
 
-def skip_if_condition_state(number_lines, required_state, condition: condition):
+def skip_if_condition_state(number_lines, required_state, condition):
     # Skips some number of lines if the specified condition has the specified
     # state.
     """
@@ -1259,37 +1259,37 @@ def skip_if_condition_state(number_lines, required_state, condition: condition):
     OR, alternatively, as constants found directly within event_enums (MAIN, AND1, OR1, etc)
     """
     event_format = ['1000', '01', 'BBb']
-    return __format_event(event_format, number_lines, required_state, condition.value)
+    return __format_event(event_format, number_lines, required_state, condition)
 
 
 # 2
-def restart_if_condition_true(condition: condition = 0):
+def restart_if_condition_true(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(1, 1, condition.value)
+    return terminate_if_condition_state(1, 1, condition)
 
 
-def restart_if_condition_false(condition: condition = 0):
+def restart_if_condition_false(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
-    return terminate_if_condition_state(1, 0, condition.value)
+    return terminate_if_condition_state(1, 0, condition)
 
 
-def end_if_condition_true(condition: condition = 0):
+def end_if_condition_true(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(0, 1, condition.value)
+    return terminate_if_condition_state(0, 1, condition)
 
 
-def end_if_condition_false(condition: condition = 0):
+def end_if_condition_false(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state(0, 0, condition.value)
+    return terminate_if_condition_state(0, 0, condition)
 
 
-def terminate_if_condition_state(event_end_type, required_state, condition: condition):
+def terminate_if_condition_state(event_end_type, required_state, condition):
     event_format = ['1000', '02', 'BBb']
-    return __format_event(event_format, event_end_type, required_state, condition.value)
+    return __format_event(event_format, event_end_type, required_state, condition)
 
 
 # 3
@@ -1422,55 +1422,55 @@ def terminate_if_value_comparison(event_end_type, comparison_type, left, right):
 
 
 # 7
-def skip_if_condition_true_finished(number_lines, condition: condition = 0):
+def skip_if_condition_true_finished(number_lines, condition = 0):
     # Default condition is MAIN.
-    return skip_if_condition_state_finished(number_lines, 1, condition.value)
+    return skip_if_condition_state_finished(number_lines, 1, condition)
 
 
-def skip_if_condition_false_finished(number_lines, condition: condition = 0):
+def skip_if_condition_false_finished(number_lines, condition = 0):
     # Default condition is MAIN.
-    return skip_if_condition_state_finished(number_lines, 0, condition.value)
+    return skip_if_condition_state_finished(number_lines, 0, condition)
 
 
-def skip_if_condition_state_finished(number_lines, required_state, condition: condition):
+def skip_if_condition_state_finished(number_lines, required_state, condition):
     # It is unclear how this differs from 1000[01]. The instruction name says
     # "finished condition group" (condition) rather than simply "condition
     # group". This may use the condition in a slightly different way.
     # TODO: Examine when this is used versus 1000[01].
     event_format = ['1000', '07', 'BBb']
-    return __format_event(event_format, number_lines, required_state, condition.value)
+    return __format_event(event_format, number_lines, required_state, condition)
 
 
 # 8
-def restart_if_condition_true_finished(condition: condition = 0):
+def restart_if_condition_true_finished(condition = 0):
     # Restart the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(1, 1, condition.value)
+    return terminate_if_condition_state_finished(1, 1, condition)
 
 
-def restart_if_condition_false_finished(condition: condition = 0):
+def restart_if_condition_false_finished(condition = 0):
     # Restart the event if the condition is false.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(1, 0, condition.value)
+    return terminate_if_condition_state_finished(1, 0, condition)
 
 
-def end_if_condition_true_finished(condition: condition = 0):
+def end_if_condition_true_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(0, 1, condition.value)
+    return terminate_if_condition_state_finished(0, 1, condition)
 
 
-def end_if_condition_false_finished(condition: condition = 0):
+def end_if_condition_false_finished(condition = 0):
     # End (not restart) the event if the condition is true.
     # Default condition is MAIN.
-    return terminate_if_condition_state_finished(0, 0, condition.value)
+    return terminate_if_condition_state_finished(0, 0, condition)
 
 
-def terminate_if_condition_state_finished(event_end_type, required_state, condition: condition):
+def terminate_if_condition_state_finished(event_end_type, required_state, condition):
     # See 1000[07]; unclear how this differs from 1000[02].
     # TODO: Examine usage of this vs. 1000[02].
     event_format = ['1000', '08', 'BBb']
-    return __format_event(event_format, event_end_type, required_state, condition.value)
+    return __format_event(event_format, event_end_type, required_state, condition)
 
 
 # 9
@@ -1776,15 +1776,15 @@ def terminate_if_object_destruction_state(event_end_type, required_destruction_s
 
 
 # 0
-def if_condition_true(output_condition, input_condition: condition):
+def if_condition_true(output_condition, input_condition):
     return if_condition_state(output_condition, 1, input_condition)
 
 
-def if_condition_false(output_condition, input_condition: condition):
+def if_condition_false(output_condition, input_condition):
     return if_condition_state(output_condition, 0, input_condition)
 
 
-def if_condition_state(output_condition, required_result, input_condition: condition):
+def if_condition_state(output_condition, required_result, input_condition):
     # Evaluates the input condition (as OR or AND), compares it to the
     # required result, and stores the result of the comparison in the output
     # condition (where many values can be stored).
@@ -1914,39 +1914,45 @@ def if_player_has_or_does_not_have_item(output_condition, item_type, item_id, re
 
 
 # 5
-# TODO: Check the most common parameters for this (e.g. doors) and make a
-# shortcut function for them.
-def if_action_button_state(output_condition, category, target_entity_id, reaction_angle, damipoly_id, reaction_distance,
-                           help_id, reaction_attribute, pad_id):
-    # Checks state of action button (A on the Xbox controller).
-    # Category: 0 = object, 1 = area, 2 = character.
-    # Target entity: the thing being activated (e.g. door, lever, chest).
-    # Reaction angle: activation angle centered on forward direction of entity.
-    # Damipoly ID: no idea, check usage.
-    # Reaction distance: maximum activation distance.
-    # Help ID: Message that appears to inform you what the action will do.
-    # Reaction attribute: 48 = human or hollow, 255 = all. Probably allows
-    #                     summons and invaders to activate the object as well.
-    # Pad ID: Button to trigger action (should usually be A).
+# TODO: Check the most common parameters for this (e.g. doors) and make a shortcut function for them.
+def if_action_button_state(output_condition, category, target_entity_id, reaction_angle,
+                           damipoly_id, reaction_distance, help_id, reaction_attribute, pad_id):
+    """
+    Checks for the player pressing a button near a thing (e.g. "A: Pull lever"). The actual prompt itself might be
+    created elsewhere.
+    :param output_condition: The condition group to which the result of the prompt is outputted.
+    :param category: Whether the prompt is for an object, an area, or a character.
+    :param target_entity_id: The entity to attach the prompt to.
+    :param reaction_angle: The incident angle between the player and the target entity
+    (how close the player's angle must be to facing in the direction of the target entity)
+    :param damipoly_id: ID of the "dammy poly" / "damipoly" (both forms are used in the game's data) to use for
+    hit detection. These are the hitboxes defined in FLVER meshes (they are used for weapon hitboxes, for example)
+    :param reaction_distance: The distance the player needs to be from the target entity.
+    :param help_id: The prompt text ID. Climb up ladder prompt is 10010300. Climb down ladder prompt is 10010301.
+    No other help IDs are defined in Dark Souls' event_define.lua. Demon's Souls' event_define.lua seems to have
+    many help IDs defined and some may work in Dark Souls, so be sure to check that out if you can.
+    :param reaction_attribute: Discerns which player(s) the prompt / activation works for.
+    :param pad_id: ID of the action button used, usually ID 0, which is the A (Xbox) / Cross (PlayStation) button.
+    """
     event_format = ['   3', '05', 'biifhfiBi']
     return __format_event(event_format, output_condition, category, target_entity_id, reaction_angle, damipoly_id,
                           reaction_distance, help_id, reaction_attribute, pad_id)
 
 
 # 6
-def if_host(output_condition: condition):
+def if_host(output_condition):
     return if_multiplayer_state(output_condition, 0)
 
 
-def if_client(output_condition: condition):
+def if_client(output_condition):
     return if_multiplayer_state(output_condition, 1)
 
 
-def if_singleplayer(output_condition: condition):
+def if_singleplayer(output_condition):
     return if_multiplayer_state(output_condition, 2)
 
 
-def if_multiplayer(output_condition: condition):
+def if_multiplayer(output_condition):
     return if_multiplayer_state(output_condition, 3)
 
 
@@ -2129,25 +2135,25 @@ def if_event_flag_value_comparison(output_condition, left_event_flag_id, left_nu
 
 
 # 21
-def if_owns_DLC(output_condition: condition):
+def if_owns_DLC(output_condition):
     # Check if player owns Artorias of the Abyss DLC expansion.
     # NOTE: Again, no generic function here.
     event_format = ['   3', '21', 'bB']
     return __format_event(event_format, output_condition, 1)
 
 
-def if_does_not_own_DLC(output_condition: condition):
+def if_does_not_own_DLC(output_condition):
     # Check if player does not own Artorias of the Abyss DLC expansion.
     event_format = ['   3', '21', 'bB']
     return __format_event(event_format, output_condition, 0)
 
 
 # 22
-def if_online(output_condition: condition):
+def if_online(output_condition):
     return if_online_state(output_condition, 1)
 
 
-def if_offline(output_condition: condition):
+def if_offline(output_condition):
     return if_online_state(output_condition, 0)
 
 
@@ -2350,7 +2356,7 @@ def if_ai_state(output_condition, entity_id, required_ai_state):
 
 
 # 10
-def if_skull_lantern_activated(output_condition: condition):
+def if_skull_lantern_activated(output_condition):
     # Check if player is using (holding out) the Skull Lantern. Currently used
     # to alter enemy aggression in Tomb of the Giants, I think. No need for a
     # generic version.
@@ -2358,7 +2364,7 @@ def if_skull_lantern_activated(output_condition: condition):
     return __format_event(event_format, output_condition, 1)
 
 
-def if_skull_lantern_not_activated(output_condition: condition):
+def if_skull_lantern_not_activated(output_condition):
     # Check if player is using (holding out) the Skull Lantern. Currently used
     # to alter enemy aggression in Tomb of the Giants, I think. No need for a
     # generic version.

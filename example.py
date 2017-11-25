@@ -5,6 +5,8 @@
 
 import pydses.event_writer as p
 from pydses.event_enums import *
+from pydses.extra_enums import *
+
 
 AsylumDemon = 1810800
 BossDeathSoundEffect = 777777777
@@ -34,7 +36,6 @@ def e11810001():
     p.skip_if_event_flag_off(1, flag_type.event_flag, EventFlag_PortcullisHasClosed)
     p.force_animation(Portcullis, Portcullis_AnimID, False, False, False)
     p.disable_object_activation(AsylumDemonFrontDoor, -1)
-
 
 if __name__ == '__main__':
     
