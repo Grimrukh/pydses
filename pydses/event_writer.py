@@ -7,7 +7,58 @@ import subprocess
 from .event_enums import *
 from contextlib import redirect_stdout
 
+PYTHON_27 = 'C:\\python27\\python.exe'                      # Your Python 2 executable
+REBUILDER = 'C:\\HotPocketRemix\\emevd_rebuilder.py'        # HPR's EMEVD rebuilder script
+UNPACKED_EMEVDS = 'C:\\HotPocketRemix\\UnpackedEMEVD'       # Folder containing unpacked EMEVD files to modify and pack
+
+
+def set_python2(path):
+    # Specify your Python 2 executable path.
+    global PYTHON_27
+    PYTHON_27 = path
+
+
+def set_rebuilder(path):
+    # Specify the path of HPR's EMEVD rebuilder.
+    global REBUILDER
+    REBUILDER = path
+
+
+def set_unpacked_emevds(path):
+    # Specify the path of the *folder* containing the unpacked EMEVDs you want to use as templates.
+    global UNPACKED_EMEVDS
+    UNPACKED_EMEVDS = path
+
+
 """ INTERFACE FUNCTIONS """
+
+
+def pack_event(event_functions: list):
+    """ Pack (or 'compile') your custom event functions using template symbols in the unpacked EMEVDs.
+
+    This function will interpret your pydses events (such as `e11810001` in example.py) one by one as strings, and
+    attempt to write those strings to template symbols (such as `<11810001>`) in unpacked EMEVD files.
+
+    If a template is not found, it will check if there is an existing event with an ID that matches the ID of your
+    event and ask if you want to overwrite that event with a template for your new custom event. The old event will be
+    erased (don't worry, you can re-inspect it in a fresh EMEVD file), so make sure your event has superseded the role
+    of the old one. Do NOT overwrite existing IDs with unrelated events unless you are incredibly (unreasonably)
+    confident that you have accounted for all references to the event flag with the same ID across the entire game data.
+
+    If there is no existing event, it will ask if you want to create a new template at the bottom of the file. (It
+    doesn't matter what order the events are defined in the EMEVD.) If you do, it will then ask if you want to create
+    an Initialize instruction for that event (and any arguments) below the <INIT0> symbol in Event 0 (such as
+    <INIT11810001>) in Event 0, which you will need to insert yourself. You can place this INIT symbol wherever you
+    want in the EMEVD (e.g. in Event 50 for NPC logic, or more rarely, nested inside another event) by manually editing
+    the unpacked file.
+
+    After all event functions have been substituted, any remaining templates will be brought to your attention for
+    optional deletion. If you don't delete them, the markers will simply be ignored for this pack.
+
+    :list event_functions:
+    :return:
+    """
+
 
 
 def unpacked_to_verbose(unpacked_filename, output_file):
@@ -20,11 +71,11 @@ def unpacked_to_verbose(unpacked_filename, output_file):
     This is intended only as an example method to quickly convert any events
     you write with pydses - you can probably come up with your own better way.
 
-    (Substitute your own Python 2 interpreter and emevd_rebuilder. I do it the
-    hard way because I use Python 3.)
+    You can specify your Python 2 exe and EMEVD rebuilder with set_python2() and
+    set_rebuilder() above.
     """
-    PYTHON_27 = 'C:\\python2\\python.exe'  # Your Python 2 exe.
-    REBUILDER = 'C:\\HotPocketRemix\\emevd_rebuilder.py'  # HPR's script.
+    global PYTHON_27
+    global REBUILDER
     command = '{} {} -p {} -v -o {}' \
         .format(PYTHON_27, REBUILDER, unpacked_filename, output_file)
     subprocess.run(command)
@@ -57,7 +108,9 @@ def DEBUG_PENDANT():
     """
     return award_item_lot(2070)
 
+
 """ PRIVATE HELPER FUNCTIONS """
+
 
 def __format_event(event_format, *args):
     args = list(args)
@@ -71,18 +124,17 @@ def __format_event(event_format, *args):
 def __bint(bool_value):
     return 1 if bool_value else 0
 
+
 """ EVENT HEADER """
 
-def event(event_id, unknown_int):
-    # TODO: Check validity of arguments here.
-    # TODO: Figure out, once and for all, just what the hell the unknown_int does
-    # From HotPocketRemix:
-    """ An unknown value, either 0, 1 or 2. This may control how events are executed? 0 is most common (859 occurances),
-     1 is next most common (321 occurances) and 2 is rarest (37 occurances).
-    (My current conjecture is that these control how / if events are restarted once they are completed. Some events might
-    restart on map load, when the player sits at a bonfire, never, etc. I have no evidence for this.)
+
+def event(event_id, restart_type):
+    """ restart_type:
+        0: Event will run once on map load.
+        1: Event will run again if you rest at a bonfire.
+        2: Unknown - only used for reassembling skeletons.
     """
-    print('{}, {}'.format(event_id, unknown_int))
+    print('{}, {}'.format(event_id, restart_type))
 
 
 """ 2000: SYSTEM """
@@ -667,15 +719,15 @@ def set_network_update_authority(entity_id, authority_level):
 
 
 # 29
-def enable_background_loading(entity_id):
-    return set_background_loading(entity_id, 0)
+def enable_backread(entity_id):
+    return set_backread_state(entity_id, 0)
 
 
-def disable_background_loading(entity_id):
-    return set_background_loading(entity_id, 1)
+def disable_backread(entity_id):
+    return set_backread_state(entity_id, 1)
 
 
-def set_background_loading(entity_id, desired_state):
+def set_backread_state(entity_id, desired_state):
     # 'Setting to remove from back lead' - involved in permanent disabling
     # 1 = remove, 0 = don't remove
     # Not sure if it can be restored once removed
@@ -742,7 +794,7 @@ def set_network_update_rate(entity_id, is_fixed, frequency):
 
 
 # 35
-def set_background_status(entity_id, desired_state):
+def set_backread_state_alternate(entity_id, desired_state):
     # Not sure how this relates to 2004[29] above.
     # TODO: Check and compare usage.
     event_format = ['2004', '35', 'iB']
@@ -1510,19 +1562,19 @@ def wait_random_range(min_number_seconds, max_number_seconds):
 
 # 1
 def skip_if_this_event_on(number_lines):
-    return skip_if_event_flag_state(number_lines, 1, 1, 0)
+    return skip_if_event_flag_state(number_lines, 1, flag_type.event, 0)
 
 
 def skip_if_this_event_slot_on(number_lines):
-    return skip_if_event_flag_state(number_lines, 1, 2, 0)
+    return skip_if_event_flag_state(number_lines, 1, flag_type.event_with_slot, 0)
 
 
 def skip_if_this_event_off(number_lines):
-    return skip_if_event_flag_state(number_lines, 0, 1, 0)
+    return skip_if_event_flag_state(number_lines, 0, flag_type.event, 0)
 
 
 def skip_if_this_event_slot_off(number_lines):
-    return skip_if_event_flag_state(number_lines, 0, 2, 0)
+    return skip_if_event_flag_state(number_lines, 0, flag_type.event_with_slot, 0)
 
 
 def skip_if_event_flag_on(number_lines, event_flag_type: flag_type, event_flag_id):
@@ -1542,11 +1594,11 @@ def skip_if_event_flag_state(number_lines, required_flag_state, event_flag_type:
 
 # 2
 def end_if_this_event_on():
-    return terminate_if_event_flag_state(0, 1, 1, 0)
+    return terminate_if_event_flag_state(0, 1, flag_type.event, 0)
 
 
 def end_if_this_event_off():
-    return terminate_if_event_flag_state(0, 0, 1, 0)
+    return terminate_if_event_flag_state(0, 0, flag_type.event, 0)
 
 
 def end_if_event_flag_on(event_flag_type: flag_type, event_flag_id):
@@ -1833,11 +1885,11 @@ def if_event_flag_state(output_condition, required_flag_state, event_flag_type, 
 
 # 1
 def if_event_flag_range_on(output_condition, event_flag_type: flag_type, start_event_flag_id, end_event_flag_id):
-    return if_event_flag_state(output_condition, 1, event_flag_type, start_event_flag_id, end_event_flag_id)
+    return if_event_flag_range_state(output_condition, 1, event_flag_type, start_event_flag_id, end_event_flag_id)
 
 
 def if_event_flag_range_off(output_condition, event_flag_type: flag_type, start_event_flag_id, end_event_flag_id):
-    return if_event_flag_state(output_condition, 0, event_flag_type, start_event_flag_id, end_event_flag_id)
+    return if_event_flag_range_state(output_condition, 0, event_flag_type, start_event_flag_id, end_event_flag_id)
 
 
 def if_event_flag_range_state(output_condition, required_flag_state, event_flag_type: flag_type, start_event_flag_id,
@@ -2026,7 +2078,7 @@ def if_count_true_event_flags_in_range(output_condition, event_flag_type: flag_t
 
 # 11
 def if_world_tendency_greater_than_or_equal(output_condition, tendency_type, min_tendency):
-    return if_world_tendency_greater_than_or_equal(output_condition, tendency_type, 4, min_tendency)
+    return if_world_tendency_comparison(output_condition, tendency_type, 4, min_tendency)
 
 
 def if_world_tendency_comparison(output_condition, tendency_type, comparison_type, tendency_comparison):
@@ -2310,15 +2362,15 @@ def if_NPC_part_health_comparison(output_condition, entity_id, part_NPC_type, he
 
 
 # 7
-def if_entity_background_loaded(output_condition, entity_id):
-    return if_entity_background_load_status(output_condition, entity_id, 1)
+def if_entity_backread_enabled(output_condition, entity_id):
+    return if_entity_backread_state(output_condition, entity_id, 1)
 
 
-def if_entity_not_background_loaded(output_condition, entity_id):
-    return if_entity_background_load_status(output_condition, entity_id, 0)
+def if_entity_backread_disabled(output_condition, entity_id):
+    return if_entity_backread_state(output_condition, entity_id, 0)
 
 
-def if_entity_background_load_status(output_condition, entity_id, loaded):
+def if_entity_backread_state(output_condition, entity_id, loaded):
     # Check if entity is loaded in background (presumably) or not.
     event_format = ['   4', '07', 'biB']
     return __format_event(event_format, output_condition, entity_id, loaded)
