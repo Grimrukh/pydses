@@ -3,13 +3,14 @@ author: grimrhapsody
 """
 
 import io
+from os.path import join
+import re
 import subprocess
 from .event_enums import *
 from contextlib import redirect_stdout
 
 PYTHON_27 = 'C:\\python27\\python.exe'                      # Your Python 2 executable
 REBUILDER = 'C:\\HotPocketRemix\\emevd_rebuilder.py'        # HPR's EMEVD rebuilder script
-UNPACKED_EMEVDS = 'C:\\HotPocketRemix\\UnpackedEMEVD'       # Folder containing unpacked EMEVD files to modify and pack
 
 
 def set_python2(path):
@@ -24,46 +25,139 @@ def set_rebuilder(path):
     REBUILDER = path
 
 
-def set_unpacked_emevds(path):
-    # Specify the path of the *folder* containing the unpacked EMEVDs you want to use as templates.
-    global UNPACKED_EMEVDS
-    UNPACKED_EMEVDS = path
-
-
 """ INTERFACE FUNCTIONS """
 
 
-def pack_event(event_functions: list):
-    """ Pack (or 'compile') your custom event functions using template symbols in the unpacked EMEVDs.
+def build_emevd_from_template(event_function_list, map_name, template_directory, built_directory,
+                              verbose_directory, emevd_directory):
+    """ Build your custom event functions using template symbols in the unpacked EMEVD files.
 
-    This function will interpret your pydses events (such as `e11810001` in example.py) one by one as strings, and
-    attempt to write those strings to template symbols (such as `<11810001>`) in unpacked EMEVD files.
+    Create a folder of template unpacked EMEVD files. These templates will have marker symbols <########> added to them,
+    which will be replaced with pydses event code by this method. You can insert these symbols yourself, or allow the
+    method to place them at the end of the file for you (with a confirmation prompt). It will also overwrite existing
+    events if it detects them, but this should be used strictly to expand existing events (as their flags will not be
+    altered). An initialization instruction for that event will also be inserted in Event 0 below the <INIT0> marker,
+    which you should add yourself in a place that you know will always be run. (The method will match the Event ID to
+    its marker using the first line of the event script.)
 
-    If a template is not found, it will check if there is an existing event with an ID that matches the ID of your
-    event and ask if you want to overwrite that event with a template for your new custom event. The old event will be
-    erased (don't worry, you can re-inspect it in a fresh EMEVD file), so make sure your event has superseded the role
-    of the old one. Do NOT overwrite existing IDs with unrelated events unless you are incredibly (unreasonably)
-    confident that you have accounted for all references to the event flag with the same ID across the entire game data.
+    map_name should be the Dark Souls numeric code for the map, so Undead Asylum would be "m18_01_00_00".
 
-    If there is no existing event, it will ask if you want to create a new template at the bottom of the file. (It
-    doesn't matter what order the events are defined in the EMEVD.) If you do, it will then ask if you want to create
-    an Initialize instruction for that event (and any arguments) below the <INIT0> symbol in Event 0 (such as
-    <INIT11810001>) in Event 0, which you will need to insert yourself. You can place this INIT symbol wherever you
-    want in the EMEVD (e.g. in Event 50 for NPC logic, or more rarely, nested inside another event) by manually editing
-    the unpacked file.
+    You can construct the event_function_list in your pydses script by having events' names start with "event" and
+    using the following snippet:
 
-    After all event functions have been substituted, any remaining templates will be brought to your attention for
-    optional deletion. If you don't delete them, the markers will simply be ignored for this pack.
+    event_function_list = [obj for name, obj in inspect.getmembers(sys.modules[__name__]) if
+                           (inspect.isfunction(obj) and name.startswith('event'))]
 
-    :list event_functions:
-    :return:
+    The built files (with all template markers replaced and unused markers removed) will be kept in the built_directory,
+    and verbose versions of these will be kept in the verbose_directory. The emevd_directory should be the \event\
+    folder inside your Dark Souls installation directory ('...\DATA\event').
     """
 
+    with open(join(template_directory, '{}.unpack.txt'.format(map_name))) as template_file:
+        template = template_file.read()
+    template_changed = False  # enabled if/when template is altered
+    built = template  # file that will be modified for packing
+    aborted = False
+
+    for f in event_function_list:
+        event_string = as_string(f)
+        event_id = event_string.split(',')[0]
+        event_tag = '<{}>'.format(event_id)
+        if template.find(event_tag) == -1:
+            if template.find('\n{}, '.format(event_id)) == -1:
+                # No tag or old event exists. Ask user if they want to permanently add a tag at the bottom of the file.
+                if input('No tag found for event {} in template. Add a new tag at the bottom? (Y for Yes)'
+                                 .format(event_id)) in 'Yy':
+                    template += '\n\n' + event_tag
+                    built += '\n\n' + event_string
+                    template_changed = True
+                    if template.find('<INIT0>') == -1:
+                        print('No <INIT0> tag found to create initialization event - make sure you place the tag '
+                              '<INIT_{}> wherever you want the event to be initialized.'.format(event_id))
+                    elif input('Insert initialization instruction under <INIT0> tag? (Y for Yes)') in 'Yy':
+                        # Note no space before the new tag, due to the natural space in p.initialize_event.
+                        template = template.replace('<INIT0>', '<INIT0>\n<INIT_{}>'.format(event_id))
+                        built = built.replace('<INIT0>', '<INIT0>\n<INIT_{}>'.format(event_id))
+                    else:
+                        print('Make sure you place the tag <INIT_{}> wherever you want '
+                              'the event to be initialized.'.format(event_id))
+                else:
+                    if input('Abort? (Y for Yes)') in 'Yy':
+                        aborted = True
+                        print('Aborting pack - no files written or modified.')
+                        break
+                    else:
+                        # Skip this event.
+                        continue
+            else:
+                # Old event found. Ask user if they want to permanently overwrite this old event with a tag.
+                if input('Event {} exists in vanilla file. Overwrite in template with a tag? (Y for Yes)'
+                                 .format(event_id)) in 'Yy':
+                    try:
+                        old_event = re.search(r'\n({},.*?)\n\n'.format(event_id), template, re.DOTALL).group(1)
+                    except:
+                        # Old event must be last in file if above search fails.
+                        # TODO: Figure out how to combine these two searches (two newlines OR end of string).
+                        old_event = re.search(r'\n({},.*?)\Z'.format(event_id), template).group(1)
+                    template = template.replace(old_event, event_tag)
+                    built = built.replace(old_event, event_string)
+                    template_changed = True
+
+                else:
+                    if input('Abort? (Y for Yes)') in 'Yy':
+                        aborted = True
+                        print('Aborting pack - no files written or modified.')
+                        break
+                    else:
+                        # Skip this event.
+                        continue
+            if template_changed:
+                with open('template/{}.unpack.txt'.format(map_name), 'w') as template_file:
+                    template_file.write(template)
+        else:
+            # Replace tag.
+            built = built.replace(event_tag + '\n', event_string)
+            # Replace initialization tag.
+            if built.find('<INIT_{}>'.format(event_id)) == -1:
+                print('No <INIT> tag found to create initialization event - make sure you place the tag '
+                      '<INIT_{}> wherever you want the event to be initialized.'.format(event_id))
+            else:
+                built = built.replace('<INIT_{}>'.format(event_id), initialize_event(event_id))
+
+    # Delete remaining tags.
+    unused_tags = re.findall('(<.*?>)', built)
+    for tag in unused_tags:
+        print('Unused tag:', tag)
+        if tag != '<INIT0>':  # <INIT0> tag is expected to remain and is silently removed.
+            print('Warning: tag {} was not substituted. (Removing for pack.)'.format(tag))
+        built = built.replace('\n {}'.format(tag), '')
+
+    # Save built and packed.
+    with open('built/{}.unpack.txt'.format(map_name), 'w') as built_file:
+        built_file.write(built)
+
+    with open('G:\\Code\\DarkSoulsMods\\Events\\DoAevents\\built\\{}.unpack.txt'.format(map_name), 'r') as built_file:
+        d = built_file.read()
+        print(d)
+
+    unpacked_to_packed(join(built_directory, '{}.unpack.txt'.format(map_name)),
+                       join(emevd_directory, '{}.emevd'.format(map_name)))
+    unpacked_to_verbose(join(built_directory, '{}.unpack.txt'.format(map_name)),
+                        join(verbose_directory, '{}.verbose.txt'.format(map_name)))
+
+
+def unpacked_to_packed(unpacked_filename, output_file):
+    """ Just calls the rebuilder in Python 2. """
+    global PYTHON_27
+    global REBUILDER
+    command = '{} {} -p \"{}\" -o \"{}\"' \
+        .format(PYTHON_27, REBUILDER, unpacked_filename, output_file)
+    print('command:', command)
+    subprocess.run(command)
 
 
 def unpacked_to_verbose(unpacked_filename, output_file):
-    """ Run HotPocketRemix's code to convert an unpacked EMEVD (non-verbose) to
-    packed EMEVD files that can be placed in DATA\event\.
+    """ Convert unpacked file to verbose.
 
     HPR's code will throw its own useful errors if your EMEVD is wrong in any
     way - including extra whitespace.
@@ -76,7 +170,7 @@ def unpacked_to_verbose(unpacked_filename, output_file):
     """
     global PYTHON_27
     global REBUILDER
-    command = '{} {} -p {} -v -o {}' \
+    command = '{} {} -p \"{}\" -v -o \"{}\"' \
         .format(PYTHON_27, REBUILDER, unpacked_filename, output_file)
     subprocess.run(command)
 
@@ -154,7 +248,7 @@ def initialize_event_with_slot(event_slot_number, event_id, *event_args):
     # TODO: Check validity of arguments here.
     # TODO: Fill out event_id to eight digits.
     event_format = ['2000', '00', 'iII']
-    if not event_args: event_args = (0)
+    if not event_args: event_args = (0,)
     return __format_event(event_format, event_slot_number, event_id, *event_args)
 
 
