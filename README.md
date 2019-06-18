@@ -1,4 +1,7 @@
-# pydses
+# PYDSES
+
+**NOTE: This repo has been superseded by [soulstruct](https://github.com/grimrhapsody/soulstruct),
+which contains much more comprehensive Python tools for EMEVD.**
 
 PYDSES (Python Dark Souls Event Scripting)
 
